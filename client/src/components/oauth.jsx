@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import GoogleLogin from "react-google-login";
 import { GoogleLogout } from "react-google-login";
 
-let logmein = true;
-
 function Oauth() {
   const [user, setUser] = useState(false);
+
+  const logout = () => {
+    setUser(false);
+  };
 
   const responseGoogle = (response) => {
     console.log(response.profileObj);
@@ -37,6 +39,7 @@ function Oauth() {
         <GoogleLogout
           clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
           buttonText="Logout"
+          onLogoutSuccess={logout}
         ></GoogleLogout>
       </div>
     );
