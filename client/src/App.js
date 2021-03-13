@@ -1,19 +1,17 @@
 import "./App.css";
-import useApplicationData from "./hooks/useApplicationData";
+import React, { useState } from "react";
+
 import Oauth from "./components/oauth";
 const App = () => {
-  const { state, dispatch } = useApplicationData();
-  const userList = state.users.map((user) => (
-    <li key={user.id}>
-      {" "}
-      {user.first_name} {user.last_name} {user.email}{" "}
-    </li>
-  ));
+  const [user, setUser] = useState(false);
+
+  const logout = () => {
+    setUser(false);
+  };
+
   return (
     <div className="App">
-      <Oauth />
-      <h1> Users </h1>
-      <ul> {userList} </ul>
+      <Oauth user={user} setUser={setUser} logout={logout} />
     </div>
   );
 };
