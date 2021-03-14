@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {useState} from 'react';
 import {
   BrowserRouter as Router,
@@ -34,10 +35,24 @@ const App = () => {
   const [user, setUser] = useState(null);
   
   
+=======
+import "./App.css";
+import React, { useState } from "react";
+
+import Oauth from "./components/oauth";
+const App = () => {
+  const [user, setUser] = useState(false);
+
+  const logout = () => {
+    setUser(false);
+  };
+
+>>>>>>> main
   return (
     
     <Router>
     <div className="App">
+<<<<<<< HEAD
       <Header/>
       <Switch>
         <Route path="/" exact component={Home}/>
@@ -62,6 +77,9 @@ const App = () => {
         </Route>
         <Route component={PageNotFound}/>
       </Switch>
+=======
+      <Oauth user={user} setUser={setUser} logout={logout} />
+>>>>>>> main
     </div>
     </Router>
   );
