@@ -10,6 +10,48 @@ module.exports = (db) => {
           .catch((err) => err);
   };
 
+  const getLocations = () => {
+    const query = {
+        text: 'SELECT * FROM locations',
+    };
+
+    return db
+        .query(query)
+        .then((result) => result.rows)
+        .catch((err) => err);
+};
+const getServices = () => {
+  const query = {
+      text: 'SELECT * FROM services',
+  };
+
+  return db
+      .query(query)
+      .then((result) => result.rows)
+      .catch((err) => err);
+};
+const getavailabilities = () => {
+  const query = {
+      text: 'SELECT * FROM availabilities',
+  };
+
+  return db
+      .query(query)
+      .then((result) => result.rows)
+      .catch((err) => err);
+};
+const getAppointments = () => {
+  const query = {
+      text: 'SELECT * FROM appointments',
+  };
+
+  return db
+      .query(query)
+      .then((result) => result.rows)
+      .catch((err) => err);
+};
+
+
   const getUserByEmail = email => {
 
       const query = {
@@ -50,6 +92,10 @@ module.exports = (db) => {
 
   return {
       getUsers,
+      getLocations,
+      getServices,
+      getavailabilities,
+      getAppointments,
       getUserByEmail,
       addUser,
       getUsersPosts
