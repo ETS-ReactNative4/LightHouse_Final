@@ -1,9 +1,9 @@
+
 import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import useApplicationData from "./hooks/useApplicationData";
 import Oauth from "./components/Oauth";
-import { hasOnlyExpressionInitializer } from "typescript";
 
 import Header from "./components/common/Header";
 import Login from "./components/Login";
@@ -18,17 +18,18 @@ import PageNotFound from "./components/PageNotFound";
 
 const App = () => {
   const { state, dispatch } = useApplicationData();
+  const [user, setUser] = useState(null);
   const userList = state.users.map((user) => (
     <li key={user.id}>
       {" "}
       {user.first_name} {user.last_name} {user.email}{" "}
     </li>
   ));
+
   const [user, setUser] = useState(null);
   const logout = () => {
     setUser(false);
   };
-
   return (
     <Router>
       <div className="App">
