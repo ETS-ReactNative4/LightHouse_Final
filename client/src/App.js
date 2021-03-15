@@ -15,6 +15,9 @@ import NewServiceForm from "./components/NewServiceForm";
 import "./App.css";
 import PageNotFound from "./components/PageNotFound";
 
+//bootstrap stylesheet
+import "bootstrap/dist/css/bootstrap.min.css";
+
 const App = () => {
   const {state, dispatch} = useApplicationData();
   const [user, setUser] = useState(null);
