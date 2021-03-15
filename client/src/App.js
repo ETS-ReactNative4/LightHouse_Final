@@ -1,33 +1,59 @@
-import "./App.css";
-import React, {useState} from "react";
+import {useState} from "react";
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
-import Main from "./components/Main";
-import Login from "./components/Login";
-import Oauth from "./components/oauth";
-import Navbar from "./components/Navbar";
 
-export default function Application(props) {
-  const [user, setUser] = useState(false);
+import useApplicationData from "./hooks/useApplicationData";
+import Oauth from "./components/Oauth";
+
+import Header from "./components/common/Header";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Home from "./components/Home";
+import Services from "./components/Services";
+import Availability from "./components/Availability";
+import NewServiceForm from "./components/NewServiceForm";
+
+import "./App.css";
+import PageNotFound from "./components/PageNotFound";
+
+const App = () => {
+  const {state, dispatch} = useApplicationData();
+  const [user, setUser] = useState(null);
+  const userList = state.users.map((user) => (
+    <li key={user.id}>
+      {" "}
+      {user.first_name} {user.last_name} {user.email}{" "}
+    </li>
+  ));
 
   const logout = () => {
     setUser(false);
   };
-
   return (
-    // <div className="App">
-    //   <Oauth user={user} setUser={setUser} logout={logout} />
-    // </div>
-
     <Router>
-      <Navbar />
-      <Switch>
-        <Route path="/">
-          <Landing />
-        </Route>
-        <Route path="/login">
-          <Main />
-        </Route>
-      </Switch>
+      <div className="App">
+        <Header />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/register">
+            <Register setUser={setUser} />
+            <Oauth user={user} setUser={setUser} logout={logout} />
+          </Route>
+          <Route path="/login">
+            <Login setUser={setUser} />
+            <Oauth user={user} setUser={setUser} logout={logout} />
+          </Route>
+          <Route path="/services">
+            <Services />
+          </Route>
+          <Route path="/availability">
+            <Availability />
+          </Route>
+          <Route path="/services/:service_id">
+            <NewServiceForm />
+          </Route>
+          <Route component={PageNotFound} />
+        </Switch>
+      </div>
     </Router>
   );
-}
+};
