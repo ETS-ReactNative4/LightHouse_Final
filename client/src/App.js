@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -36,7 +35,7 @@ const App = () => {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/register">
-            <Register setUser={setUser} />
+            <Register user={user} setUser={setUser} />
             <Oauth user={user} setUser={setUser} logout={logout} />
           </Route>
           <Route path="/login">
