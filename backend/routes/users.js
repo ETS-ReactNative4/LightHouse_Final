@@ -18,7 +18,6 @@ module.exports = ({
                 error: err.message
             }));
     });
-
     router.get('/posts', (req, res) => {
         getUsersPosts()
             .then((usersPosts) => {
