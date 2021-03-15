@@ -18,6 +18,7 @@ import PageNotFound from "./components/PageNotFound";
 const App = () => {
   const { state, dispatch } = useApplicationData();
   const [user, setUser] = useState(null);
+  const [location, setLocation] = useState(null);
   const userList = state.users.map((user) => (
     <li key={user.id}>
       {" "}
@@ -35,7 +36,12 @@ const App = () => {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/register">
-            <Register user={user} setUser={setUser} />
+            <Register
+              user={user}
+              setUser={setUser}
+              location={location}
+              setLocation={setLocation}
+            />
             <Oauth user={user} setUser={setUser} logout={logout} />
           </Route>
           <Route path="/login">

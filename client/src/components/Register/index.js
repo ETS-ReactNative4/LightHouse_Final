@@ -1,10 +1,35 @@
+import axios from "axios";
+
 export default function Register(props) {
   console.log(props);
 
   const getLocation = (e) => {
     e.preventDefault();
     navigator.geolocation.getCurrentPosition(function (position) {
-      console.log(position);
+      const location = {
+        x: position.coords.latitude,
+        y: position.coords.longitude,
+      };
+
+      axios
+        .get(
+          `https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&featureTypes=&location=${location.y}%2C${location.x}`
+        )
+        .then((response) => {
+          const location = {};
+          console.log(response.data.address.ShortLabel);
+          location.address = response.data.address.ShortLabel;
+          location.num = response.data.address.AddNum;
+          location.city = response.data.address.city;
+          location.country = response.data.address.CountryCode;
+          location.region = response.data.address.region;
+          location.postal =
+            response.data.address.Postal +
+            " " +
+            response.data.address.PostalExt;
+          console.log(location);
+          props.setLocation(location);
+        });
     });
   };
   return (
@@ -31,21 +56,37 @@ export default function Register(props) {
         <div>
           <label>
             Address
-            <input type="text" name="full_address" />
+            <input
+              type="text"
+              name="full_address"
+              // value={props.location.address && props.location.address}
+            />
           </label>
           <label>
             City
-            <input type="text" name="city" />
+            <input
+              type="text"
+              name="city"
+              // value={props.location.city && props.location.city}
+            />
           </label>
         </div>
         <div>
           <label>
             Postal code
-            <input type="text" name="postal_code" />
+            <input
+              type="text"
+              name="postal_code"
+              // value={props.location.postal && props.location.postal}
+            />
           </label>
           <label>
             Country
-            <input type="text" name="country" />
+            <input
+              type="text"
+              name="country"
+              // value={props.location.country && props.location.country}
+            />
           </label>
         </div>
       </form>
