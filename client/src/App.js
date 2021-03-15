@@ -1,22 +1,25 @@
-import { useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {useState} from "react";
+import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
 import useApplicationData from "./hooks/useApplicationData";
 import Oauth from "./components/Oauth";
 
-import Header from "./components/common/Header";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
 import Services from "./components/Services";
 import Availability from "./components/Availability";
 import NewServiceForm from "./components/NewServiceForm";
+import Header from "./components/Navbar";
 
 import "./App.css";
 import PageNotFound from "./components/PageNotFound";
 
+//bootstrap stylesheet
+import "bootstrap/dist/css/bootstrap.min.css";
+
 const App = () => {
-  const { state, dispatch } = useApplicationData();
+  const {state, dispatch} = useApplicationData();
   const [user, setUser] = useState(null);
   const userList = state.users.map((user) => (
     <li key={user.id}>
@@ -31,7 +34,7 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        <Header />
+        <Header user={user} setUser={setUser} logout={logout} />
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/register">
