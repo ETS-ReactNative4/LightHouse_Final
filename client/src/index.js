@@ -5,7 +5,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 import "./App.scss";
-import "./components/Footer.css";
+// import "./components/Footer.css";
+// import ".components/Home/Footer.scss";
 
 ReactDOM.render(
   <React.StrictMode>
