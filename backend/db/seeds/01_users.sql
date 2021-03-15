@@ -7,5 +7,5 @@ VALUES
     ('Princess', 'phototest4', 'daisy@nintendo.com','test', 1620072200, 1530072200, 24, true),
     ('Monkey', 'phototest5', 'monkey@nintendo.com', 'test', 1520072200, 1620072200, 44, false),
     ('Dog', 'phototest5', 'dog@nintendo.com', 'test', 1520072200, 1620072200, 64, false),
-    ('Bull', 'phototest5', 'bull@nintendo.com', 'test', 1520072200, 1620072200, 104, false);
+    ('Sebastien Perot-Morin', 'phototest5', 'spmorin999@gmail.com', 'test', 111064856, 111064856, 104, false);
 

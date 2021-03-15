@@ -1,9 +1,22 @@
 var express = require("express");
 var router = express.Router();
 
-/* GET home page. */
-router.get("/login", (req, res) => {
-  console.log(req);
-});
+module.exports = ({ getUsers, getUserByEmail, addUser, getUsersPosts }) => {
+  // /* GET home page. */
+  router.post("/", (req, res) => {
+    console.log(req.body);
 
-module.exports = router;
+    getUserByEmail(req.body.email)
+      .then((result) => {
+        res.json({
+          msg: result,
+        });
+      })
+      .catch((err) =>
+        res.json({
+          error: err.message,
+        })
+      );
+  });
+  return router;
+};

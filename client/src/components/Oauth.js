@@ -1,6 +1,7 @@
 import React from "react";
 import GoogleLogin from "react-google-login";
 import { GoogleLogout } from "react-google-login";
+import axios from "axios";
 
 function Oauth(props) {
   const responseGoogle = (response) => {
@@ -9,13 +10,26 @@ function Oauth(props) {
       // DOTO imprement and axios call to the backend to validate if the user exist or not. If user does not exist we need to be able
       //  to send user to the registration page
       // ?? do we need to send user data into a cookie ??
+      axios
+        .post("/api/login", {
+          name: response.profileObj.name,
+          email: response.profileObj.email,
+          gid: response.profileObj.googleId,
+        })
+        .then(
+          (response) => {
+            console.log("this is the response", response.data.msg);
+            props.setUser(response.data.msg);
+          },
+          (error) => {
+            console.log("this is the error", error);
+          }
+        );
 
       // For you guy's if you need to loo at the data
       // console.log(response.profileObj.googleId);
       // console.log(response.profileObj.name);
       // console.log(response.profileObj.email);
-
-      props.setUser(response.profileObj.name);
     }
   };
   if (!props.user) {
@@ -33,6 +47,7 @@ function Oauth(props) {
   } else {
     return (
       <div className="App">
+        {props.user.full_name}
         <GoogleLogout
           clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
           buttonText="Logout"
