@@ -26,7 +26,6 @@ const App = () => {
     </li>
   ));
 
-  const [user, setUser] = useState(null);
   const logout = () => {
     setUser(false);
   };
