@@ -4,13 +4,13 @@ import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import useApplicationData from "./hooks/useApplicationData";
 import Oauth from "./components/Oauth";
 
-import Header from "./components/common/Header";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
 import Services from "./components/Services";
 import Availability from "./components/Availability";
 import NewServiceForm from "./components/NewServiceForm";
+import Header from "./components/Navbar";
 
 import "./App.css";
 import PageNotFound from "./components/PageNotFound";
@@ -34,7 +34,7 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        <Navbar isAuth={user} />
+        <Header user={user} setUser={setUser} logout={logout} />
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/register">
