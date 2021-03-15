@@ -1,6 +1,5 @@
-
-import { useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {useState} from "react";
+import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
 import useApplicationData from "./hooks/useApplicationData";
 import Oauth from "./components/Oauth";
@@ -17,7 +16,7 @@ import "./App.css";
 import PageNotFound from "./components/PageNotFound";
 
 const App = () => {
-  const { state, dispatch } = useApplicationData();
+  const {state, dispatch} = useApplicationData();
   const [user, setUser] = useState(null);
   const userList = state.users.map((user) => (
     <li key={user.id}>
@@ -58,4 +57,3 @@ const App = () => {
     </Router>
   );
 };
-export default App;
