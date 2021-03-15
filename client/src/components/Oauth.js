@@ -2,8 +2,10 @@ import React from "react";
 import GoogleLogin from "react-google-login";
 import { GoogleLogout } from "react-google-login";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 function Oauth(props) {
+  const history = useHistory();
   const responseGoogle = (response) => {
     console.log(response.profileObj);
     if (response.profileObj.name) {
@@ -20,6 +22,9 @@ function Oauth(props) {
           (response) => {
             console.log("this is the response", response.data.msg);
             props.setUser(response.data.msg);
+            if (response.data.register) {
+              history.push("/register");
+            }
           },
           (error) => {
             console.log("this is the error", error);
