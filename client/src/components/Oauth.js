@@ -17,28 +17,23 @@ function Oauth(props) {
         email: response.profileObj.email,
         gid: response.profileObj.googleId,
       };
-      axios
-        .post("/api/login", userObject)
-        .then(
-          (response) => {
-            console.log("this is the response", response.data.msg);
-            if (response.data.register) {
-              props.setUser({
-                ...userObject,
-                register: true
-              });
-              history.push("/register");
-            } 
-            else {
+      axios.post("/api/login", userObject).then(
+        (response) => {
+          console.log("this is the response", response.data.msg);
+          if (response.data.register) {
+            props.setUser({
+              ...userObject,
+              register: true,
+            });
+            history.push("/register");
+          } else {
             props.setUser(response.data.msg);
-            history.push("/home");
-            }
-            
-          },
-          (error) => {
-            console.log("this is the error", error);
           }
-        );
+        },
+        (error) => {
+          console.log("this is the error", error);
+        }
+      );
 
       // For you guy's if you need to loo at the data
       // console.log(response.profileObj.googleId);

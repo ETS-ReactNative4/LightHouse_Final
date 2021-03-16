@@ -1,8 +1,7 @@
-import {useState} from "react";
-import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import { useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import useApplicationData from "./hooks/useApplicationData";
-import Oauth from "./components/Oauth";
 
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -20,7 +19,7 @@ import PageNotFound from "./components/PageNotFound";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
-  const {state, dispatch} = useApplicationData();
+  const { state, dispatch } = useApplicationData();
   const [user, setUser] = useState(null);
   const [location, setLocation] = useState(null);
   const userList = state.users.map((user) => (
@@ -31,7 +30,7 @@ const App = () => {
   ));
 
   const logout = (val) => {
-    // setUser(false);
+    setUser(false);
     console.log("logout value", val);
   };
   return (
@@ -47,11 +46,9 @@ const App = () => {
               location={location}
               setLocation={setLocation}
             />
-            <Oauth user={user} setUser={setUser} logout={logout} />
           </Route>
           <Route path="/login">
             <Login setUser={setUser} />
-            <Oauth user={user} setUser={setUser} logout={logout} />
           </Route>
           <Route path="/services">
             <Services />
