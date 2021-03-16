@@ -23,13 +23,25 @@ module.exports = (db) => {
   const getServices = () => {
     const query = {
       text: "SELECT * FROM services",
-    };
+  };
 
     return db
       .query(query)
       .then((result) => result.rows)
       .catch((err) => err);
   };
+  const getServicesByValue = (value) => {
+    const query = {
+      text: "SELECT * FROM services where title=$1 ",
+      values: [value]
+  };
+    return db
+    .query(query)
+    .then((result) => result.rows)
+    .catch((err) => err);
+};
+
+
   const getavailabilities = () => {
     const query = {
       text: "SELECT * FROM availabilities",
@@ -93,6 +105,7 @@ module.exports = (db) => {
     getUsers,
     getLocations,
     getServices,
+    getServicesByValue,
     getavailabilities,
     getAppointments,
     getUserByEmail,

@@ -3,7 +3,8 @@ const router = express.Router();
 
 
 module.exports = ({
-  getServices
+  getServices,
+  getServicesByValue
 }) => {
     /* GET users listing. */
 
@@ -14,5 +15,12 @@ module.exports = ({
               error: err.message
           }));
   });
+  router.get('/:value', (req, res) => {
+    getServicesByValue(req.params.value)
+        .then((users) => res.json(users))
+        .catch((err) => res.json({
+            error: err.message
+        }));
+});
     return router;
 };

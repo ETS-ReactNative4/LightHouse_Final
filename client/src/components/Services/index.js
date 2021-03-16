@@ -43,7 +43,7 @@ export default function Services(props) {
           </InputGroup.Prepend>
           <FormControl
             aria-label="input"
-            value={search.val}
+            // value="{search.val}"
             onChange={(e) => setSearch({ val: e.target.value })}
             type="text"
             aria-describedby="inputGroup-sizing-sm"
