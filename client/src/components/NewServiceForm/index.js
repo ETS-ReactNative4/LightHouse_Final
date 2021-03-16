@@ -1,50 +1,52 @@
+import {useState} from "react";
+import React from "react";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+
 export default function NewServiceForm(props) {
+  const [state, setState] = useState({
+    title: null,
+    description: null,
+    fee: null,
+    category: null,
+  });
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = this.state;
+    // console.log(this.inputFullNameRef.current.value)
+    console.log("Final data is", data);
+  };
+
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Form.Row>
-        <Form.Group as={Col} controlId="formGridEmail">
-          <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
+        <Form.Group as={Col} controlId="formGridTitle">
+          <Form.Label>Title of service</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter title of the service you would like to provide"
+          />
         </Form.Group>
 
-        <Form.Group as={Col} controlId="formGridPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
+        <Form.Group as={Col} controlId="formGridDescription">
+          <Form.Label>Description</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter the description of your service"
+          />
         </Form.Group>
       </Form.Row>
 
-      <Form.Group controlId="formGridAddress1">
-        <Form.Label>Address</Form.Label>
-        <Form.Control placeholder="1234 Main St" />
+      <Form.Group controlId="formGridFee">
+        <Form.Label>Fee</Form.Label>
+        <Form.Control placeholder="Please enter the amount in $" />
       </Form.Group>
 
-      <Form.Group controlId="formGridAddress2">
-        <Form.Label>Address 2</Form.Label>
-        <Form.Control placeholder="Apartment, studio, or floor" />
-      </Form.Group>
-
-      <Form.Row>
-        <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>City</Form.Label>
-          <Form.Control />
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridState">
-          <Form.Label>State</Form.Label>
-          <Form.Control as="select" defaultValue="Choose...">
-            <option>Choose...</option>
-            <option>...</option>
-          </Form.Control>
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridZip">
-          <Form.Label>Zip</Form.Label>
-          <Form.Control />
-        </Form.Group>
-      </Form.Row>
-
-      <Form.Group id="formGridCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
+      <Form.Group controlId="formGridCategory">
+        <Form.Label>Category</Form.Label>
+        <Form.Control placeholder="Please enter the category name for your serice, i.e: plumbing" />
       </Form.Group>
 
       <Button variant="primary" type="submit">
