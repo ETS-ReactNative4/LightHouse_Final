@@ -17,10 +17,10 @@ export default function Register(props) {
         )
         .then((response) => {
           const location = {};
-          console.log(response.data.address.ShortLabel);
+          console.log(response.data.address);
           location.address = response.data.address.ShortLabel;
           location.num = response.data.address.AddNum;
-          location.city = response.data.address.city;
+          location.city = response.data.address.City;
           location.country = response.data.address.CountryCode;
           location.region = response.data.address.region;
           location.postal =
@@ -59,7 +59,7 @@ export default function Register(props) {
             <input
               type="text"
               name="full_address"
-              // value={props.location.address && props.location.address}
+              value={props.location && props.location.address}
             />
           </label>
           <label>
@@ -67,7 +67,7 @@ export default function Register(props) {
             <input
               type="text"
               name="city"
-              // value={props.location.city && props.location.city}
+              value={props.location && props.location.city}
             />
           </label>
         </div>
@@ -77,7 +77,7 @@ export default function Register(props) {
             <input
               type="text"
               name="postal_code"
-              // value={props.location.postal && props.location.postal}
+              value={props.location && props.location.postal}
             />
           </label>
           <label>
@@ -85,7 +85,7 @@ export default function Register(props) {
             <input
               type="text"
               name="country"
-              // value={props.location.country && props.location.country}
+              value={props.location && props.location.country}
             />
           </label>
         </div>
