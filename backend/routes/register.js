@@ -8,9 +8,10 @@ module.exports = ({ getUsers, getUserByEmail, addUser, getUsersPosts }) => {
 
     getUserByEmail(req.body.name[1]).then((result) => {
       if (result) {
-        return res.json({
-          msg: result,
-          });
+        // return res.json({
+        //   msg: result,
+        //   });
+        return res.redirect('/services');
       } else {
         // const { name, email } = req.body;
         console.log("this is givenName val", req.body);
@@ -19,6 +20,7 @@ module.exports = ({ getUsers, getUserByEmail, addUser, getUsersPosts }) => {
             register : true,
             msg: r
           });
+          return res.redirect('/services');
         });
       }
     });
