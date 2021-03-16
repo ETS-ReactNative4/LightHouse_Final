@@ -9,7 +9,7 @@ CREATE TABLE locations(
     country VARCHAR(255) NOT NULL,
     created_at INT NOT NULL,
     modified_at INT NOT NULL,
-    lat INT NOT NULL,
-    long INT NOT NULL,
+    lat FLOAT NOT NULL,
+    long FLOAT NOT NULL,
     user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
 );
