@@ -1,3 +1,76 @@
+import {useState} from "react";
+import React from "react";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Col from "react-bootstrap/Col";
+import axios from "axios";
+
 export default function NewServiceForm(props) {
-  return (<h1>I am New Service Form</h1>);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [fee, setFee] = useState("");
+  const [category, setCategory] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = {
+      formTitle: title,
+      formDescription: description,
+      formFee: fee,
+      formCategory: category,
+    };
+    console.log("Final data is", data);
+
+    axios.post("/api/services", {data}).then((response) => {
+      console.log("success!!");
+    });
+  };
+
+  return (
+    <Form onSubmit={handleSubmit}>
+      <Form.Row>
+        <Form.Group as={Col} controlId="formGridTitle">
+          <Form.Label>Title of service</Form.Label>
+          <Form.Control
+            type="text"
+            name="title"
+            placeholder="Enter title of the service you would like to provide"
+            onChange={(event) => setTitle(event.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group as={Col} controlId="formGridDescription">
+          <Form.Label>Description</Form.Label>
+          <Form.Control
+            type="text"
+            name="description"
+            placeholder="Enter the description of your service"
+            onChange={(event) => setDescription(event.target.value)}
+          />
+        </Form.Group>
+      </Form.Row>
+
+      <Form.Group controlId="formGridFee">
+        <Form.Label>Fee</Form.Label>
+        <Form.Control
+          name="fee"
+          placeholder="Please enter the amount in $"
+          onChange={(event) => setFee(event.target.value)}
+        />
+      </Form.Group>
+
+      <Form.Group controlId="formGridCategory">
+        <Form.Label>Category</Form.Label>
+        <Form.Control
+          name="category"
+          placeholder="Please enter the category name for your serice, i.e: plumbing"
+          onChange={(event) => setCategory(event.target.value)}
+        />
+      </Form.Group>
+
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
+    </Form>
+  );
 }
