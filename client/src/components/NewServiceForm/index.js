@@ -19,6 +19,16 @@ export default function NewServiceForm(props) {
     console.log("Final data is", data);
   };
 
+  handleInputChange = (event) => {
+    event.preventDefault();
+    // console.log(event)
+    // console.log(event.target.name)
+    // console.log(event.target.value)
+    setState({
+      [event.target.name]: event.target.value,
+    });
+  };
+
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Row>
@@ -26,6 +36,7 @@ export default function NewServiceForm(props) {
           <Form.Label>Title of service</Form.Label>
           <Form.Control
             type="text"
+            name="title"
             placeholder="Enter title of the service you would like to provide"
           />
         </Form.Group>
@@ -34,6 +45,7 @@ export default function NewServiceForm(props) {
           <Form.Label>Description</Form.Label>
           <Form.Control
             type="text"
+            name="description"
             placeholder="Enter the description of your service"
           />
         </Form.Group>
@@ -41,12 +53,15 @@ export default function NewServiceForm(props) {
 
       <Form.Group controlId="formGridFee">
         <Form.Label>Fee</Form.Label>
-        <Form.Control placeholder="Please enter the amount in $" />
+        <Form.Control name="fee" placeholder="Please enter the amount in $" />
       </Form.Group>
 
       <Form.Group controlId="formGridCategory">
         <Form.Label>Category</Form.Label>
-        <Form.Control placeholder="Please enter the category name for your serice, i.e: plumbing" />
+        <Form.Control
+          name="category"
+          placeholder="Please enter the category name for your serice, i.e: plumbing"
+        />
       </Form.Group>
 
       <Button variant="primary" type="submit">
