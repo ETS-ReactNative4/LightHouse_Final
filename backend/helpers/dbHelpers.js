@@ -42,6 +42,7 @@ module.exports = (db) => {
 };
 
 
+
   const getavailabilities = () => {
     const query = {
       text: "SELECT * FROM availabilities",
@@ -74,6 +75,18 @@ module.exports = (db) => {
       .then((result) => result.rows[0])
       .catch((err) => err);
   };
+  const getUserById = (id) => {
+    const query = {
+      text: `SELECT * FROM users WHERE id = $1`,
+      values: [id],
+    };
+
+    return db
+      .query(query)
+      .then((result) => result.rows[0])
+      .catch((err) => err);
+  };
+  
 
   const addUser = (full_name, email) => {
     const query = {
@@ -109,6 +122,7 @@ module.exports = (db) => {
     getavailabilities,
     getAppointments,
     getUserByEmail,
+    getUserById,
     addUser,
     getUsersPosts,
   };

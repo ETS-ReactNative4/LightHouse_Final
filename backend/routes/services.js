@@ -17,7 +17,7 @@ module.exports = ({
   });
   router.get('/:value', (req, res) => {
     getServicesByValue(req.params.value)
-        .then((users) => res.json(users))
+        .then((services) => res.json(services))
         .catch((err) => res.json({
             error: err.message
         }));
