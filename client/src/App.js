@@ -29,8 +29,9 @@ const App = () => {
     </li>
   ));
 
-  const logout = () => {
-    setUser(false);
+  const logout = (val) => {
+    // setUser(false);
+    console.log("logout value", val);
   };
   return (
     <Router>
