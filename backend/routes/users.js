@@ -2,10 +2,20 @@ const express = require("express");
 const router = express.Router();
 const { getPostsByUsers } = require("../helpers/dataHelpers");
 
-module.exports = ({ getUsers, getUserByEmail, addUser, getUsersPosts }) => {
+module.exports = ({ getUsers, getUserByEmail, getUserById, addUser, getUsersPosts }) => {
   /* GET users listing. */
   router.get("/", (req, res) => {
     getUsers()
+      .then((users) => res.json(users))
+      .catch((err) =>
+        res.json({
+          error: err.message,
+        })
+      );
+  });
+
+  router.get("/:id", (req, res) => {
+    getUserById(req.params.id)
       .then((users) => res.json(users))
       .catch((err) =>
         res.json({
