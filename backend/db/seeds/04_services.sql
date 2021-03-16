@@ -2,7 +2,7 @@ INSERT INTO
 services (title, category, fee, created_at, modified_at, user_id)
 VALUES
     ('Cardify', 'explicit', 18, 1420455506, 1513384294, 3),
-    ('Tampflex', 'Team-oriented', 76, 1493520545, 1444741287, 1),
+    ('Tampflex', 'Team-oriented', 76, 1493520545, 1444741287, 2),
     ('Ronstring', 'dedicated', 42, 1514611277, 1487828073, 7),
     ('Lotstring', 'paradigm', 80, 1426705442, 1517034926, 3),
     ('Transcof', 'Front-line', 42, 1424184835, 1498741462, 3),
