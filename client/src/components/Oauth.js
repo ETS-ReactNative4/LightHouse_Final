@@ -12,19 +12,28 @@ function Oauth(props) {
       // DOTO imprement and axios call to the backend to validate if the user exist or not. If user does not exist we need to be able
       //  to send user to the registration page
       // ?? do we need to send user data into a cookie ??
+      let userObject = {
+        name: response.profileObj.name,
+        email: response.profileObj.email,
+        gid: response.profileObj.googleId,
+      };
       axios
-        .post("/api/login", {
-          name: response.profileObj.name,
-          email: response.profileObj.email,
-          gid: response.profileObj.googleId,
-        })
+        .post("/api/login", userObject)
         .then(
           (response) => {
             console.log("this is the response", response.data.msg);
-            props.setUser(response.data.msg);
             if (response.data.register) {
+              props.setUser({
+                ...userObject,
+                register: true
+              });
               history.push("/register");
+            } 
+            else {
+            props.setUser(response.data.msg);
+            history.push("/home");
             }
+            
           },
           (error) => {
             console.log("this is the error", error);

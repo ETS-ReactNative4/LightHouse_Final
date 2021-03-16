@@ -10,6 +10,7 @@ var servicesRouter = require("./routes/services");
 var availabilitiesRouter = require("./routes/availabilities");
 var appointmentsRouter = require("./routes/appointments");
 var loginRouter = require("./routes/login");
+var registerRouter = require("./routes/register");
 const dbHelpers = require("./helpers/dbHelpers")(db);
 
 var app = express();
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/api/login", loginRouter(dbHelpers));
 app.use("/", indexRouter);
 app.use("/api/users", usersRouter(dbHelpers));
+app.use("/api/register", registerRouter(dbHelpers));
 
 app.use("/api/locations", locationsRouter(dbHelpers));
 app.use("/api/services", servicesRouter(dbHelpers));

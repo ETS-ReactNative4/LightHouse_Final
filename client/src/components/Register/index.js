@@ -1,8 +1,9 @@
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 export default function Register(props) {
-  console.log(props);
-
+  console.log("this is props of register",props);
+  const history = useHistory();
   const getLocation = (e) => {
     e.preventDefault();
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -32,18 +33,26 @@ export default function Register(props) {
         });
     });
   };
+  const registration = (event) => {
+    event.preventDefault();
+    console.log("tt", event);
+  }
   return (
     <>
       <h1>I am Register</h1>
-      <form>
+      {props.user  && props.user.register ? (
+      
+      <form method="POST" action="/api/register">
         <div>
           <label>
             Full Name:
-            <input type="text" name="name" value={props.user.full_name} />
+            <input type="text" name="name"  />
+            {/* value={props.user.name} */}
           </label>
           <label>
             Email:
-            <input type="text" name="name" value={props.user.email} />
+            <input type="text" name="name" />
+            {/* value={props.user.email}  */}
           </label>
         </div>
         <div>
@@ -89,9 +98,15 @@ export default function Register(props) {
             />
           </label>
         </div>
-      </form>
-      <h2>{props.user.email}</h2>
-      <h2>{props.user.full_name}</h2>
+        <div>
+          <button type="submit" >Register</button>
+        </div>
+
+      </form>)
+
+    : history.push('/home') }
+     {/* <h2>{props.user.email}</h2>
+  <h2>{props.user.full_name}</h2> */}
     </>
   );
 }
