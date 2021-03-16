@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {useState} from "react";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 import useApplicationData from "./hooks/useApplicationData";
 
@@ -19,7 +19,7 @@ import PageNotFound from "./components/PageNotFound";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
-  const { state, dispatch } = useApplicationData();
+  const {state, dispatch} = useApplicationData();
   const [user, setUser] = useState(null);
   const [location, setLocation] = useState(null);
   const userList = state.users.map((user) => (
@@ -50,15 +50,17 @@ const App = () => {
           <Route path="/login">
             <Login setUser={setUser} />
           </Route>
+          <Route path="/services/new">
+            <NewServiceForm />
+          </Route>
           <Route path="/services">
             <Services user={user} location={location} />
           </Route>
+
           <Route path="/availability">
             <Availability />
           </Route>
-          <Route path="/services/:service_id">
-            <NewServiceForm />
-          </Route>
+
           <Route component={PageNotFound} />
         </Switch>
         <Footer class="footer" />

@@ -1,4 +1,5 @@
 import axios from "axios";
+import "./index.scss";
 import { useHistory } from "react-router-dom";
 
 export default function Register(props) {
