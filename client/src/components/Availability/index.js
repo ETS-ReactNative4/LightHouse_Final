@@ -4,7 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function Availability(props) {
-  const [avail, setAvail] = useState(null);
+  const [avail, setAvail] = useState([]);
   useEffect(() => {
     axios.get(`/api/availabilities`).then((response) => {
       console.log(response.data);
@@ -20,7 +20,7 @@ export default function Availability(props) {
           <ListGroup.Item>{s.start_time}</ListGroup.Item>
           <ListGroup.Item>{s.end_time}</ListGroup.Item>
           <ListGroup.Item>{s.available_date}</ListGroup.Item>
-          <ListGroup.Item>{s.service_id}</ListGroup.Item>
+          <ListGroup.Item>{s.services_id}</ListGroup.Item>
           <ListGroup.Item>{s.modified_at}</ListGroup.Item>
         </ListGroup>
       );
@@ -28,7 +28,7 @@ export default function Availability(props) {
   };
 
   const availElement = getAvail();
-
+  console.log("outside of use effect", availElement);
   return (
     <>
       <div>
