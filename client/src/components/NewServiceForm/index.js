@@ -21,7 +21,7 @@ export default function NewServiceForm(props) {
     };
     console.log("Final data is", data);
 
-    axios.post("/api/services", {data}).then((response) => {
+    axios.post("/api/services/new", {data}).then((response) => {
       console.log("success!!");
     });
   };

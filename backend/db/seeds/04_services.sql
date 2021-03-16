@@ -1,15 +1,15 @@
 INSERT INTO
-services (title, category, fee, user_id)
+services (title, category, description, fee, user_id)
 VALUES
-    ('Cardify', 'explicit', 18, 3),
-    ('Tampflex', 'Team-oriented', 30, 2),
-    ('Ronstring', 'dedicated', 43, 7),
-    ('Lotstring', 'paradigm', 22, 3),
-    ('Transcof', 'Front-line', 12, 3),
-    ('Treeflex', 'Inverse', 12, 2),
-    ('Wrapsafe', 'regional', 33, 7),
-    ('Andalax', 'Persistent', 31, 4),
-    ('Bamity', 'Multi-lateral',25, 6),
-    ('Andalax', 'asymmetric', 10, 2);
+    ('Cardify', 'explicit','test descriptions', 18, 3),
+    ('Tampflex', 'Team-oriented', 'test descriptions', 30, 2),
+    ('Ronstring', 'dedicated', 'test descriptions', 43, 7),
+    ('Lotstring', 'paradigm', 'test descriptions', 22, 3),
+    ('Transcof', 'Front-line', 'test descriptions', 12, 3),
+    ('Treeflex', 'Inverse', 'test descriptions', 12, 2),
+    ('Wrapsafe', 'regional', 'test descriptions', 33, 7),
+    ('Andalax', 'Persistent', 'test descriptions', 31, 4),
+    ('Bamity', 'Multi-lateral', 'test descriptions', 25, 6),
+    ('Andalax', 'asymmetric','test descriptions', 10, 2);
 
 

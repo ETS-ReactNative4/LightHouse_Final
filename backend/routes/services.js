@@ -4,7 +4,8 @@ const router = express.Router();
 
 module.exports = ({
   getServices,
-  getServicesByValue
+  getServicesByValue,
+  addService
 }) => {
     /* GET users listing. */
 
@@ -22,5 +23,26 @@ module.exports = ({
             error: err.message
         }));
 });
+
+  router.post("/new", (req, res) => {
+    const { title, category, description, fee } = req.body;
+    console.log("ThIS IS NEW",req.body);
+    addService(title, category, description, fee)
+      // .then((service) => {
+      //   if (service) {
+      //     res.json({
+      //       msg: "Sorry, a user account with this email already exists",
+      //     });
+      //   } else {
+      //     return addService(title, category, description, fee );
+      //   }
+      // })
+      .then((nService) => addService(title, category, description, fee ))
+      .catch((err) =>
+        res.json({
+          error: err.message,
+        })
+      );
+  });
     return router;
 };
