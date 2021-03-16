@@ -1,0 +1,13 @@
+$theme-colors: (
+  "info": tomato,
+  "danger": teal,
+);
+
+.footer {
+  height: 10%;
+  position: fixed;
+  bottom: 0;
+  background-color: lightgrey;
+}
+
+@import "~bootstrap/scss/bootstrap";

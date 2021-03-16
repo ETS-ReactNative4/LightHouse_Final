@@ -11,6 +11,7 @@ import Services from "./components/Services";
 import Availability from "./components/Availability";
 import NewServiceForm from "./components/NewServiceForm";
 import Header from "./components/Navbar";
+import Footer from "./components/Footer";
 
 import "./App.css";
 import PageNotFound from "./components/PageNotFound";
@@ -63,6 +64,7 @@ const App = () => {
           </Route>
           <Route component={PageNotFound} />
         </Switch>
+        <Footer class="footer" />
       </div>
     </Router>
   );
