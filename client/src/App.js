@@ -51,7 +51,7 @@ const App = () => {
             <Login setUser={setUser} />
           </Route>
           <Route path="/services">
-            <Services />
+            <Services user={user} location={location} />
           </Route>
           <Route path="/availability">
             <Availability />
