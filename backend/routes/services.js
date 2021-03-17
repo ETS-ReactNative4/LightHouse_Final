@@ -9,7 +9,7 @@ module.exports = ({
 }) => {
     /* GET users listing. */
 
-    router.get('/', (req, res) => {
+  router.get('/', (req, res) => {
       getServices()
           .then((users) => res.json(users))
           .catch((err) => res.json({
@@ -25,19 +25,12 @@ module.exports = ({
 });
 
   router.post("/new", (req, res) => {
-    const { title, category, description, fee } = req.body;
+    const { formTitle, formCategory, formDescription, formFee } = req.body.data;
     console.log("ThIS IS NEW",req.body);
-    addService(title, category, description, fee)
-      // .then((service) => {
-      //   if (service) {
-      //     res.json({
-      //       msg: "Sorry, a user account with this email already exists",
-      //     });
-      //   } else {
-      //     return addService(title, category, description, fee );
-      //   }
-      // })
-      .then((nService) => addService(title, category, description, fee ))
+    addService(formTitle, formCategory, formDescription, formFee)
+      .then(() => res.status(201).json({
+        msg : "created",
+      }))
       .catch((err) =>
         res.json({
           error: err.message,
