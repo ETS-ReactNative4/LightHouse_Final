@@ -1,0 +1,20 @@
+.profile {
+  background-color: lightblue;
+}
+
+.profile-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-btn {
+  width: 80px;
+  height: 30px;
+}
+
+.profile-image-img {
+  width: 200px;
+}
+
+@import "~bootstrap/scss/bootstrap";

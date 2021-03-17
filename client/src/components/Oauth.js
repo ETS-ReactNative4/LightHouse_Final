@@ -1,13 +1,15 @@
 import React from "react";
 import GoogleLogin from "react-google-login";
-import { GoogleLogout } from "react-google-login";
+import {GoogleLogout} from "react-google-login";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 function Oauth(props) {
   const history = useHistory();
+
+  console.log(history);
   const responseGoogle = (response) => {
-    console.log(response.profileObj);
+    console.log("THIS IS PROFILE OBJ:", response.profileObj);
     if (response.profileObj.name) {
       // DOTO imprement and axios call to the backend to validate if the user exist or not. If user does not exist we need to be able
       //  to send user to the registration page
@@ -16,16 +18,18 @@ function Oauth(props) {
         name: response.profileObj.name,
         email: response.profileObj.email,
         gid: response.profileObj.googleId,
-        //      isServiceProvider: response.profileObj.isServiceProvider,
+        isServiceProvider: response.profileObj.isServiceProvider,
       };
       axios.post("/api/login", userObject).then(
         (response) => {
           console.log("potatoes", response.data.msg);
           if (response.data.register) {
-            props.setUser({
+            let user = {
               ...userObject,
               register: true,
-            });
+            };
+            props.setUser(user);
+
             history.push("/register");
           } else {
             axios
@@ -56,6 +60,7 @@ function Oauth(props) {
           onSuccess={responseGoogle}
           onFailure={responseGoogle}
           cookiePolicy={"single_host_origin"}
+          isSignedIn={true}
         />
       </div>
     );

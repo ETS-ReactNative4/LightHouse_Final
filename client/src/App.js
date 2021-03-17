@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {useState} from "react";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 import useApplicationData from "./hooks/useApplicationData";
 
@@ -12,6 +12,7 @@ import NewServiceForm from "./components/NewServiceForm";
 import Header from "./components/Navbar";
 import Footer from "./components/Footer";
 import Calendar from "./components/Availability/calendar";
+import Profile from "./components/Profile";
 
 import "./App.css";
 import PageNotFound from "./components/PageNotFound";
@@ -20,9 +21,12 @@ import PageNotFound from "./components/PageNotFound";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
-  const { state, dispatch } = useApplicationData();
+  const {state, dispatch} = useApplicationData();
+  // console.log(state);
   const [user, setUser] = useState(null);
+
   const [location, setLocation] = useState(null);
+  console.log(state);
   const userList = state.users.map((user) => (
     <li key={user.id}>
       {" "}
@@ -31,6 +35,7 @@ const App = () => {
   ));
 
   const logout = (val) => {
+    // localStorage.removeItem("user");
     setUser(false);
     console.log("logout value", val);
   };
@@ -68,6 +73,9 @@ const App = () => {
 
           <Route path="/availability">
             <Availability />
+          </Route>
+          <Route path="/users/:id">
+            <Profile user={user} location={location} />
           </Route>
 
           <Route component={PageNotFound} />
