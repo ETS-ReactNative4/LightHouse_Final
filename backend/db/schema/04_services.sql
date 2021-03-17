@@ -3,6 +3,7 @@ CREATE TABLE services(
     id SERIAL PRIMARY KEY NOT NULL,
     title VARCHAR(255),
     category VARCHAR(255),
+    description VARCHAR(255),
     fee INT,
     created_at TIMESTAMPTZ DEFAULT Now(),
     modified_at TIMESTAMPTZ DEFAULT Now(),
