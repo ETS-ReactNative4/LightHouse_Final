@@ -7,9 +7,9 @@ import { useEffect, useState } from "react";
 
 export default function Services(props) {
   const [services, setServices] = useState([]);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(" ");
   useEffect(() => {
-    axios.get(`/api/services/${search.val}`).then((response) => {
+    axios.get(`/api/services/?${search.val}`).then((response) => {
       console.log(response.data);
       setServices(response.data);
     });

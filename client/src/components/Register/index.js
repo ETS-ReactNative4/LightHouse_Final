@@ -36,7 +36,20 @@ export default function Register(props) {
   };
   const registration = (event) => {
     event.preventDefault();
-    console.log("tt", event);
+    console.log("tt", props.user);
+    axios
+      .post(`/api/register/?${props.user.email}`, {
+        location: props.location,
+        user: props.user,
+      })
+      .then(
+        (response) => {
+          console.log(response);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   };
   return (
     <>
@@ -97,7 +110,9 @@ export default function Register(props) {
             </label>
           </div>
           <div>
-            <button type="submit">Register</button>
+            <button type="submit" onClick={registration}>
+              Register
+            </button>
           </div>
         </form>
       ) : (
