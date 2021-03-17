@@ -1,5 +1,5 @@
-import {useState} from "react";
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import useApplicationData from "./hooks/useApplicationData";
 
@@ -11,6 +11,7 @@ import Availability from "./components/Availability";
 import NewServiceForm from "./components/NewServiceForm";
 import Header from "./components/Navbar";
 import Footer from "./components/Footer";
+import Calendar from "./components/Availability/calendar";
 
 import "./App.css";
 import PageNotFound from "./components/PageNotFound";
@@ -19,7 +20,7 @@ import PageNotFound from "./components/PageNotFound";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
-  const {state, dispatch} = useApplicationData();
+  const { state, dispatch } = useApplicationData();
   const [user, setUser] = useState(null);
   const [location, setLocation] = useState(null);
   const userList = state.users.map((user) => (
@@ -49,6 +50,9 @@ const App = () => {
           </Route>
           <Route path="/login">
             <Login setUser={setUser} />
+          </Route>
+          <Route path="/calendar">
+            <Calendar />
           </Route>
           <Route path="/services/new">
             <NewServiceForm />
