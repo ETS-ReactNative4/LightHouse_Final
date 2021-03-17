@@ -1,25 +1,31 @@
 import axios from "axios";
 import "./index.scss";
 import { useHistory } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export default function Register(props) {
   console.log("this is props of register", props);
   const history = useHistory();
+  const [geoLocation, setGeoLocation] = useState({});
+
   const getLocation = (e) => {
     e.preventDefault();
     navigator.geolocation.getCurrentPosition(function (position) {
-      const location = {
-        x: position.coords.latitude,
-        y: position.coords.longitude,
+      const geo = {
+        lat: position.coords.latitude,
+        long: position.coords.longitude,
       };
+      setGeoLocation(geo);
 
       axios
         .get(
-          `https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&featureTypes=&location=${location.y}%2C${location.x}`
+          `https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&featureTypes=&location=${position.coords.longitude}%2C${position.coords.latitude}`
         )
         .then((response) => {
           const location = {};
           console.log(response.data.address);
+          location.lat = geoLocation.lat;
+          location.long = geoLocation.long;
           location.address = response.data.address.ShortLabel;
           location.num = response.data.address.AddNum;
           location.city = response.data.address.City;
@@ -29,17 +35,17 @@ export default function Register(props) {
             response.data.address.Postal +
             " " +
             response.data.address.PostalExt;
-          console.log(location);
           props.setLocation(location);
         });
     });
   };
   const registration = (event) => {
+    console.log("location before the submit", props.location);
     event.preventDefault();
-    console.log("tt", props.user);
+
     axios
       .post(`/api/register/?${props.user.email}`, {
-        location: props.location,
+        location: { ...props.location, ...geoLocation },
         user: props.user,
       })
       .then(
