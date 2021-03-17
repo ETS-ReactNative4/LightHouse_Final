@@ -16,10 +16,11 @@ function Oauth(props) {
         name: response.profileObj.name,
         email: response.profileObj.email,
         gid: response.profileObj.googleId,
+        //      isServiceProvider: response.profileObj.isServiceProvider,
       };
       axios.post("/api/login", userObject).then(
         (response) => {
-          console.log("this is the response", response.data.msg);
+          console.log("potatoes", response.data.msg);
           if (response.data.register) {
             props.setUser({
               ...userObject,
@@ -27,6 +28,11 @@ function Oauth(props) {
             });
             history.push("/register");
           } else {
+            axios
+              .get(`/api/locations/${response.data.msg.id}`)
+              .then((response) => {
+                props.setLocation(response.data);
+              });
             props.setUser(response.data.msg);
           }
         },

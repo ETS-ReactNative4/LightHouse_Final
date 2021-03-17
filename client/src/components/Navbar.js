@@ -20,6 +20,7 @@ export default function Header(props) {
               user={props.user}
               setUser={props.setUser}
               logout={props.logout}
+              setLocation={props.setLocation}
             />
           </Nav>
         </Navbar.Collapse>
