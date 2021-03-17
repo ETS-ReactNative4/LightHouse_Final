@@ -8,6 +8,7 @@ import Register from "./components/Register";
 import Home from "./components/Home";
 import Services from "./components/Services";
 import Availability from "./components/Availability";
+import MyServices from "./components/MyServices";
 import NewServiceForm from "./components/NewServiceForm";
 import Header from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -57,8 +58,11 @@ const App = () => {
           <Route path="/services/new">
             <NewServiceForm />
           </Route>
+          <Route path="/myservices">
+            <MyServices apiUrl={`api/services/myservices/`} user={user} location={location} />
+          </Route>
           <Route path="/services">
-            <Services user={user} location={location} />
+            <Services apiUrl={`api/services/`} user={user} location={location} />
           </Route>
 
           <Route path="/availability">

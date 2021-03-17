@@ -5,14 +5,11 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export default function Services(props) {
+export default function Service(props) {
   const [services, setServices] = useState([]);
   const [search, setSearch] = useState(" ");
-  const { apiUrl } = props;
-  console.log("THIS TOO", `${apiUrl}${search.val}`);
-
   useEffect(() => {
-    axios.get(`${apiUrl}${search.val}`).then((response) => {
+    axios.get(`/api/services/${search.val}`).then((response) => {
       console.log(response.data);
       setServices(response.data);
     });
@@ -39,11 +36,7 @@ export default function Services(props) {
     <>
       <div>
         <InputGroup size="sm" className="mb-3">
-          <InputGroup.Prepend>
-            <InputGroup.Text id="inputGroup-sizing-sm">
-              Look For Services
-            </InputGroup.Text>
-          </InputGroup.Prepend>
+
           <FormControl
             aria-label="input"
             // value="{search.val}"
