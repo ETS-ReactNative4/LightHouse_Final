@@ -6,9 +6,10 @@ import {useHistory} from "react-router-dom";
 
 function Oauth(props) {
   const history = useHistory();
+
   console.log(history);
   const responseGoogle = (response) => {
-    console.log(response.profileObj);
+    console.log("THIS IS PROFILE OBJ:", response.profileObj);
     if (response.profileObj.name) {
       // DOTO imprement and axios call to the backend to validate if the user exist or not. If user does not exist we need to be able
       //  to send user to the registration page
@@ -23,13 +24,16 @@ function Oauth(props) {
         (response) => {
           console.log("this is the response", response.data.msg);
           if (response.data.register) {
-            props.setUser({
+            let user = {
               ...userObject,
               register: true,
-            });
+            };
+            props.setUser(user);
+
             history.push("/register");
           } else {
-            props.setUser(response.data.msg);
+            let user = response.data.msg;
+            props.setUser(user);
           }
         },
         (error) => {
@@ -52,6 +56,7 @@ function Oauth(props) {
           onSuccess={responseGoogle}
           onFailure={responseGoogle}
           cookiePolicy={"single_host_origin"}
+          isSignedIn={true}
         />
       </div>
     );

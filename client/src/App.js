@@ -35,6 +35,7 @@ const App = () => {
   ));
 
   const logout = (val) => {
+    // localStorage.removeItem("user");
     setUser(false);
     console.log("logout value", val);
   };
