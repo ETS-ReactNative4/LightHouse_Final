@@ -42,7 +42,12 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        <Header user={user} setUser={setUser} logout={logout} />
+        <Header
+          user={user}
+          setUser={setUser}
+          logout={logout}
+          setLocation={setLocation}
+        />
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/register">

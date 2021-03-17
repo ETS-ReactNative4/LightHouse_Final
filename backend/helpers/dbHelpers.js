@@ -112,6 +112,15 @@ module.exports = (db) => {
       .catch((err) => err);
   };
 
+  const getUserLocation = (id) => {
+    const query = {
+      text: `SELECT * FROM locations WHERE user_id = ${id}`,
+    };
+    return db
+      .query(query)
+      .then((result) => result.rows[0])
+      .catch((err) => err);
+  };
   const addLocation = (
     full_address,
     city,
@@ -149,6 +158,7 @@ module.exports = (db) => {
   return {
     getUsers,
     getLocations,
+    getUserLocation,
     getServices,
     getServicesByValue,
     getavailabilities,

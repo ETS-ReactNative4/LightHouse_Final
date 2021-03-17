@@ -22,7 +22,7 @@ function Oauth(props) {
       };
       axios.post("/api/login", userObject).then(
         (response) => {
-          console.log("this is the response", response.data.msg);
+          console.log("potatoes", response.data.msg);
           if (response.data.register) {
             let user = {
               ...userObject,
@@ -32,8 +32,12 @@ function Oauth(props) {
 
             history.push("/register");
           } else {
-            let user = response.data.msg;
-            props.setUser(user);
+            axios
+              .get(`/api/locations/${response.data.msg.id}`)
+              .then((response) => {
+                props.setLocation(response.data);
+              });
+            props.setUser(response.data.msg);
           }
         },
         (error) => {
