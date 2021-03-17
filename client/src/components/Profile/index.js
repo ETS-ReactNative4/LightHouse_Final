@@ -9,26 +9,33 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 
 export default function Profile(props) {
-  const [provider, setProvider] = useState(props.user.isServiceProvider);
+  // const [provider, setProvider] = useState(props.user.isServiceProvider);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const tempProvider = !provider;
+  console.log(props.user);
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   const tempProvider = !provider;
+  //   console.log(props.user.isServiceProvider);
+  // };
 
-    axios
-      .put(`/api/users/${user.id}`, {provider: tempProvider})
-      .then((response) => {
-        console.log("success!!");
-        setProvider(tempProvider);
-      });
-  };
+  //   axios
+  //     .put(`/api/users/${user.id}`, {provider: tempProvider})
+  //     .then((response) => {
+  //       console.log("success!!");
+  //       setProvider(tempProvider);
+  //     });
+  // };
 
   return (
     <Container fluid className="profile">
       <Container>
         <Row>
           <Col className="profile-image" md={{span: 6, offset: 3}}>
-            <Image src="/images/default_profile.png" roundedCircle />
+            <Image
+              className="profile-image-img"
+              src="/images/default_profile.png"
+              roundedCircle
+            />
             <Button className="profile-btn" variant="primary" size="sm">
               Photo
             </Button>
@@ -40,28 +47,24 @@ export default function Profile(props) {
           </Col>
         </Row>
         <Row>
-          <Col>{props.user.first_name}</Col>
-          <Col>{props.user.last_name}</Col>
+          <Col>{props.user && props.user.full_name}</Col>
+          {/* <Col>{props.user.last_name}</Col> */}
         </Row>
         <Row>
           <Col>
             <b>Email</b>
           </Col>
         </Row>
-        <Row>
-          <Col>{props.user.email}</Col>
-        </Row>
+        <Row>{/* <Col>{props.user.email}</Col> */}</Row>
         <Row>
           <Col>
             <b>Address</b>
           </Col>
         </Row>
-        <Row>
-          <Col>{props.location.address}</Col>
-        </Row>
+        <Row>{/* <Col>{props.location.address}</Col> */}</Row>
         <Row>
           <Button
-            onClick={handleSubmit}
+            // onClick={handleSubmit}
             className="profile-services-btn"
             variant="primary"
             size="sm"

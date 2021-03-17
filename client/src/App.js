@@ -22,8 +22,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
   const {state, dispatch} = useApplicationData();
+  // console.log(state);
   const [user, setUser] = useState(null);
+
   const [location, setLocation] = useState(null);
+  console.log(state);
   const userList = state.users.map((user) => (
     <li key={user.id}>
       {" "}
@@ -65,7 +68,7 @@ const App = () => {
           <Route path="/availability">
             <Availability />
           </Route>
-          <Route path="/users/1">
+          <Route path="/users/:id">
             <Profile user={user} location={location} />
           </Route>
 
