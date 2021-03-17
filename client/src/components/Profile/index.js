@@ -31,11 +31,13 @@ export default function Profile(props) {
       <Container>
         <Row>
           <Col className="profile-image" md={{span: 6, offset: 3}}>
+            <Col></Col>
             <Image
               className="profile-image-img"
               src="/images/default_profile.png"
               roundedCircle
             />
+            <Col>{props.location && props.location.city}</Col>
             <Button className="profile-btn" variant="primary" size="sm">
               Photo
             </Button>
@@ -55,13 +57,16 @@ export default function Profile(props) {
             <b>Email</b>
           </Col>
         </Row>
-        <Row>{/* <Col>{props.user.email}</Col> */}</Row>
+        <Row>
+          <Col>{props.user && props.user.email}</Col>
+        </Row>
+
         <Row>
           <Col>
             <b>Address</b>
           </Col>
         </Row>
-        <Row>{/* <Col>{props.location.address}</Col> */}</Row>
+        <Col>{props.location && props.location.full_address}</Col>
         <Row>
           <Button
             // onClick={handleSubmit}
