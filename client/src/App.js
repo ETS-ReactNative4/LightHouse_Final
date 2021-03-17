@@ -11,6 +11,7 @@ import Availability from "./components/Availability";
 import NewServiceForm from "./components/NewServiceForm";
 import Header from "./components/Navbar";
 import Footer from "./components/Footer";
+import Profile from "./components/Profile";
 
 import "./App.css";
 import PageNotFound from "./components/PageNotFound";
@@ -59,6 +60,9 @@ const App = () => {
 
           <Route path="/availability">
             <Availability />
+          </Route>
+          <Route path="/users/1">
+            <Profile user={user} location={location} />
           </Route>
 
           <Route component={PageNotFound} />
