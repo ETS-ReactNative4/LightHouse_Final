@@ -12,7 +12,7 @@ var appointmentsRouter = require("./routes/appointments");
 var loginRouter = require("./routes/login");
 var registerRouter = require("./routes/register");
 const dbHelpers = require("./helpers/dbHelpers")(db);
-
+const cors = require("cors");
 var app = express();
 
 app.use(logger("dev"));
@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-
+app.use(cors());
 app.use("/api/login", loginRouter(dbHelpers));
 app.use("/", indexRouter);
 app.use("/api/users", usersRouter(dbHelpers));

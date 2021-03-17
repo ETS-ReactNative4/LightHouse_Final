@@ -11,6 +11,7 @@ import Availability from "./components/Availability";
 import NewServiceForm from "./components/NewServiceForm";
 import Header from "./components/Navbar";
 import Footer from "./components/Footer";
+import Calendar from "./components/Availability/calendar";
 import Profile from "./components/Profile";
 
 import "./App.css";
@@ -50,6 +51,9 @@ const App = () => {
           </Route>
           <Route path="/login">
             <Login setUser={setUser} />
+          </Route>
+          <Route path="/calendar">
+            <Calendar />
           </Route>
           <Route path="/services/new">
             <NewServiceForm />
