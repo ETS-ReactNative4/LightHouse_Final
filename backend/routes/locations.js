@@ -1,18 +1,27 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
-
-module.exports = ({
-  getLocations
-}) => {
-    /* GET users listing. */
-
-    router.get('/', (req, res) => {
-      getLocations()
-          .then((users) => res.json(users))
-          .catch((err) => res.json({
-              error: err.message
-          }));
+module.exports = ({ getLocations, getUserLocation }) => {
+  /* GET users listing. */
+  router.get("/:id", (req, res) => {
+    console.log(req.params.id);
+    getUserLocation(req.params.id)
+      .then((location) => res.json(location))
+      .catch((err) =>
+        res.json({
+          error: err.message,
+        })
+      );
   });
-    return router;
+  router.get("/", (req, res) => {
+    getLocations()
+      .then((users) => res.json(users))
+      .catch((err) =>
+        res.json({
+          error: err.message,
+        })
+      );
+  });
+
+  return router;
 };

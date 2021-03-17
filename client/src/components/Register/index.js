@@ -40,7 +40,6 @@ export default function Register(props) {
     });
   };
   const registration = (event) => {
-    console.log("location before the submit", props.location);
     event.preventDefault();
 
     axios
