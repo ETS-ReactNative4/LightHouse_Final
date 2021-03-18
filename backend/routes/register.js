@@ -4,15 +4,10 @@ var router = express.Router();
 module.exports = ({ getUsers, getUserByEmail, addUser, addLocation }) => {
   // /* GET home page. */
   router.post("/", (req, res) => {
-    console.log("this is seb log", req.body.location);
     getUserByEmail(req.body.user.email).then((result) => {
       if (result) {
-        // return res.json({
-        //   msg: result,
-        //   });
+
       } else {
-        // const { name, email } = req.body;
-        // console.log("this is givenName val", req.body.user);
         addUser(req.body.user.name, req.body.user.email).then((r) => {
           addLocation(
             req.body.location.address,
