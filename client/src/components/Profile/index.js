@@ -18,6 +18,10 @@ const handleSubmit = (event, provider, userID) => {
   // });
 };
 
+const handleFileSelect = (event) => {
+  console.log(event);
+};
+
 export default function Profile(props) {
   const [provider, setProvider] = useState(false);
   useEffect(() => {
@@ -45,7 +49,7 @@ export default function Profile(props) {
 
         <Row>
           <Col>
-            <input type="file" />
+            <input type="file" onChange={handleFileSelect} />
           </Col>
         </Row>
         <Row>
