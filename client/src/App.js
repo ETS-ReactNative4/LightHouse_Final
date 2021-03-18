@@ -65,7 +65,11 @@ const App = () => {
             <Login setUser={setUser} />
           </Route>
           <Route path="/calendar">
-            <Calendar />
+            {timeframe ? (
+              <Calendar timeframe={timeframe} services={services} user={user} />
+            ) : (
+              <p>loading</p>
+            )}
           </Route>
           <Route path="/services/new">
             <NewServiceForm user={user} />
@@ -94,9 +98,14 @@ const App = () => {
               services={services}
             />
           </Route>
-          <Route path="/service" component={Service} exact />
-          {/* <Service user={user} location={location} /> */}
-          {/* </Route> */}
+          <Route path="/service" component={Service} exact>
+            <Service
+              user={user}
+              location={location}
+              timeframe={timeframe}
+              services={services}
+            />
+          </Route>
 
           <Route path="/availability">
             <Availability />
