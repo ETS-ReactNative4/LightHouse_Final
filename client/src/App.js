@@ -71,7 +71,7 @@ const App = () => {
             <NewServiceForm />
           </Route>
           <Route path="/myservices">
-            <MyServices apiUrl={`api/services/myservices/`} user={user} location={location} />
+           { user ? <MyServices apiUrl={`api/services/myservices/`} user={user} location={location} /> : <p>loading</p> }
           </Route>
           <Route path="/services">
             <Services apiUrl={`api/services/`} user={user} location={location} />

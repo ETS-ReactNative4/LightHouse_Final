@@ -11,10 +11,10 @@ export default function MyServices(props) {
   const [search, setSearch] = useState(" ");
   const { apiUrl } = props;
   let history = useHistory();
-  console.log("what is search ", search);
+  console.log("what is props ", props.user.id);
   console.log("Double check", `${apiUrl}${search.val}`);
   useEffect(() => {
-    axios.get(`${apiUrl}${search.val}`).then((response) => {
+    axios.get(`${apiUrl}${props.user.id}`).then((response) => {
       console.log("This DATA",response.data);
       setServices(response.data);
     });
