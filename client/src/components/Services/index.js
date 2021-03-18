@@ -3,16 +3,15 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, history } from "react";
+import { useHistory } from "react-router-dom";
 
 export default function Services(props) {
   const [services, setServices] = useState([]);
   const [search, setSearch] = useState(" ");
-  const { apiUrl } = props;
-  console.log("THIS TOO", `${apiUrl}${search.val}`);
-
+  const history = useHistory();
   useEffect(() => {
-    axios.get(`${apiUrl}${search.val}`).then((response) => {
+    axios.get(`/api/services/${search.val}`).then((response) => {
       console.log("response from api services", response.data);
       setServices(response.data);
     });
@@ -29,6 +28,13 @@ export default function Services(props) {
             <ListGroup.Item>{s.fee}</ListGroup.Item>
             <ListGroup.Item>{s.user_id}</ListGroup.Item>
             <ListGroup.Item>{s.created_at}</ListGroup.Item>
+            <Button
+              onClick={() => {
+                history.push(`/service/?id=${s.id}&title=${s.title}`);
+              }}
+            >
+              Select
+            </Button>
           </ListGroup>
         );
       });
