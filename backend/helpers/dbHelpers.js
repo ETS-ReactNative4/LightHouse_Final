@@ -111,6 +111,19 @@ module.exports = (db) => {
       .catch((err) => err);
   };
 
+    const addAppointment = (title, rating, isConfirmed, users_id ) => {
+    const query = {
+      text: `INSERT INTO appointments (title, rating, isConfirmed, users_id) VALUES ($1, $2, $3, $4) RETURNING *`,
+      values: [title, rating, isConfirmed, users_id],
+    };
+
+    return db
+      .query(query)
+      .then((result) => result.rows[0])
+      .catch((err) => err);
+  };
+
+
   const addAvailability = (users_id, start_time, end_time) => {
     const query = {
       text: `INSERT INTO availabilities (users_id, start_time, end_time) VALUES ($1, $2, $3) RETURNING *`,
