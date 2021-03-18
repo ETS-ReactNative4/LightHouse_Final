@@ -15,7 +15,7 @@ import "./custom.scss";
 
 const msInHour = 60 * 60 * 1000;
 
-const App = () => {
+const App = (props) => {
   const now = new Date();
 
   const onAvailabilitySelected = (a) =>
@@ -27,7 +27,8 @@ const App = () => {
   // TODO find a way to take avail block and make it blockout period when a block is not true
   // receiving avalaible 9 to 14 everyday
   // [9,14]
-  const avail = [9, 14]; //this is the receiving input
+
+  const avail = [props.timeframe.start_time, props.timeframe.end_time]; //this is the receiving input
 
   const blockOutPeriods = [
     [0 * msInHour, avail[0] * msInHour],

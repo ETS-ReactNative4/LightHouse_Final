@@ -23,7 +23,11 @@ export default function Service(props) {
       <button>Next</button>
       <button>Back</button>
       <div>
-        <Calendar user={props.user} location={props.location} />
+        <Calendar
+          user={props.user}
+          location={props.location}
+          timeframe={props.timeframe}
+        />
       </div>
     </div>
   );
