@@ -7,19 +7,26 @@ import { useEffect, useState, history } from "react";
 import { useHistory } from "react-router-dom";
 
 export default function Services(props) {
-  const [services, setServices] = useState([]);
   const [search, setSearch] = useState(" ");
   const history = useHistory();
   useEffect(() => {
     axios.get(`/api/services/${search.val}`).then((response) => {
       console.log("response from api services", response.data);
-      setServices(response.data);
+      props.setServices(response.data);
     });
   }, [search]);
 
+  const getserviceInfo = (pid) => {
+    // axios.get(`/api/availabilities/${pid.id}`).then((response) => {
+    //   props.setTimeFrame(response.data);
+    //   console.log(response.data);
+    history.push(`/service/?id=${pid.id}&title=${pid.title}`);
+    // });
+  };
+
   const getServices = () => {
-    if (services) {
-      return services.map((s) => {
+    if (props.services) {
+      return props.services.map((s) => {
         return (
           <ListGroup horizontal>
             <ListGroup.Item>{s.id}</ListGroup.Item>
@@ -30,7 +37,7 @@ export default function Services(props) {
             <ListGroup.Item>{s.created_at}</ListGroup.Item>
             <Button
               onClick={() => {
-                history.push(`/service/?id=${s.id}&title=${s.title}`);
+                getserviceInfo(s);
               }}
             >
               Select

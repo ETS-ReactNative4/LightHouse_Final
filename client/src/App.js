@@ -1,5 +1,5 @@
-import {useState} from "react";
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import useApplicationData from "./hooks/useApplicationData";
 
@@ -23,10 +23,10 @@ import PageNotFound from "./components/PageNotFound";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
-  const {state, dispatch} = useApplicationData();
-
+  const { state, dispatch } = useApplicationData();
+  const [services, setServices] = useState([]);
   const [user, setUser] = useState(null);
-
+  const [timeframe, setTimeFrame] = useState([]);
   const [location, setLocation] = useState(null);
 
   const userList = state.users.map((user) => (
@@ -68,18 +68,35 @@ const App = () => {
             <Calendar />
           </Route>
           <Route path="/services/new">
-            <NewServiceForm />
+            <NewServiceForm user={user} />
           </Route>
           <Route path="/myservices">
-           { user ? <MyServices apiUrl={`api/services/myservices/`} user={user} location={location} /> : <p>loading</p> }
+            {user ? (
+              <MyServices
+                apiUrl={`api/services/myservices/`}
+                user={user}
+                location={location}
+                timeframe={timeframe}
+                services={services}
+              />
+            ) : (
+              <p>loading</p>
+            )}
           </Route>
           <Route path="/services">
-            <Services apiUrl={`api/services/`} user={user} location={location} />
+            <Services
+              apiUrl={`api/services/`}
+              user={user}
+              location={location}
+              timeframe={timeframe}
+              setTimeFrame={setTimeFrame}
+              setServices={setServices}
+              services={services}
+            />
           </Route>
-          <Route path="/service" component={Service} exact/>
-            {/* <Service user={user} location={location} /> */}
+          <Route path="/service" component={Service} exact />
+          {/* <Service user={user} location={location} /> */}
           {/* </Route> */}
-          
 
           <Route path="/availability">
             <Availability />
