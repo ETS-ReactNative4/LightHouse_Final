@@ -7,7 +7,7 @@ import {useHistory} from "react-router-dom";
 function Oauth(props) {
   const history = useHistory();
 
-  console.log(history);
+  // console.log(history);
   const responseGoogle = (response) => {
     console.log("THIS IS PROFILE OBJ:", response.profileObj);
     if (response.profileObj.name) {
