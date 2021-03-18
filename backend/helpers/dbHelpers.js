@@ -34,18 +34,7 @@ module.exports = (db) => {
 
   const getServicesByValue = (value) => {
     const query = {
-      text: "SELECT * FROM services where title=$1 ",
-      values: [value],
-    };
-    return db
-      .query(query)
-      .then((result) => result.rows)
-      .catch((err) => err);
-  };
-  const getServicesByUserId = (value) => {
-    const query = {
-      text: "SELECT * FROM services where user_id=$1 ",
-      values: [value],
+      text: `SELECT * FROM services where title LIKE '%${value}%' `,
     };
     return db
       .query(query)
@@ -171,7 +160,6 @@ module.exports = (db) => {
     getUserLocation,
     getServices,
     getServicesByValue,
-    getServicesByUserId,
     getavailabilities,
     getAppointments,
     getUserByEmail,

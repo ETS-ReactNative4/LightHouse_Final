@@ -13,24 +13,26 @@ export default function Services(props) {
 
   useEffect(() => {
     axios.get(`${apiUrl}${search.val}`).then((response) => {
-      console.log(response.data);
+      console.log("response from api services", response.data);
       setServices(response.data);
     });
   }, [search]);
 
   const getServices = () => {
-    return services.map((s) => {
-      return (
-        <ListGroup horizontal>
-          <ListGroup.Item>{s.id}</ListGroup.Item>
-          <ListGroup.Item>{s.title}</ListGroup.Item>
-          <ListGroup.Item>{s.category}</ListGroup.Item>
-          <ListGroup.Item>{s.fee}</ListGroup.Item>
-          <ListGroup.Item>{s.user_id}</ListGroup.Item>
-          <ListGroup.Item>{s.created_at}</ListGroup.Item>
-        </ListGroup>
-      );
-    });
+    if (services) {
+      return services.map((s) => {
+        return (
+          <ListGroup horizontal>
+            <ListGroup.Item>{s.id}</ListGroup.Item>
+            <ListGroup.Item>{s.title}</ListGroup.Item>
+            <ListGroup.Item>{s.category}</ListGroup.Item>
+            <ListGroup.Item>{s.fee}</ListGroup.Item>
+            <ListGroup.Item>{s.user_id}</ListGroup.Item>
+            <ListGroup.Item>{s.created_at}</ListGroup.Item>
+          </ListGroup>
+        );
+      });
+    }
   };
 
   const serviceElement = getServices();
