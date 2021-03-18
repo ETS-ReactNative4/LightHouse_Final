@@ -99,7 +99,12 @@ const App = () => {
             />
           </Route>
           <Route path="/service" component={Service} exact>
-            <Service user={user} location={location} timeframe={timeframe} />
+            <Service
+              user={user}
+              location={location}
+              timeframe={timeframe}
+              services={services}
+            />
           </Route>
 
           <Route path="/availability">

@@ -12,14 +12,27 @@ import moment from "moment";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./custom.scss";
+import axios from "axios";
 
 const msInHour = 60 * 60 * 1000;
 
-const App = (props) => {
+const Calendar = (props) => {
   const now = new Date();
 
-  const onAvailabilitySelected = (a) =>
+  const onAvailabilitySelected = (a) => {
     console.log("Availability slot selected: ", a);
+
+    const data = {
+      title: "appointment for",
+      isconfirmed: false,
+      start_date: a.startDate,
+      end_date: a.endDate,
+      services_id: props.services[0].id,
+      availabilities_id: props.timeframe.id,
+      users_id: props.user.id,
+    };
+    axios.post("/api/appointments", data).then((r) => console.log(r));
+  };
 
   const onChangedCalRange = (r) =>
     console.log("Calendar range selected (fetch bookings here): ", r);
@@ -63,4 +76,4 @@ const App = (props) => {
   );
 };
 
-export default App;
+export default Calendar;
