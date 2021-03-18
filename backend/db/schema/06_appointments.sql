@@ -6,8 +6,8 @@ CREATE TABLE appointments(
     isConfirmed BOOLEAN,
     created_at TIMESTAMPTZ DEFAULT Now() ,
     modified_at TIMESTAMPTZ DEFAULT Now() ,
-    start_date date,
-    end_date date,
+    start_date timestamptz,
+    end_date timestamptz,
     services_id INTEGER REFERENCES services(id) ON DELETE CASCADE,
     availabilities_id INTEGER REFERENCES availabilities(id) ON DELETE CASCADE,
     users_id INTEGER REFERENCES users(id) ON DELETE CASCADE
