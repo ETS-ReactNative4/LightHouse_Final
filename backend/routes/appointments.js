@@ -5,7 +5,6 @@ const router = express.Router();
 module.exports = ({
   getAppointments
 }) => {
-    /* GET users listing. */
 
     router.get('/', (req, res) => {
       getAppointments()

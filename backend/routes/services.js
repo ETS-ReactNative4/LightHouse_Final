@@ -1,15 +1,11 @@
 const express = require('express');
 const router = express.Router();
-
-
 module.exports = ({
   getServices,
   getServicesByValue,
   getServicesByUserId,
   addService
 }) => {
-    /* GET users listing. */
-
   router.get('/', (req, res) => {
       getServices()
           .then((users) => res.json(users))
@@ -25,7 +21,6 @@ module.exports = ({
         }));
 });
 router.get('/myservices/:value', (req, res) => {
-  console.log("Armin", req.params.value);
   getServicesByUserId(req.params.value)
       .then((services) => res.json(services))
       .catch((err) => res.json({
@@ -34,7 +29,6 @@ router.get('/myservices/:value', (req, res) => {
 });
   router.post("/new", (req, res) => {
     const { formTitle, formCategory, formDescription, formFee } = req.body.data;
-    console.log("ThIS IS NEW",req.body);
     addService(formTitle, formCategory, formDescription, formFee)
       .then(() => res.status(201).json({
         msg : "created",
