@@ -123,8 +123,6 @@ export default function Register(props) {
       ) : (
         history.push("/home")
       )}
-      {/* <h2>{props.user.email}</h2>
-  <h2>{props.user.full_name}</h2> */}
     </>
   );
 }
