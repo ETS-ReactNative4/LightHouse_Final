@@ -39,26 +39,23 @@ export default function Profile(props) {
                 roundedCircle
               />
             </Col>
-
-            <Col>{props.location && props.location.city}</Col>
-            <Col>
-              <Button className="profile-btn" variant="primary" size="sm">
-                Photo
-              </Button>
-              <Row>
-                <Col>
-                  <Button
-                    className="profile-pic-btn"
-                    variant="primary"
-                    size="sm"
-                  >
-                    Upload a profile picture
-                  </Button>
-                </Col>
-              </Row>
-            </Col>
           </Col>
         </Row>
+        <Col>{props.location && props.location.city}</Col>
+
+        <Row>
+          <Col>
+            <input type="file" />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Button className="profile-pic-btn" variant="primary" size="sm">
+              Upload a profile picture
+            </Button>
+          </Col>
+        </Row>
+
         <Row>
           <Col>
             <b>Name</b>
