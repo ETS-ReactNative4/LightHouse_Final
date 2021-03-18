@@ -14,7 +14,7 @@ export default function Service(props) {
   // console.log("IDID", title);
 
   const params = queryString.parse(props.location.search);
-
+  console.log("service inside of service", props);
   return (
     <div>
       <h1>Armin</h1>
@@ -23,11 +23,16 @@ export default function Service(props) {
       <button>Next</button>
       <button>Back</button>
       <div>
-        <Calendar
-          user={props.user}
-          location={props.location}
-          timeframe={props.timeframe}
-        />
+        {props.services ? (
+          <Calendar
+            user={props.user}
+            location={props.location}
+            timeframe={props.timeframe}
+            services={props.services}
+          />
+        ) : (
+          <p>Loadin...</p>
+        )}
       </div>
     </div>
   );

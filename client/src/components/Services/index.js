@@ -20,6 +20,7 @@ export default function Services(props) {
   const getserviceInfo = (pid) => {
     axios.get(`/api/availabilities/${pid.user_id}`).then((response) => {
       props.setTimeFrame(response.data);
+      props.setServices([pid]);
       console.log(response.data);
       history.push(`/service/?id=${pid.user_id}&title=${pid.title}`);
     });
