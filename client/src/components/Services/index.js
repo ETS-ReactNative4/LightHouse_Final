@@ -9,24 +9,25 @@ import { useHistory } from "react-router-dom";
 export default function Services(props) {
   const [search, setSearch] = useState(" ");
   const history = useHistory();
+  const { services, setServices } = props;
   useEffect(() => {
     axios.get(`/api/services/${search.val}`).then((response) => {
       console.log("response from api services", response.data);
-      props.setServices(response.data);
+      setServices(response.data);
     });
   }, [search]);
 
   const getserviceInfo = (pid) => {
-    // axios.get(`/api/availabilities/${pid.id}`).then((response) => {
-    //   props.setTimeFrame(response.data);
-    //   console.log(response.data);
-    history.push(`/service/?id=${pid.id}&title=${pid.title}`);
-    // });
+    axios.get(`/api/availabilities/${pid.user_id}`).then((response) => {
+      props.setTimeFrame(response.data);
+      console.log(response.data);
+      history.push(`/service/?id=${pid.user_id}&title=${pid.title}`);
+    });
   };
 
   const getServices = () => {
-    if (props.services) {
-      return props.services.map((s) => {
+    if (services) {
+      return services.map((s) => {
         return (
           <ListGroup horizontal>
             <ListGroup.Item>{s.id}</ListGroup.Item>
