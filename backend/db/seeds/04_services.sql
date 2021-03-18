@@ -9,7 +9,7 @@ VALUES
     ('Treeflex', 'Inverse', 'test descriptions', 12, 2),
     ('Wrapsafe', 'regional', 'test descriptions', 33, 7),
     ('Andalax', 'Persistent', 'test descriptions', 31, 4),
-    ('Bamity', 'Multi-lateral', 'test descriptions', 25, 6),
-    ('Andalax', 'asymmetric','test descriptions', 10, 2);
+    ('Bamity', 'Multi-lateral', 'test descriptions', 25, 8),
+    ('Andalax', 'asymmetric','test descriptions', 10, 8);
 
 
