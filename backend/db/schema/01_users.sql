@@ -8,5 +8,5 @@ CREATE TABLE users(
     created_at TIMESTAMPTZ DEFAULT Now() ,
     modified_at TIMESTAMPTZ DEFAULT Now() ,
     service_range INT ,
-    isServiceProvider BOOLEAN 
+    isServiceProvider BOOLEAN DEFAULT false
 );
