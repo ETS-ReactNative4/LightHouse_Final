@@ -1,14 +1,16 @@
+import { useEffect, useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 export default function MyServices(props) {
   const [services, setServices] = useState([]);
   const [search, setSearch] = useState(" ");
   const { apiUrl } = props;
+  let history = useHistory();
   console.log("what is search ", search);
   console.log("Double check", `${apiUrl}${search.val}`);
   useEffect(() => {
@@ -29,6 +31,11 @@ export default function MyServices(props) {
           <ListGroup.Item>{s.fee}</ListGroup.Item>
           <ListGroup.Item>{s.user_id}</ListGroup.Item>
           <ListGroup.Item>{s.created_at}</ListGroup.Item>
+          <ListGroup.Item>
+          <Button onClick={() => { history.push(`/service/?id=${s.id}&title=${s.title}`)}}>
+            Select
+          </Button>
+          </ListGroup.Item>
         </ListGroup>
       );
     });

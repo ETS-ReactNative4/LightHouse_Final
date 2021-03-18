@@ -7,6 +7,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
 import Services from "./components/Services";
+import Service from "./components/Service";
 import Availability from "./components/Availability";
 import MyServices from "./components/MyServices";
 import NewServiceForm from "./components/NewServiceForm";
@@ -35,6 +36,7 @@ const App = () => {
     setUser(false);
     console.log("logout value", val);
   };
+  console.log("LOCATION", location);
   return (
     <Router>
       <div className="App">
@@ -64,6 +66,10 @@ const App = () => {
           <Route path="/services">
             <Services apiUrl={`api/services/`} user={user} location={location} />
           </Route>
+          <Route path="/service" component={Service} exact/>
+            {/* <Service user={user} location={location} /> */}
+          {/* </Route> */}
+          
 
           <Route path="/availability">
             <Availability />
