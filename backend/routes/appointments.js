@@ -4,7 +4,8 @@ const router = express.Router();
 
 module.exports = ({
   getAppointments,
-  getAppointmentsByUserId
+  getAppointmentsByUserId,
+  addAppointment
 }) => {
 
   router.get('/', (req, res) => {
@@ -25,5 +26,18 @@ module.exports = ({
           })
         );
   });
+  router.post("/", (req, res) => {
+      console.log("1",req.body.data);
+      const { title, rating, isConfirmed, users_id } = req.body.data;
+      addAppointment( title, rating, isConfirmed, users_id )
+        .then(() => res.status(201).json({
+          msg : "created",
+        }))
+        .catch((err) =>
+          res.json({
+            error: err.message,
+          })
+        );
+    });
     return router;
 };
