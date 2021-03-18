@@ -144,6 +144,16 @@ module.exports = (db) => {
       .catch((err) => err);
   };
 
+    const getAppointmentsByUserId = (id) => {
+    const query = {
+      text: `SELECT * FROM appointments WHERE users_id = ${id}`,
+    };
+    return db
+      .query(query)
+      .then((result) => result.rows[0])
+      .catch((err) => err);
+  };
+
   const addLocation = (
     full_address,
     city,
@@ -186,6 +196,7 @@ module.exports = (db) => {
     getServicesByValue,
     getavailabilities,
     getAvailabilitiesByUserId,
+    getAppointmentsByUserId,
     getAppointments,
     getUserByEmail,
     getUserById,
