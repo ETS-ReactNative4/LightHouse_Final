@@ -7,13 +7,14 @@ export default function Header(props) {
   return (
     <>
       <Navbar bg="light" expand="lg" sticky="top">
-        <Navbar.Brand href="/home">AppName</Navbar.Brand>
+        <Navbar.Brand href="/">AppName</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/home">Home</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/services/new">Provide Service</Nav.Link>
             <Nav.Link href="/services">Find Service</Nav.Link>
+            <Nav.Link href="/myservices">My Services</Nav.Link>
           </Nav>
           <Nav>
             <Oauth

@@ -5,11 +5,16 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
+import queryString from "query-string";
 
 export default function Home(props) {
+  console.log("PROPS",props);
+  console.log("armin props", queryString.parse(props.location.search));
+  const params = queryString.parse(props.location.search);
   return (
     <>
       <Jumbotron>
+        <h1>{params.title}</h1>
         <h1>This why you should use us!</h1>
         <p>We will help you </p>
         <p>
