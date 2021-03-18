@@ -6,9 +6,6 @@ module.exports = ({ getUsers, getUserByEmail, addUser, getUsersPosts }) => {
   router.post("/", (req, res) => {
     getUserByEmail(req.body.email).then((result) => {
       if (!result) {
-        // const { name, email } = req.body;
-        // console.log("this is givenName val", req.body);
-        // addUser(name, email).then((r) => {
         return res.json({
           register: true,
           // msg: r,
