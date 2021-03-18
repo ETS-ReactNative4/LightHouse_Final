@@ -45,6 +45,17 @@ export default function Profile(props) {
               <Button className="profile-btn" variant="primary" size="sm">
                 Photo
               </Button>
+              <Row>
+                <Col>
+                  <Button
+                    className="profile-pic-btn"
+                    variant="primary"
+                    size="sm"
+                  >
+                    Upload a profile picture
+                  </Button>
+                </Col>
+              </Row>
             </Col>
           </Col>
         </Row>
