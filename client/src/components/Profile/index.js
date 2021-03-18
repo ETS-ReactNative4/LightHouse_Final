@@ -25,6 +25,9 @@ const handleFileSelect = (event) => {
 
 export default function Profile(props) {
   const [provider, setProvider] = useState(false);
+  const [image, setImage] = useState("");
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     console.log("THIS IS users:", props.user);
     if (props.user !== null) {
