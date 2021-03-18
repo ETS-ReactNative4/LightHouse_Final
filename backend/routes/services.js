@@ -5,6 +5,7 @@ const router = express.Router();
 module.exports = ({
   getServices,
   getServicesByValue,
+  getServicesByUserId,
   addService
 }) => {
     /* GET users listing. */
@@ -23,7 +24,14 @@ module.exports = ({
             error: err.message
         }));
 });
-
+router.get('/myservices/:value', (req, res) => {
+  console.log("Armin", req.params.value);
+  getServicesByUserId(req.params.value)
+      .then((services) => res.json(services))
+      .catch((err) => res.json({
+          error: err.message
+      }));
+});
   router.post("/new", (req, res) => {
     const { formTitle, formCategory, formDescription, formFee } = req.body.data;
     console.log("ThIS IS NEW",req.body);

@@ -34,8 +34,7 @@ module.exports = (db) => {
 
   const getServicesByValue = (value) => {
     const query = {
-      text: "SELECT * FROM services where title=$1 ",
-      values: [value],
+      text: `SELECT * FROM services where title LIKE '%${value}%' `,
     };
     return db
       .query(query)
@@ -121,6 +120,18 @@ module.exports = (db) => {
       .then((result) => result.rows[0])
       .catch((err) => err);
   };
+  
+
+  const getAvailabilitiesByUserId = (id) => {
+    const query = {
+      text: `SELECT * FROM availabilities WHERE users_id = ${id}`,
+    };
+    return db
+      .query(query)
+      .then((result) => result.rows[0])
+      .catch((err) => err);
+  };
+
   const addLocation = (
     full_address,
     city,
@@ -162,6 +173,7 @@ module.exports = (db) => {
     getServices,
     getServicesByValue,
     getavailabilities,
+    getAvailabilitiesByUserId,
     getAppointments,
     getUserByEmail,
     getUserById,

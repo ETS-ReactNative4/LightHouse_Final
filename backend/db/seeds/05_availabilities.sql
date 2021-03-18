@@ -1,15 +1,15 @@
 INSERT INTO
-availabilities (services_id)
+availabilities (users_id, start_time, end_time)
 VALUES
-      (7),
-      (6),
-      (10),
-      (2),
-      (2),
-      (9),
-      (3),
-      (3),
-      (4),
-      (4);
+      (7, 9, 18),
+      (6, 8, 19),
+      (7, 7, 13),
+      (2, 12, 16),
+      (4, 9, 12),
+      (3, 9, 18),
+      (4, 5, 11),
+      (1, 9, 12),
+      (5, 9, 18),
+      (6, 5, 11);
 
 

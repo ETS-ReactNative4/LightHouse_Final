@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -10,6 +10,8 @@ export default function NewServiceForm(props) {
   const [description, setDescription] = useState("");
   const [fee, setFee] = useState("");
   const [category, setCategory] = useState("");
+  const [startTime, setStartTime] = useState(0);
+  const [endTime, setEndTime] = useState(24);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -19,11 +21,20 @@ export default function NewServiceForm(props) {
       formFee: fee,
       formCategory: category,
     };
+    const availability = {
+      start_time: startTime,
+      end_time: endTime,
+    };
     console.log("Final data is", data);
 
-    axios.post("/api/services/new", {data}).then((response) => {
+    axios.post("/api/services/new", { data }).then((response) => {
       console.log("success!!");
     });
+    axios
+      .post(`/api/availabilities/${props.user.id}`, { availability })
+      .then((response) => {
+        console.log(response);
+      });
   };
 
   return (
@@ -67,6 +78,28 @@ export default function NewServiceForm(props) {
           onChange={(event) => setCategory(event.target.value)}
         />
       </Form.Group>
+
+      <Form.Row>
+        <Form.Group as={Col} controlId="formGridTitle">
+          <Form.Label>Availablility start time</Form.Label>
+          <Form.Control
+            type="text"
+            name="start_time"
+            placeholder="Enter the stating hour at with you wish to be available each day"
+            onChange={(event) => setStartTime(event.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group as={Col} controlId="formGridDescription">
+          <Form.Label>Availablility end time</Form.Label>
+          <Form.Control
+            type="text"
+            name="end_time"
+            placeholder="Enter the ending hour at with you wish to stop being available"
+            onChange={(event) => setEndTime(event.target.value)}
+          />
+        </Form.Group>
+      </Form.Row>
 
       <Button variant="primary" type="submit">
         Submit
