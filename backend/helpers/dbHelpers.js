@@ -111,6 +111,18 @@ module.exports = (db) => {
       .catch((err) => err);
   };
 
+  const addAvailability = (users_id, start_time, end_time) => {
+    const query = {
+      text: `INSERT INTO availabilities (users_id, start_time, end_time) VALUES ($1, $2, $3) RETURNING *`,
+      values: [users_id, start_time, end_time],
+    };
+
+    return db
+      .query(query)
+      .then((result) => result.rows[0])
+      .catch((err) => err);
+  };
+
   const getUserLocation = (id) => {
     const query = {
       text: `SELECT * FROM locations WHERE user_id = ${id}`,
@@ -125,6 +137,16 @@ module.exports = (db) => {
   const getAvailabilitiesByUserId = (id) => {
     const query = {
       text: `SELECT * FROM availabilities WHERE users_id = ${id}`,
+    };
+    return db
+      .query(query)
+      .then((result) => result.rows[0])
+      .catch((err) => err);
+  };
+
+    const getAppointmentsByUserId = (id) => {
+    const query = {
+      text: `SELECT * FROM appointments WHERE users_id = ${id}`,
     };
     return db
       .query(query)
@@ -174,11 +196,13 @@ module.exports = (db) => {
     getServicesByValue,
     getavailabilities,
     getAvailabilitiesByUserId,
+    getAppointmentsByUserId,
     getAppointments,
     getUserByEmail,
     getUserById,
     addUser,
     addService,
+    addAvailability,
     getUsersPosts,
     addLocation,
   };

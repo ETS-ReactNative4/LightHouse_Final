@@ -4,7 +4,8 @@ const router = express.Router();
 
 module.exports = ({
   getavailabilities,
-  getAvailabilitiesByUserId
+  getAvailabilitiesByUserId,
+  addAvailability
 }) => {
     router.get('/', (req, res) => {
       getavailabilities()
@@ -15,7 +16,7 @@ module.exports = ({
     });
 
     router.get("/:id", (req, res) => {
-      console.log("Armins",req.params.id);
+      // console.log("Armins",req.params.id);
       getAvailabilitiesByUserId(req.params.id)
         .then((result) => res.json(result))
         .catch((err) =>
@@ -24,9 +25,21 @@ module.exports = ({
           })
         );
     });
-
-    
-
+    router.post("/:id", (req, res) => {
+      console.log("1",req.body.availability);
+      console.log("2",req.params.id);
+      const users_id = req.params.id;
+      const { start_time, end_time } = req.body.availability;
+      addAvailability(users_id, start_time, end_time)
+        .then(() => res.status(201).json({
+          msg : "created",
+        }))
+        .catch((err) =>
+          res.json({
+            error: err.message,
+          })
+        );
+    });
 
     return router;
 };
