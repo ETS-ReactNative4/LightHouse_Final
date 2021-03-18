@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Spinner from "react-bootstrap/Spinner";
 
 import axios from "axios";
 
@@ -19,53 +20,91 @@ const handleSubmit = (event, provider, userID) => {
   // });
 };
 
-const handleFileSelect = (event) => {
-  console.log(event);
-};
-
 export default function Profile(props) {
   const [provider, setProvider] = useState(false);
   const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
 
+  console.log("THIS IS USER:", props.user);
+
   useEffect(() => {
     console.log("THIS IS users:", props.user);
     if (props.user !== null) {
+      setImage(props.user.photo);
       setProvider(props.user.isserviceprovider);
     }
   }, [props.user]);
 
+  const uploadImage = async (e) => {
+    const userID = props.user.id;
+    const files = e.target.files;
+
+    const data = new FormData();
+
+    data.append("file", files[0]);
+
+    //upload preset is for cloudinary API
+    data.append("upload_preset", "helperFinal");
+    setLoading(true);
+    const res = await fetch(
+      "	https://api.cloudinary.com/v1_1/dyreq1qtf/image/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+    const file = await res.json();
+
+    // axios
+    //   .post(`/api/users/${userID}`, {photo: file.secure_url})
+    //   .then((response) => {
+    //     console.log("success!!");
+
+    //   });
+
+    console.log(file.secure_url);
+    setImage(file.secure_url);
+    setLoading(false);
+  };
+
   return (
     <Container fluid className="profile">
       <Container>
-        <Row>
-          <Col className="profile-image" md={{span: 6, offset: 3}}>
-            <Col>
-              <Image
-                className="profile-image-img"
-                src="/images/default_profile.png"
-                roundedCircle
-              />
+        {!image ? (
+          <Row>
+            <Col className="profile-image" md={{span: 6, offset: 3}}>
+              <Col>
+                <Image
+                  className="profile-image-img"
+                  src="/images/default_profile.png"
+                  roundedCircle
+                />
+              </Col>
             </Col>
-          </Col>
-        </Row>
+          </Row>
+        ) : (
+          <Row>
+            <Col className="profile-image" md={{span: 6, offset: 3}}>
+              <Col>
+                <Image
+                  className="profile-image-img"
+                  src={image}
+                  roundedCircle
+                />
+              </Col>
+            </Col>
+          </Row>
+        )}
         <Col>{props.location && props.location.city}</Col>
-
-        <Row>
-          <Form>
-            <div className="mb-3">
-              <Form.File id="formcheck-api-regular">
-                <Form.File.Label>Regular file input</Form.File.Label>
-                <Form.File.Input />
-              </Form.File>
-            </div>
-          </Form>
-        </Row>
+        {loading ? <Spinner animation="border" variant="info" /> : <p></p>}
         <Row>
           <Col>
-            <Button className="profile-pic-btn" variant="primary" size="sm">
-              Upload a profile picture
-            </Button>
+            <input
+              type="file"
+              name="file"
+              placeholder="Upload an image"
+              onChange={uploadImage}
+            />
           </Col>
         </Row>
 
