@@ -22,11 +22,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
   const {state, dispatch} = useApplicationData();
-  // console.log(state);
+
   const [user, setUser] = useState(null);
 
   const [location, setLocation] = useState(null);
-  console.log(state);
+
   const userList = state.users.map((user) => (
     <li key={user.id}>
       {" "}
