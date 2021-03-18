@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 import axios from "axios";
 
@@ -48,9 +49,14 @@ export default function Profile(props) {
         <Col>{props.location && props.location.city}</Col>
 
         <Row>
-          <Col>
-            <input type="file" onChange={handleFileSelect} />
-          </Col>
+          <Form>
+            <div className="mb-3">
+              <Form.File id="formcheck-api-regular">
+                <Form.File.Label>Regular file input</Form.File.Label>
+                <Form.File.Input />
+              </Form.File>
+            </div>
+          </Form>
         </Row>
         <Row>
           <Col>
