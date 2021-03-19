@@ -111,29 +111,54 @@ module.exports = (db) => {
       .catch((err) => err);
   };
 
-  const addAppointment = (
-    title,
-    rating,
-    isConfirmed,
-    users_id,
-    start_date,
-    end_date,
-    services_id,
-    availabilities_id
-  ) => {
+  // const addAppointment = (
+  //   title,
+  //   // rating,
+  //   // isConfirmed,
+  //   // users_id,
+  //   // start_date,
+  //   // end_date,
+  //   // services_id,
+  //   // availabilities_id
+  // ) => {
+  //   console.log("lets print title", title);
+  //   const query = {
+  //     text: `INSERT INTO appointments (
+  //     title)
+  //     // ,
+  //     // rating,
+  //     // isConfirmed,
+  //     // users_id,
+  //     // start_date,
+  //     // end_date,
+  //     // services_id,
+  //     // availabilities_id ) 
+  //     VALUES 
+  //     ($1)
+  //     // , $2, $3, $4, $5, $6, $7 $8) 
+  //     RETURNING *`,
+  //     values: [
+  //     title
+  //     // rating,
+  //     // isConfirmed,
+  //     // users_id,
+  //     // start_date,
+  //     // end_date,
+  //     // services_id,
+  //     // availabilities_id,
+  //     ]
+  //   };
+
+  //   return db
+  //     .query(query)
+  //     .then((result) => result.rows[0])
+  //     .catch((err) => err);
+  // };
+
+  const addAppointment = (title, rating, isConfirmed, users_id, start_date, end_date, services_id, availabilities_id) => {
     const query = {
-      text: `INSERT INTO appointments (title, rating, isConfirmed, st_date, end_date, users_id, services_id,
-        availabilities_id) VALUES ($1, $2, $3, $4, $5, $6, $7 $8) RETURNING *`,
-      values: [
-        title,
-        rating,
-        isConfirmed,
-        start_date,
-        end_date,
-        users_id,
-        services_id,
-        availabilities_id,
-      ],
+      text: `INSERT INTO appointments (title, rating, isConfirmed, users_id, start_date, end_date, services_id, availabilities_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
+      values: [title, rating, isConfirmed, users_id, start_date, end_date, services_id, availabilities_id],
     };
 
     return db

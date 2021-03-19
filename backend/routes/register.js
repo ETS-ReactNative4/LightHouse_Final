@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 
 module.exports = ({ getUsers, getUserByEmail, addUser, addLocation }) => {
-  // /* GET home page. */
+
   router.post("/", (req, res) => {
     getUserByEmail(req.body.user.email).then((result) => {
       if (result) {

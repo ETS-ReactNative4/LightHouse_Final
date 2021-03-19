@@ -27,7 +27,6 @@ module.exports = ({
       );
   });
   router.post("/", (req, res) => {
-    console.log("1", req.body);
     const {
       title,
       rating,
@@ -37,7 +36,9 @@ module.exports = ({
       end_date,
       services_id,
       availabilities_id,
-    } = req.body;
+    } = req.body.data;
+    console.log("WHY THIS IS NOT WORKI", req.body);
+    console.log("WHY THIS IS NOT WORKI", isConfirmed);
     addAppointment(
       title,
       rating,
