@@ -5,9 +5,8 @@ export default function Service(props) {
   const params = queryString.parse(props.location.search);
   return (
     <div>
-      <h1>Armin</h1>
-      <h1>{params.title}</h1>
-      <h1>{params.id}</h1>
+      <h1>{props.services[0].title}</h1>
+      <h1>{props.services[0].id}</h1>
       <button>Next</button>
       <button>Back</button>
       <div>

@@ -18,7 +18,7 @@ const Calendar = (props) => {
     console.log("Availability slot selected: ", a);
 
     const data = {
-      title: "appointment for",
+      title: props.services[0].title,
       rating: null,
 
       isconfirmed: false,
@@ -33,7 +33,6 @@ const Calendar = (props) => {
     history.push("/confirm");
     // <Confirm booking={booking} />;
     //axios.post("/api/appointments", data).then((r) => console.log(r));
-
   };
 
   const onChangedCalRange = (r) =>
