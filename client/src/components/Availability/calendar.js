@@ -18,14 +18,14 @@ const Calendar = (props) => {
     const data = {
       title: "appointment for",
       rating: null,
-      isconfirmed: false,
+      isConfirmed: true,
       start_date: a.startDate,
       end_date: a.endDate,
       services_id: props.services[0].id,
       availabilities_id: props.timeframe.id,
       users_id: props.user.id,
     };
-    axios.post("/api/appointments", data).then((r) => console.log(r));
+    axios.post("/api/appointments", {data}).then((r) => console.log(r));
   };
 
   const onChangedCalRange = (r) =>
