@@ -111,10 +111,29 @@ module.exports = (db) => {
       .catch((err) => err);
   };
 
-    const addAppointment = (title, rating, isConfirmed, users_id ) => {
+  const addAppointment = (
+    title,
+    rating,
+    isConfirmed,
+    users_id,
+    start_date,
+    end_date,
+    services_id,
+    availabilities_id
+  ) => {
     const query = {
-      text: `INSERT INTO appointments (title, rating, isConfirmed, users_id) VALUES ($1, $2, $3, $4) RETURNING *`,
-      values: [title, rating, isConfirmed, users_id],
+      text: `INSERT INTO appointments (title, rating, isConfirmed, st_date, end_date, users_id, services_id,
+        availabilities_id) VALUES ($1, $2, $3, $4, $5, $6, $7 $8) RETURNING *`,
+      values: [
+        title,
+        rating,
+        isConfirmed,
+        start_date,
+        end_date,
+        users_id,
+        services_id,
+        availabilities_id,
+      ],
     };
 
     return db
@@ -122,7 +141,6 @@ module.exports = (db) => {
       .then((result) => result.rows[0])
       .catch((err) => err);
   };
-
 
   const addAvailability = (users_id, start_time, end_time) => {
     const query = {
@@ -145,7 +163,6 @@ module.exports = (db) => {
       .then((result) => result.rows[0])
       .catch((err) => err);
   };
-  
 
   const getAvailabilitiesByUserId = (id) => {
     const query = {
@@ -157,7 +174,7 @@ module.exports = (db) => {
       .catch((err) => err);
   };
 
-    const getAppointmentsByUserId = (id) => {
+  const getAppointmentsByUserId = (id) => {
     const query = {
       text: `SELECT * FROM appointments WHERE users_id = ${id}`,
     };
@@ -217,6 +234,7 @@ module.exports = (db) => {
     addService,
     addAvailability,
     getUsersPosts,
+    addAppointment,
     addLocation,
   };
 };
