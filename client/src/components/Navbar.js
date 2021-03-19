@@ -17,19 +17,23 @@ export default function Header(props) {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link onClick={() => gotToLink("/")}>Home</Nav.Link>
-            <Nav.Link onClick={() => gotToLink("/services/new")}>
-              Provide Service
-            </Nav.Link>
+
             <Nav.Link onClick={() => gotToLink("/services")}>
               Find Service
+            </Nav.Link>
+
+            {props.user ? (
+              <>
+            <Nav.Link onClick={() => gotToLink("/services/new")}>
+              Provide Service
             </Nav.Link>
             <Nav.Link onClick={() => gotToLink("/myservices")}>
               My Services
             </Nav.Link>
-            {props.user ? (
               <Nav.Link onClick={() => gotToLink(`/users/${props.user.id}`)}>
                 Profile
               </Nav.Link>
+             </> 
             ) : (
               <p></p>
             )}
