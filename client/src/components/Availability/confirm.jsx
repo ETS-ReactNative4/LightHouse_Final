@@ -6,7 +6,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 export default function Confirm(props) {
   const data = props.booking;
   const yes = () => {
-    axios.post("/api/appointments", data).then((r) => console.log(r));
+    axios.post("/api/appointments", { data }).then((r) => console.log(r));
   };
   console.log("this is the confim props", props.booking);
   const date = JSON.stringify(props.booking.st_date);

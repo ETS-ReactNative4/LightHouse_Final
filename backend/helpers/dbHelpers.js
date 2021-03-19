@@ -132,10 +132,10 @@ module.exports = (db) => {
   //     // start_date,
   //     // end_date,
   //     // services_id,
-  //     // availabilities_id ) 
-  //     VALUES 
+  //     // availabilities_id )
+  //     VALUES
   //     ($1)
-  //     // , $2, $3, $4, $5, $6, $7 $8) 
+  //     // , $2, $3, $4, $5, $6, $7 $8)
   //     RETURNING *`,
   //     values: [
   //     title
@@ -242,6 +242,15 @@ module.exports = (db) => {
       .then((result) => result.rows)
       .catch((err) => err);
   };
+  const getServicesByUserId = (id) => {
+    const query = {
+      text: `SELECT * FROM services WHERE user_id = ${id}`,
+    };
+    return db
+      .query(query)
+      .then((result) => result.rows[0])
+      .catch((err) => err);
+  };
 
   return {
     getUsers,
@@ -249,6 +258,7 @@ module.exports = (db) => {
     getUserLocation,
     getServices,
     getServicesByValue,
+    getServicesByUserId,
     getavailabilities,
     getAvailabilitiesByUserId,
     getAppointmentsByUserId,
