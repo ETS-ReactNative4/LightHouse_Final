@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Oauth from "./Oauth";
+import Notification from "../components/Notification/";
 import {useHistory} from "react-router-dom";
 
 export default function Header(props) {
@@ -23,12 +24,24 @@ export default function Header(props) {
             <Nav.Link onClick={() => gotToLink("/services")}>
               Find Service
             </Nav.Link>
-            <Nav.Link onClick={() => gotToLink("/myservices")}>
-              My Services
-            </Nav.Link>
             {props.user ? (
-              <Nav.Link onClick={() => gotToLink(`/users/${props.user.id}`)}>
-                Profile
+              <>
+                <Nav.Link onClick={() => gotToLink("/myservices")}>
+                  My Services
+                </Nav.Link>
+                <Nav.Link onClick={() => gotToLink(`/users/${props.user.id}`)}>
+                  Profile
+                </Nav.Link>
+              </>
+            ) : (
+              <p></p>
+            )}
+          </Nav>
+
+          <Nav>
+            {props.user ? (
+              <Nav.Link>
+                <Notification />
               </Nav.Link>
             ) : (
               <p></p>
