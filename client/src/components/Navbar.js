@@ -16,26 +16,20 @@ export default function Header(props) {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link>
-              <button onClick={() => gotToLink("/")}>Home</button>
+            <Nav.Link onClick={() => gotToLink("/")}>Home</Nav.Link>
+            <Nav.Link onClick={() => gotToLink("/services/new")}>
+              Provide Service
             </Nav.Link>
-            <Nav.Link>
-              <button onClick={() => gotToLink("/services/new")}>
-                Provide Service
-              </button>
+            <Nav.Link onClick={() => gotToLink("/services")}>
+              Find Service
             </Nav.Link>
-            <Nav.Link>
-              <button onClick={() => gotToLink("/services")}>
-                Find Service
-              </button>
-            </Nav.Link>
-            <Nav.Link>
-              <button onClick={() => gotToLink("/myservices")}>
-                My Services
-              </button>
+            <Nav.Link onClick={() => gotToLink("/myservices")}>
+              My Services
             </Nav.Link>
             {props.user ? (
-              <Nav.Link href={`/users/${props.user.id}`}>Profile</Nav.Link>
+              <Nav.Link onClick={() => gotToLink(`/users/${props.user.id}`)}>
+                Profile
+              </Nav.Link>
             ) : (
               <p></p>
             )}
