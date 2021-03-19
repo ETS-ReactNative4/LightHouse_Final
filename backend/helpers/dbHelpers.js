@@ -202,6 +202,7 @@ module.exports = (db) => {
   const getAppointmentsByUserId = (id) => {
     const query = {
       text: `SELECT * FROM appointments WHERE users_id = ${id}`,
+      
     };
     return db
       .query(query)
@@ -244,11 +245,12 @@ module.exports = (db) => {
   };
   const getServicesByUserId = (id) => {
     const query = {
-      text: `SELECT * FROM services WHERE user_id = ${id}`,
+      text: `SELECT * FROM services WHERE user_id = $1`,
+      values: [id]
     };
     return db
       .query(query)
-      .then((result) => result.rows[0])
+      .then((result) => result.rows)
       .catch((err) => err);
   };
 

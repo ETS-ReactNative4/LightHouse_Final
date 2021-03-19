@@ -22,7 +22,7 @@ export default function MyServices(props) {
 
   const getServices = () => {
     if ( !services || services.length === 0  || services.name === "error") return [];
-    return services.map((s) => {
+    return Array.isArray(services) && services.map((s) => {
       return (
         <ListGroup horizontal key={s.id}>
           <ListGroup.Item>{s.id}</ListGroup.Item>
