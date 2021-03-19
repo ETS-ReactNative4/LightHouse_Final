@@ -41,16 +41,6 @@ module.exports = (db) => {
       .then((result) => result.rows)
       .catch((err) => err);
   };
-    const getServicesByUserId = (id) => {
-    const query = {
-      text: `SELECT * FROM services where user_id = $1 `,
-      values: [id],
-    };
-    return db
-      .query(query)
-      .then((result) => result.rows)
-      .catch((err) => err);
-  };
 
   const getavailabilities = () => {
     const query = {
@@ -165,10 +155,10 @@ module.exports = (db) => {
   //     .catch((err) => err);
   // };
 
-  const addAppointment = (title, rating, isConfirmed, users_id, start_date, end_date, services_id, availabilities_id) => {
+  const addAppointment = (title, rating, isConfirmed, users_id) => {
     const query = {
-      text: `INSERT INTO appointments (title, rating, isConfirmed, users_id, start_date, end_date, services_id, availabilities_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
-      values: [title, rating, isConfirmed, users_id, start_date, end_date, services_id, availabilities_id],
+      text: `INSERT INTO appointments (title, rating, isConfirmed, users_id) VALUES ($1, $2, $3, $4) RETURNING *`,
+      values: [title, rating, isConfirmed, users_id],
     };
 
     return db
@@ -253,41 +243,12 @@ module.exports = (db) => {
       .catch((err) => err);
   };
 
-  const updateUserPhoto = (photo, id) => {
-    const query = {
-      text: `UPDATE users
-      SET photo = $1
-      WHERE users.id = $2`,
-      values: [photo, id],
-    };
-
-    return db
-      .query(query)
-      .then((result) => result.rows[0])
-      .catch((err) => err);
-  };
-
-  const updateUserProviderStatus = (status, id) => {
-    const query = {
-      text: `UPDATE users
-      SET isServiceProvider = $1
-      WHERE users.id = $2`,
-      values: [status, id],
-    };
-
-    return db
-      .query(query)
-      .then((result) => result.rows[0])
-      .catch((err) => err);
-  };
-
   return {
     getUsers,
     getLocations,
     getUserLocation,
     getServices,
     getServicesByValue,
-    getServicesByUserId,
     getavailabilities,
     getAvailabilitiesByUserId,
     getAppointmentsByUserId,
@@ -300,7 +261,5 @@ module.exports = (db) => {
     getUsersPosts,
     addAppointment,
     addLocation,
-    updateUserPhoto,
-    updateUserProviderStatus,
   };
 };

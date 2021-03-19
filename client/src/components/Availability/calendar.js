@@ -18,7 +18,7 @@ const Calendar = (props) => {
     const data = {
       title: "appointment for",
       rating: null,
-      isConfirmed: false,
+      isConfirmed: true,
       start_date: a.startDate,
       end_date: a.endDate,
       services_id: props.services[0].id,
