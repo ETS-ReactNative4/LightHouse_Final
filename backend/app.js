@@ -17,7 +17,7 @@ var app = express();
 
 app.use(logger("dev"));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
@@ -31,4 +31,5 @@ app.use("/api/services", servicesRouter(dbHelpers));
 app.use("/api/availabilities", availabilitiesRouter(dbHelpers));
 app.use("/api/appointments", appointmentsRouter(dbHelpers));
 console.log("test");
+
 module.exports = app;

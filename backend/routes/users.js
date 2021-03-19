@@ -1,8 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const { getPostsByUsers } = require("../helpers/dataHelpers");
+const {getPostsByUsers} = require("../helpers/dataHelpers");
 
-module.exports = ({ getUsers, getUserByEmail, getUserById, addUser, getUsersPosts }) => {
+module.exports = ({
+  getUsers,
+  getUserByEmail,
+  getUserById,
+  addUser,
+  getUsersPosts,
+}) => {
   /* GET users listing. */
   router.get("/", (req, res) => {
     getUsers()
@@ -24,6 +30,19 @@ module.exports = ({ getUsers, getUserByEmail, getUserById, addUser, getUsersPost
       );
   });
 
+  router.post("/:id", (req, res) => {
+    const {photo, provider} = req.body;
+
+    console.log(photo);
+    // getUserById(req.params.id)
+    //   .then((users) => res.json(users))
+    //   .catch((err) =>
+    //     res.json({
+    //       error: err.message,
+    //     })
+    //   );
+  });
+
   router.get("/posts", (req, res) => {
     getUsersPosts()
       .then((usersPosts) => {
@@ -38,7 +57,7 @@ module.exports = ({ getUsers, getUserByEmail, getUserById, addUser, getUsersPost
   });
 
   router.post("/", (req, res) => {
-    const { first_name, last_name, email, password } = req.body;
+    const {first_name, last_name, email, password} = req.body;
 
     getUserByEmail(email)
       .then((user) => {

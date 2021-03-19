@@ -15,6 +15,11 @@ export default function Header(props) {
             <Nav.Link href="/services/new">Provide Service</Nav.Link>
             <Nav.Link href="/services">Find Service</Nav.Link>
             <Nav.Link href="/myservices">My Services</Nav.Link>
+            {props.user ? (
+              <Nav.Link href={`/users/${props.user.id}`}>Profile</Nav.Link>
+            ) : (
+              <p></p>
+            )}
           </Nav>
           <Nav>
             <Oauth

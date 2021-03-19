@@ -25,8 +25,6 @@ export default function Profile(props) {
   const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  console.log("THIS IS USER:", props.user);
-
   useEffect(() => {
     console.log("THIS IS users:", props.user);
     if (props.user !== null) {
@@ -54,15 +52,15 @@ export default function Profile(props) {
       }
     );
     const file = await res.json();
+    console.log("THIS IS FILE:", file.secure_url);
+    console.log("THIS IS USER", props.user.id);
 
-    // axios
-    //   .post(`/api/users/${userID}`, {photo: file.secure_url})
-    //   .then((response) => {
-    //     console.log("success!!");
+    axios
+      .post(`/api/users/${userID}`, {photo: file.secure_url})
+      .then((response) => {
+        console.log("success!!");
+      });
 
-    //   });
-
-    console.log(file.secure_url);
     setImage(file.secure_url);
     setLoading(false);
   };
