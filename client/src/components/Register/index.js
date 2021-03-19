@@ -43,7 +43,7 @@ export default function Register(props) {
           });
       },
       console.error,
-      {maximumAge: 0, enableHighAccuracy: false, timeout: 5000}
+      { maximumAge: 0, enableHighAccuracy: false, timeout: 5000 }
     );
   };
   const registration = (event) => {
@@ -51,13 +51,12 @@ export default function Register(props) {
 
     axios
       .post(`/api/register/?${props.user.email}`, {
-        location: {...props.location, ...geoLocation},
+        location: { ...props.location, ...geoLocation },
         user: props.user,
       })
       .then(
         (response) => {
-          console.log("response from register", response);
-          props.setUser(response.user);
+          props.setUser(response.data.msg);
           history.push("/");
         },
         (error) => {
