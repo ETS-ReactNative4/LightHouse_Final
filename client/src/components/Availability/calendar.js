@@ -20,6 +20,7 @@ const Calendar = (props) => {
     const data = {
       title: "appointment for",
       rating: null,
+
       isconfirmed: false,
       st_date: a.startDate,
       end_date: a.endDate,
@@ -32,6 +33,7 @@ const Calendar = (props) => {
     history.push("/confirm");
     // <Confirm booking={booking} />;
     //axios.post("/api/appointments", data).then((r) => console.log(r));
+
   };
 
   const onChangedCalRange = (r) =>
