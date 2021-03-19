@@ -1,8 +1,5 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-
-import useApplicationData from "./hooks/useApplicationData";
-
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
@@ -23,18 +20,10 @@ import PageNotFound from "./components/PageNotFound";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
-  const { state, dispatch } = useApplicationData();
   const [services, setServices] = useState([]);
   const [user, setUser] = useState(null);
   const [timeframe, setTimeFrame] = useState([]);
   const [location, setLocation] = useState(null);
-
-  const userList = state.users.map((user) => (
-    <li key={user.id}>
-      {" "}
-      {user.first_name} {user.last_name} {user.email}{" "}
-    </li>
-  ));
 
   const logout = (val) => {
     // localStorage.removeItem("user");

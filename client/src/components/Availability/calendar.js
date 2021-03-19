@@ -1,13 +1,6 @@
 import React from "react";
 
-import {
-  AvailabilityCalendar,
-  AvailabilityEvent,
-  MsSinceMidnightRange,
-  Booking,
-  Range,
-  CalendarThemeProp,
-} from "react-availability-calendar";
+import { AvailabilityCalendar } from "react-availability-calendar";
 import moment from "moment";
 
 import "bootstrap/dist/css/bootstrap.min.css";
