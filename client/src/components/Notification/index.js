@@ -3,24 +3,29 @@ import {BsFillBellFill} from "react-icons/bs";
 import {useState, useEffect} from "react";
 import axios from "axios";
 
-export default function Notification() {
-  const [mode, setMode] = useState("empty");
+export default function Notification(props) {
+  // const [mode, setMode] = useState("empty");
+
+  let mode = "empty";
+  const userID = props.user.id;
 
   let appCount = 0;
 
   useEffect(() => {
-    axios.get("/api/appointments/").then((response) => {
+    axios.get(`/api/appointments/${userID}`).then((response) => {
       console.log("success!!");
 
       appCount = response.data.length;
+      checkNewApp();
     });
   }, []);
 
   const compareApps = () => {
-    axios.get("/api/appointments/").then((response) => {
+    axios.get(`/api/appointments/${userID}`).then((response) => {
       console.log("CHECKING");
       if (response.data.length !== appCount) {
-        setMode("alert").then((appCount = response.data.length));
+        mode = "alert";
+        appCount = response.data.length;
       }
     });
   };
@@ -30,10 +35,8 @@ export default function Notification() {
   };
 
   const removeAlert = () => {
-    setMode("empty");
+    mode = "empty";
   };
-
-  checkNewApp();
 
   return (
     <>
