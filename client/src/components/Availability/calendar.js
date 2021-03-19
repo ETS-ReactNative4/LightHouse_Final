@@ -1,8 +1,8 @@
-import React from "react";
-
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { AvailabilityCalendar } from "react-availability-calendar";
 import moment from "moment";
-
+import Confirm from "./confirm";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./custom.scss";
 import axios from "axios";
@@ -11,21 +11,29 @@ const msInHour = 60 * 60 * 1000;
 
 const Calendar = (props) => {
   const now = new Date();
+  console.log("calendar props", props);
 
+  const history = useHistory();
   const onAvailabilitySelected = (a) => {
     console.log("Availability slot selected: ", a);
 
     const data = {
       title: "appointment for",
       rating: null,
+
       isconfirmed: false,
-      start_date: a.startDate,
+      st_date: a.startDate,
       end_date: a.endDate,
       services_id: props.services[0].id,
       availabilities_id: props.timeframe.id,
       users_id: props.user.id,
     };
-    axios.post("/api/appointments", data).then((r) => console.log(r));
+
+    props.setBooking(data);
+    history.push("/confirm");
+    // <Confirm booking={booking} />;
+    //axios.post("/api/appointments", data).then((r) => console.log(r));
+
   };
 
   const onChangedCalRange = (r) =>

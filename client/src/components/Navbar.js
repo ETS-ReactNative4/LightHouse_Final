@@ -18,14 +18,16 @@ export default function Header(props) {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
             <Nav.Link onClick={() => gotToLink("/")}>Home</Nav.Link>
-            <Nav.Link onClick={() => gotToLink("/services/new")}>
-              Provide Service
-            </Nav.Link>
+
             <Nav.Link onClick={() => gotToLink("/services")}>
               Find Service
             </Nav.Link>
+
             {props.user ? (
               <>
+                <Nav.Link onClick={() => gotToLink("/services/new")}>
+                  Provide Service
+                </Nav.Link>
                 <Nav.Link onClick={() => gotToLink("/myservices")}>
                   My Services
                 </Nav.Link>
@@ -33,16 +35,6 @@ export default function Header(props) {
                   Profile
                 </Nav.Link>
               </>
-            ) : (
-              <p></p>
-            )}
-          </Nav>
-
-          <Nav>
-            {props.user ? (
-              <Nav.Link>
-                <Notification user={props.user} />
-              </Nav.Link>
             ) : (
               <p></p>
             )}

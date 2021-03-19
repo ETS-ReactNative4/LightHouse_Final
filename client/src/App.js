@@ -12,7 +12,7 @@ import Header from "./components/Navbar";
 import Footer from "./components/Footer";
 import Calendar from "./components/Availability/calendar";
 import Profile from "./components/Profile";
-
+import Confirm from "./components/Availability/confirm";
 import "./App.css";
 import PageNotFound from "./components/PageNotFound";
 
@@ -22,9 +22,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const App = () => {
   const [services, setServices] = useState([]);
   const [user, setUser] = useState(null);
+
   const [timeframe, setTimeFrame] = useState([]);
   const [location, setLocation] = useState(null);
-
+  const [booking, setBooking] = useState([]);
   const logout = (val) => {
     // localStorage.removeItem("user");
     setUser(false);
@@ -60,6 +61,7 @@ const App = () => {
               <p>loading</p>
             )}
           </Route>
+
           <Route path="/services/new">
             <NewServiceForm user={user} />
           </Route>
@@ -70,7 +72,7 @@ const App = () => {
                 user={user}
                 location={location}
                 timeframe={timeframe}
-                services={services}
+                // services={services}
               />
             ) : (
               <p>loading</p>
@@ -85,6 +87,8 @@ const App = () => {
               setTimeFrame={setTimeFrame}
               setServices={setServices}
               services={services}
+              booking={booking}
+              setBooking={setBooking}
             />
           </Route>
           <Route path="/service" component={Service} exact>
@@ -93,9 +97,13 @@ const App = () => {
               location={location}
               timeframe={timeframe}
               services={services}
+              booking={booking}
+              setBooking={setBooking}
             />
           </Route>
-
+          <Route path="/confirm" component={Service} exact>
+            <Confirm booking={booking} setBooking={setBooking} />
+          </Route>
           <Route path="/availability">
             <Availability />
           </Route>
