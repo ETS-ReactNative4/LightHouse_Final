@@ -2,19 +2,37 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Oauth from "./Oauth";
+import {useHistory} from "react-router-dom";
 
 export default function Header(props) {
+  const history = useHistory();
+  const gotToLink = (link) => {
+    history.push(link);
+  };
   return (
     <>
       <Navbar bg="light" expand="lg" sticky="top">
-        <Navbar.Brand href="/">AppName</Navbar.Brand>
+        <Navbar.Brand onClick={() => gotToLink("/")}>AppName</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/services/new">Provide Service</Nav.Link>
-            <Nav.Link href="/services">Find Service</Nav.Link>
-            <Nav.Link href="/myservices">My Services</Nav.Link>
+            <Nav.Link onClick={() => gotToLink("/")}>Home</Nav.Link>
+            <Nav.Link onClick={() => gotToLink("/services/new")}>
+              Provide Service
+            </Nav.Link>
+            <Nav.Link onClick={() => gotToLink("/services")}>
+              Find Service
+            </Nav.Link>
+            <Nav.Link onClick={() => gotToLink("/myservices")}>
+              My Services
+            </Nav.Link>
+            {props.user ? (
+              <Nav.Link onClick={() => gotToLink(`/users/${props.user.id}`)}>
+                Profile
+              </Nav.Link>
+            ) : (
+              <p></p>
+            )}
           </Nav>
           <Nav>
             <Oauth
