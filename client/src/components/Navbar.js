@@ -41,7 +41,7 @@ export default function Header(props) {
           <Nav>
             {props.user ? (
               <Nav.Link>
-                <Notification />
+                <Notification user={props.user} />
               </Nav.Link>
             ) : (
               <p></p>
