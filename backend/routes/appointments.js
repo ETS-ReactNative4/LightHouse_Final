@@ -35,8 +35,19 @@ module.exports = ({
       users_id,
       start_date,
       end_date,
+      services_id,
+      availabilities_id,
     } = req.body;
-    addAppointment(title, rating, isConfirmed, users_id, start_date, end_date)
+    addAppointment(
+      title,
+      rating,
+      isConfirmed,
+      users_id,
+      start_date,
+      end_date,
+      services_id,
+      availabilities_id
+    )
       .then(() =>
         res.status(201).json({
           msg: "created",
