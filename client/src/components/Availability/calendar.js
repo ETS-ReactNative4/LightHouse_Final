@@ -24,6 +24,7 @@ const Calendar = (props) => {
 
     const data = {
       title: "appointment for",
+      rating: null,
       isconfirmed: false,
       start_date: a.startDate,
       end_date: a.endDate,
