@@ -11,7 +11,7 @@ import Spinner from "react-bootstrap/Spinner";
 import axios from "axios";
 
 export default function Profile(props) {
-  const [provider, setProvider] = useState(false);
+  const [provider, setProvider] = useState();
   const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -46,7 +46,7 @@ export default function Profile(props) {
     console.log("THIS IS USER", props.user.id);
 
     axios
-      .post(`/api/users/${userID}`, {photo: file.secure_url})
+      .post(`/api/users/${userID}/photo`, {photo: file.secure_url})
       .then((response) => {
         console.log("success!!");
       });
@@ -55,15 +55,16 @@ export default function Profile(props) {
     setLoading(false);
   };
 
+  // console.log("THIS IS PROVIDER STATUS CURRENTLY", provider);
   const handleSubmit = (event, provider, userID) => {
     event.preventDefault();
 
-    console.log(provider);
     axios
-      .post(`/api/users/${userID}`, {provider: !provider})
+      .post(`/api/users/${userID}/provider`, {provider: !provider})
       .then((response) => {
         console.log("success!!");
-        setProvider(response.isserviceprovider);
+        console.log("THIS IS RESPONSE:", response.data.isserviceprovider);
+        setProvider(response.data.isserviceprovider);
       });
   };
 

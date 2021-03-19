@@ -32,8 +32,9 @@ module.exports = ({
       );
   });
 
-  router.post("/:id", (req, res) => {
-    const {photo, provider} = req.body;
+  router.post("/:id/photo", (req, res) => {
+    const {photo} = req.body;
+    console.log("THIS IS PHOTO:", photo);
 
     if (photo) {
       updateUserPhoto(photo, req.params.id)
@@ -48,10 +49,28 @@ module.exports = ({
           })
         );
     }
+  });
 
-    if (provider) {
-      update;
-    }
+  router.post("/:id/provider", (req, res) => {
+    const {provider} = req.body;
+    console.log("THIS IS PROVIDER:", provider);
+
+    updateUserProviderStatus(provider, req.params.id)
+      .then(() => {
+        console.log("success!");
+        getUserById(req.params.id)
+          .then((users) => res.json(users))
+          .catch((err) =>
+            res.json({
+              error: err.message,
+            })
+          );
+      })
+      .catch((err) =>
+        res.json({
+          error: err.message,
+        })
+      );
   });
 
   router.get("/posts", (req, res) => {
