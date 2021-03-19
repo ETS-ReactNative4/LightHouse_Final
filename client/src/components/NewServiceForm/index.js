@@ -33,7 +33,7 @@ export default function NewServiceForm(props) {
     axios
       .post(`/api/availabilities/${props.user.id}`, { availability })
       .then((response) => {
-        console.log(response);
+        console.log("response from saving a new service", response);
       });
   };
 

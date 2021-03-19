@@ -1,25 +1,32 @@
 import React from "react";
 
-import {
-  AvailabilityCalendar,
-  AvailabilityEvent,
-  MsSinceMidnightRange,
-  Booking,
-  Range,
-  CalendarThemeProp,
-} from "react-availability-calendar";
+import { AvailabilityCalendar } from "react-availability-calendar";
 import moment from "moment";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./custom.scss";
+import axios from "axios";
 
 const msInHour = 60 * 60 * 1000;
 
-const App = () => {
+const Calendar = (props) => {
   const now = new Date();
 
-  const onAvailabilitySelected = (a) =>
+  const onAvailabilitySelected = (a) => {
     console.log("Availability slot selected: ", a);
+
+    const data = {
+      title: "appointment for",
+      rating: null,
+      isconfirmed: false,
+      start_date: a.startDate,
+      end_date: a.endDate,
+      services_id: props.services[0].id,
+      availabilities_id: props.timeframe.id,
+      users_id: props.user.id,
+    };
+    axios.post("/api/appointments", data).then((r) => console.log(r));
+  };
 
   const onChangedCalRange = (r) =>
     console.log("Calendar range selected (fetch bookings here): ", r);
@@ -27,7 +34,8 @@ const App = () => {
   // TODO find a way to take avail block and make it blockout period when a block is not true
   // receiving avalaible 9 to 14 everyday
   // [9,14]
-  const avail = [9, 14]; //this is the receiving input
+
+  const avail = [props.timeframe.start_time, props.timeframe.end_time]; //this is the receiving input
 
   const blockOutPeriods = [
     [0 * msInHour, avail[0] * msInHour],
@@ -62,4 +70,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Calendar;

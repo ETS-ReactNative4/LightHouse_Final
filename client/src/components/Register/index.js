@@ -1,7 +1,7 @@
 import axios from "axios";
 import "./index.scss";
-import {useHistory} from "react-router-dom";
-import {useEffect, useState} from "react";
+import { useHistory } from "react-router-dom";
+import { useState } from "react";
 
 export default function Register(props) {
   console.log("this is props of register", props);
@@ -56,7 +56,9 @@ export default function Register(props) {
       })
       .then(
         (response) => {
-          console.log(response);
+          console.log("response from register", response);
+          props.setUser(response.user);
+          history.push("/");
         },
         (error) => {
           console.log(error);
