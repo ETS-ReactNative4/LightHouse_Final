@@ -8,6 +8,7 @@ module.exports = ({
   getUserById,
   addUser,
   getUsersPosts,
+  updateUserPhoto,
 }) => {
   /* GET users listing. */
   router.get("/", (req, res) => {
@@ -33,14 +34,19 @@ module.exports = ({
   router.post("/:id", (req, res) => {
     const {photo, provider} = req.body;
 
-    console.log(photo);
-    // getUserById(req.params.id)
-    //   .then((users) => res.json(users))
-    //   .catch((err) =>
-    //     res.json({
-    //       error: err.message,
-    //     })
-    //   );
+    if (photo) {
+      updateUserPhoto(photo, req.params.id)
+        .then(() =>
+          res.status(201).json({
+            msg: "updated!",
+          })
+        )
+        .catch((err) =>
+          res.json({
+            error: err.message,
+          })
+        );
+    }
   });
 
   router.get("/posts", (req, res) => {
