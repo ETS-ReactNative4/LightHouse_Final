@@ -1,4 +1,5 @@
 import {useState, useEffect} from "react";
+import {useHistory} from "react-router-dom";
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -11,6 +12,8 @@ import Spinner from "react-bootstrap/Spinner";
 import axios from "axios";
 
 export default function Profile(props) {
+  const history = useHistory();
+
   const [provider, setProvider] = useState();
   const [image, setImage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -22,6 +25,10 @@ export default function Profile(props) {
       setProvider(props.user.isserviceprovider);
     }
   }, [props.user]);
+
+  const gotToLink = (link) => {
+    history.push(link);
+  };
 
   const uploadImage = async (e) => {
     const userID = props.user.id;
@@ -133,20 +140,34 @@ export default function Profile(props) {
           </Col>
         </Row>
         <Col>{props.location && props.location.full_address}</Col>
-        <Row>
-          {props.user && (
-            <Col>
-              <Button
-                onClick={(e) => handleSubmit(e, provider, props.user.id)}
-                className="profile-services-btn"
-                variant="primary"
-                size="sm"
-              >
-                Become a provider
-              </Button>
-            </Col>
-          )}
-        </Row>
+
+        {props.user && (
+          <Row>
+            {props.user.isserviceprovider === true ? (
+              <Col>
+                <Button
+                  onClick={() => gotToLink("/myservices")}
+                  className="profile-services-btn"
+                  variant="primary"
+                  size="sm"
+                >
+                  View my services
+                </Button>
+              </Col>
+            ) : (
+              <Col>
+                <Button
+                  onClick={(e) => handleSubmit(e, provider, props.user.id)}
+                  className="profile-services-btn"
+                  variant="primary"
+                  size="sm"
+                >
+                  Become a provider
+                </Button>
+              </Col>
+            )}
+          </Row>
+        )}
       </Container>
     </Container>
   );
