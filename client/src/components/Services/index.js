@@ -3,7 +3,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import { useEffect, useState, history } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 export default function Services(props) {

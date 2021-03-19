@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -31,7 +31,7 @@ export default function Profile(props) {
     <Container fluid className="profile">
       <Container>
         <Row>
-          <Col className="profile-image" md={{span: 6, offset: 3}}>
+          <Col className="profile-image" md={{ span: 6, offset: 3 }}>
             <Col>
               <Image
                 className="profile-image-img"
