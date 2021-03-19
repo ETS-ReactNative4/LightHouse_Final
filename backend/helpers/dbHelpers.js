@@ -41,6 +41,16 @@ module.exports = (db) => {
       .then((result) => result.rows)
       .catch((err) => err);
   };
+    const getServicesByUserId = (id) => {
+    const query = {
+      text: `SELECT * FROM services where user_id = $1 `,
+      values: [id],
+    };
+    return db
+      .query(query)
+      .then((result) => result.rows)
+      .catch((err) => err);
+  };
 
   const getavailabilities = () => {
     const query = {
@@ -252,6 +262,7 @@ module.exports = (db) => {
     getUserLocation,
     getServices,
     getServicesByValue,
+    getServicesByUserId,
     getavailabilities,
     getAvailabilitiesByUserId,
     getAppointmentsByUserId,

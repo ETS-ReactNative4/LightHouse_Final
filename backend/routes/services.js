@@ -20,8 +20,9 @@ module.exports = ({
             error: err.message
         }));
 });
-router.get('/myservices/:value', (req, res) => {
-  getServicesByUserId(req.params.value)
+router.get('/myservices/:id', (req, res) => {
+  
+  getServicesByUserId(req.params.id)
       .then((services) => res.json(services))
       .catch((err) => res.json({
           error: err.message
