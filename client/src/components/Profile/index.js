@@ -10,16 +10,6 @@ import Spinner from "react-bootstrap/Spinner";
 
 import axios from "axios";
 
-const handleSubmit = (event, provider, userID) => {
-  event.preventDefault();
-
-  console.log(provider);
-  // axios.post(`/api/users/${userID}`, {provider: !provider}).then((response) => {
-  //   console.log("success!!");
-  //   setProvider(response.isserviceprovider);
-  // });
-};
-
 export default function Profile(props) {
   const [provider, setProvider] = useState(false);
   const [image, setImage] = useState("");
@@ -63,6 +53,18 @@ export default function Profile(props) {
 
     setImage(file.secure_url);
     setLoading(false);
+  };
+
+  const handleSubmit = (event, provider, userID) => {
+    event.preventDefault();
+
+    console.log(provider);
+    axios
+      .post(`/api/users/${userID}`, {provider: !provider})
+      .then((response) => {
+        console.log("success!!");
+        setProvider(response.isserviceprovider);
+      });
   };
 
   return (

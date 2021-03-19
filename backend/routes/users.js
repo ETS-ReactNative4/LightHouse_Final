@@ -9,6 +9,7 @@ module.exports = ({
   addUser,
   getUsersPosts,
   updateUserPhoto,
+  updateUserProviderStatus,
 }) => {
   /* GET users listing. */
   router.get("/", (req, res) => {
@@ -46,6 +47,10 @@ module.exports = ({
             error: err.message,
           })
         );
+    }
+
+    if (provider) {
+      update;
     }
   });
 
