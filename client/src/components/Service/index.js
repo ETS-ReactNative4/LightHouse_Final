@@ -17,6 +17,8 @@ export default function Service(props) {
             location={props.location}
             timeframe={props.timeframe}
             services={props.services}
+            booking={props.booking}
+            setBooking={props.setBooking}
           />
         ) : (
           <p>Loadin...</p>
