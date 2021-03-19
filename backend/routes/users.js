@@ -1,8 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const { getPostsByUsers } = require("../helpers/dataHelpers");
+const {getPostsByUsers} = require("../helpers/dataHelpers");
 
-module.exports = ({ getUsers, getUserByEmail, getUserById, addUser, getUsersPosts }) => {
+module.exports = ({
+  getUsers,
+  getUserByEmail,
+  getUserById,
+  addUser,
+  getUsersPosts,
+  updateUserPhoto,
+  updateUserProviderStatus,
+}) => {
   /* GET users listing. */
   router.get("/", (req, res) => {
     getUsers()
@@ -24,6 +32,47 @@ module.exports = ({ getUsers, getUserByEmail, getUserById, addUser, getUsersPost
       );
   });
 
+  router.post("/:id/photo", (req, res) => {
+    const {photo} = req.body;
+    console.log("THIS IS PHOTO:", photo);
+
+    if (photo) {
+      updateUserPhoto(photo, req.params.id)
+        .then(() =>
+          res.status(201).json({
+            msg: "updated!",
+          })
+        )
+        .catch((err) =>
+          res.json({
+            error: err.message,
+          })
+        );
+    }
+  });
+
+  router.post("/:id/provider", (req, res) => {
+    const {provider} = req.body;
+    console.log("THIS IS PROVIDER:", provider);
+
+    updateUserProviderStatus(provider, req.params.id)
+      .then(() => {
+        console.log("success!");
+        getUserById(req.params.id)
+          .then((users) => res.json(users))
+          .catch((err) =>
+            res.json({
+              error: err.message,
+            })
+          );
+      })
+      .catch((err) =>
+        res.json({
+          error: err.message,
+        })
+      );
+  });
+
   router.get("/posts", (req, res) => {
     getUsersPosts()
       .then((usersPosts) => {
@@ -38,7 +87,7 @@ module.exports = ({ getUsers, getUserByEmail, getUserById, addUser, getUsersPost
   });
 
   router.post("/", (req, res) => {
-    const { first_name, last_name, email, password } = req.body;
+    const {first_name, last_name, email, password} = req.body;
 
     getUserByEmail(email)
       .then((user) => {

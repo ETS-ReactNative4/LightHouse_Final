@@ -228,6 +228,34 @@ module.exports = (db) => {
       .catch((err) => err);
   };
 
+  const updateUserPhoto = (photo, id) => {
+    const query = {
+      text: `UPDATE users
+      SET photo = $1
+      WHERE users.id = $2`,
+      values: [photo, id],
+    };
+
+    return db
+      .query(query)
+      .then((result) => result.rows[0])
+      .catch((err) => err);
+  };
+
+  const updateUserProviderStatus = (status, id) => {
+    const query = {
+      text: `UPDATE users
+      SET isServiceProvider = $1
+      WHERE users.id = $2`,
+      values: [status, id],
+    };
+
+    return db
+      .query(query)
+      .then((result) => result.rows[0])
+      .catch((err) => err);
+  };
+
   return {
     getUsers,
     getLocations,
@@ -247,5 +275,7 @@ module.exports = (db) => {
     getUsersPosts,
     addAppointment,
     addLocation,
+    updateUserPhoto,
+    updateUserProviderStatus,
   };
 };
