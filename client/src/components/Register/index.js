@@ -1,7 +1,11 @@
 import axios from "axios";
 import "./index.scss";
-import { useHistory } from "react-router-dom";
-import { useState } from "react";
+import {useHistory} from "react-router-dom";
+import {useState} from "react";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
 
 export default function Register(props) {
   console.log("this is props of register", props);
@@ -43,7 +47,7 @@ export default function Register(props) {
           });
       },
       console.error,
-      { maximumAge: 0, enableHighAccuracy: false, timeout: 5000 }
+      {maximumAge: 0, enableHighAccuracy: false, timeout: 5000}
     );
   };
   const registration = (event) => {
@@ -51,7 +55,7 @@ export default function Register(props) {
 
     axios
       .post(`/api/register/?${props.user.email}`, {
-        location: { ...props.location, ...geoLocation },
+        location: {...props.location, ...geoLocation},
         user: props.user,
       })
       .then(
@@ -66,68 +70,78 @@ export default function Register(props) {
   };
   return (
     <>
-      <h1>I am Register</h1>
       {props.user && props.user.register ? (
-        <form method="POST" action="/api/register">
-          <div>
-            <label>
-              Full Name:
-              <input type="text" name="name" value={props.user.name} />
-            </label>
-            <label>
-              Email:
-              <input type="text" name="name" value={props.user.email} />
-            </label>
-          </div>
-          <div>
-            <input type="checkbox" id="service" name="service"></input>
-            <label for="service">Do you wish to provide services ?</label>
-          </div>
-          <div>
-            <button onClick={getLocation}>Get my current location</button>
-          </div>
-          <div>
-            <label>
-              Address
-              <input
-                type="text"
-                name="full_address"
-                value={props.location && props.location.address}
-              />
-            </label>
-            <label>
-              City
-              <input
-                type="text"
-                name="city"
-                value={props.location && props.location.city}
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              Postal code
-              <input
-                type="text"
-                name="postal_code"
-                value={props.location && props.location.postal}
-              />
-            </label>
-            <label>
-              Country
-              <input
-                type="text"
-                name="country"
-                value={props.location && props.location.country}
-              />
-            </label>
-          </div>
-          <div>
-            <button type="submit" onClick={registration}>
-              Register
-            </button>
-          </div>
-        </form>
+        <div className="container register">
+          <Form method="POST" action="/api/register">
+            <Form.Row>
+              <Form.Group as={Col} controlId="formGridEmail">
+                <Form.Control
+                  type="text"
+                  name="name"
+                  value={props.user.name}
+                  placeholder="Your email"
+                />
+              </Form.Group>
+
+              <Form.Group as={Col} controlId="formGridEmail">
+                <Form.Control
+                  type="text"
+                  name="name"
+                  value={props.user.email}
+                  placeholder="Your email"
+                />
+              </Form.Group>
+            </Form.Row>
+            <div>
+              <input type="checkbox" id="service" name="service"></input>
+              <label for="service">Do you wish to provide services ?</label>
+            </div>
+            <div>
+              <Button onClick={getLocation}>Get my current location</Button>
+            </div>
+            <div>
+              <label>
+                Address
+                <input
+                  type="text"
+                  name="full_address"
+                  value={props.location && props.location.address}
+                />
+              </label>
+              <label>
+                City
+                <input
+                  type="text"
+                  name="city"
+                  value={props.location && props.location.city}
+                />
+              </label>
+            </div>
+            <div>
+              <label>
+                Postal code
+                <input
+                  type="text"
+                  name="postal_code"
+                  value={props.location && props.location.postal}
+                />
+              </label>
+              <label>
+                Country
+                <input
+                  type="text"
+                  name="country"
+                  value={props.location && props.location.country}
+                />
+              </label>
+            </div>
+            <div>
+              <Button type="submit" onClick={registration}>
+                Register
+              </Button>
+            </div>
+          </Form>
+        </div>
       ) : (
         history.push("/home")
       )}
