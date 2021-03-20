@@ -14,21 +14,26 @@ export default function NewServiceForm(props) {
   const [endTime, setEndTime] = useState(24);
   const [categoryOptions, setCategoryOptions] = useState([]);
 
-useEffect(() => {
-  axios.get("/api/categories").then((response) => {
-    const categoryTitles = response.data.map((data) => data.title)
-    setCategoryOptions(categoryTitles);
-  });
- }, []);
+  useEffect(() => {
+    axios.get("/api/categories").then((response) => {
+      console.log(
+        "This is the response data from the GET api/categories",
+        response.data
+      );
+      if (Array.isArray(response.data)) {
+        const categoryTitles = response.data.map((data) => data.title);
+        setCategoryOptions(categoryTitles);
+      }
+    });
+  }, []);
   const handleSubmit = (event) => {
-
     event.preventDefault();
     const data = {
       formTitle: title,
       formDescription: description,
       formFee: fee,
       formCategory: category,
-      user_id: props.user.id
+      user_id: props.user.id,
     };
     const availability = {
       start_time: startTime,
@@ -37,7 +42,7 @@ useEffect(() => {
     console.log("Final data is", data);
 
     axios.post("/api/services/new", { data }).then((response) => {
-      console.log("success!!");
+      console.log("POST /api/services/new is successfull!!");
     });
     axios
       .post(`/api/availabilities/${props.user.id}`, { availability })
@@ -81,11 +86,9 @@ useEffect(() => {
 
       <Form.Group controlId="exampleForm.ControlSelect1">
         <Form.Label>Category</Form.Label>
-        <Form.Control as="select"  onChange={(e)=>setCategory(e.target.value)}>
-          {categoryOptions.map((categoryOption) => ( 
-            <option value={categoryOption}>
-              {categoryOption}
-            </option>
+        <Form.Control as="select" onChange={(e) => setCategory(e.target.value)}>
+          {categoryOptions.map((categoryOption) => (
+            <option value={categoryOption}>{categoryOption}</option>
           ))}
         </Form.Control>
       </Form.Group>

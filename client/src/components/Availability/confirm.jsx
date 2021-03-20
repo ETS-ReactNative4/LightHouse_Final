@@ -1,13 +1,27 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
+import { useHistory } from "react-router-dom";
 
 export default function Confirm(props) {
+  const history = useHistory();
   const data = props.booking;
   const yes = () => {
-    axios.post("/api/appointments", { data }).then((r) => console.log(r));
+    axios.post("/api/appointments", { data }).then(
+      (response) => {
+        console.log(response);
+        history.push("/");
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   };
+  const clickNo = () => {
+    props.setBooking([]);
+    history.push("/calendar");
+  };
+
   console.log("this is the confim props", props.booking);
   const date = JSON.stringify(props.booking.st_date);
   return (
@@ -26,7 +40,9 @@ export default function Confirm(props) {
             <Button variant="success" onClick={() => yes()}>
               Yes
             </Button>{" "}
-            <Button variant="danger">No</Button>
+            <Button variant="danger" onClick={() => clickNo()}>
+              No
+            </Button>
           </div>
         </div>
       ) : (
