@@ -39,6 +39,14 @@ export default function Header(props) {
               <p></p>
             )}
           </Nav>
+
+          {props.user ? (
+            <Nav>
+              <Notification user={props.user} />
+            </Nav>
+          ) : (
+            <p></p>
+          )}
           <Nav>
             <Oauth
               user={props.user}
