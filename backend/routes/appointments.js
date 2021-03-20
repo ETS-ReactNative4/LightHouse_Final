@@ -5,6 +5,7 @@ module.exports = ({
   getAppointments,
   getAppointmentsByUserId,
   addAppointment,
+  getAppForProvider,
 }) => {
   router.get("/", (req, res) => {
     getAppointments()
@@ -26,6 +27,18 @@ module.exports = ({
         })
       );
   });
+
+  router.get("/provider/:id", (req, res) => {
+    // console.log("appointments",req.params.id);
+    getAppForProvider(req.params.id)
+      .then((result) => res.json(result))
+      .catch((err) =>
+        res.json({
+          error: err.message,
+        })
+      );
+  });
+
   router.post("/", (req, res) => {
     console.log("WHY THIS IS NOT WORKjjjI", req.body);
 

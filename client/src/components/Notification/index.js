@@ -12,7 +12,7 @@ export default function Notification(props) {
   let appCount = 0;
 
   useEffect(() => {
-    axios.get(`/api/appointments/${userID}`).then((response) => {
+    axios.get(`/api/appointments/provider/${userID}`).then((response) => {
       console.log("success!!");
 
       appCount = response.data.length;
@@ -21,7 +21,7 @@ export default function Notification(props) {
   }, []);
 
   const compareApps = () => {
-    axios.get(`/api/appointments/${userID}`).then((response) => {
+    axios.get(`/api/appointments/provider/${userID}`).then((response) => {
       console.log("CHECKING");
       if (response.data.length !== appCount) {
         mode = "alert";
