@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
 
 export default function Register(props) {
   console.log("this is props of register", props);
@@ -71,85 +72,90 @@ export default function Register(props) {
   return (
     <>
       {props.user && props.user.register ? (
-        <div className="container register">
-          <Form method="POST" action="/api/register">
-            <Form.Row>
-              <Form.Group as={Col} controlId="formGridName">
-                <Form.Control
-                  type="text"
-                  name="name"
-                  value={props.user.name}
-                  placeholder="Your email"
-                />
-              </Form.Group>
+        <Container className="register">
+          <Row>
+            <Col md={3} className="register-left"></Col>
+            <Col md={9} className="register-right">
+              <Form method="POST" action="/api/register">
+                <Form.Row>
+                  <Form.Group as={Col} controlId="formGridName">
+                    <Form.Control
+                      type="text"
+                      name="name"
+                      value={props.user.name}
+                      placeholder="Your email"
+                    />
+                  </Form.Group>
 
-              <Form.Group as={Col} controlId="formGridEmail">
-                <Form.Control
-                  type="text"
-                  name="name"
-                  value={props.user.email}
-                  placeholder="Your email"
-                />
-              </Form.Group>
-            </Form.Row>
+                  <Form.Group as={Col} controlId="formGridEmail">
+                    <Form.Control
+                      type="text"
+                      name="name"
+                      value={props.user.email}
+                      placeholder="Your email"
+                    />
+                  </Form.Group>
+                </Form.Row>
 
-            <Form.Group id="formGridCheckbox">
-              <Form.Check
-                type="checkbox"
-                id="service"
-                name="service"
-                label="Do you wish to provide services ?"
-              ></Form.Check>
-            </Form.Group>
+                <Form.Group id="formGridCheckbox">
+                  <Form.Check
+                    type="checkbox"
+                    id="service"
+                    name="service"
+                    label="Do you wish to provide services ?"
+                  ></Form.Check>
+                </Form.Group>
 
-            <Form.Group controlId="location">
-              <Button onClick={getLocation}>Get my current location</Button>
-            </Form.Group>
+                <Form.Group controlId="location">
+                  <Button onClick={getLocation}>Get my current location</Button>
+                </Form.Group>
 
-            <Form.Row>
-              <Form.Group as={Col} controlId="formGridAddress">
-                <Form.Control
-                  type="text"
-                  name="full_address"
-                  value={props.location && props.location.address}
-                  placeholder="Your address"
-                />
-              </Form.Group>
+                <Form.Row>
+                  <Form.Group as={Col} controlId="formGridAddress">
+                    <Form.Control
+                      type="text"
+                      name="full_address"
+                      value={props.location && props.location.address}
+                      placeholder="Your address"
+                    />
+                  </Form.Group>
 
-              <Form.Group as={Col} controlId="formGridCity">
-                <Form.Control
-                  type="text"
-                  name="city"
-                  value={props.location && props.location.city}
-                  placeholder="Your city"
-                />
-              </Form.Group>
-            </Form.Row>
-            <Form.Row>
-              <Form.Group as={Col} controlId="formGridPostal">
-                <Form.Control
-                  type="text"
-                  name="postal_code"
-                  value={props.location && props.location.postal}
-                  placeholder="Postal code"
-                />
-              </Form.Group>
-              <Form.Group as={Col} controlId="formGridCountry">
-                <Form.Control
-                  type="text"
-                  name="country"
-                  value={props.location && props.location.country}
-                  placeholder="Country"
-                />
-              </Form.Group>
-            </Form.Row>
-            <Form.Group controlId="submit">
-              <Button type="submit" onClick={registration}>
-                Register
-              </Button>
-            </Form.Group>
-          </Form>
-        </div>
+                  <Form.Group as={Col} controlId="formGridCity">
+                    <Form.Control
+                      type="text"
+                      name="city"
+                      value={props.location && props.location.city}
+                      placeholder="Your city"
+                    />
+                  </Form.Group>
+                </Form.Row>
+                <Form.Row>
+                  <Form.Group as={Col} controlId="formGridPostal">
+                    <Form.Control
+                      type="text"
+                      name="postal_code"
+                      value={props.location && props.location.postal}
+                      placeholder="Postal code"
+                    />
+                  </Form.Group>
+                  <Form.Group as={Col} controlId="formGridCountry">
+                    <Form.Control
+                      type="text"
+                      name="country"
+                      value={props.location && props.location.country}
+                      placeholder="Country"
+                    />
+                  </Form.Group>
+                </Form.Row>
+                <Form.Group controlId="submit">
+                  <Button type="submit" onClick={registration}>
+                    Register
+                  </Button>
+                </Form.Group>
+              </Form>
+            </Col>
+          </Row>
+        </Container>
       ) : (
         history.push("/home")
       )}
