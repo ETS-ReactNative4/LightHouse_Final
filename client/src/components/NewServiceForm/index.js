@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -12,6 +12,16 @@ export default function NewServiceForm(props) {
   const [category, setCategory] = useState("");
   const [startTime, setStartTime] = useState(0);
   const [endTime, setEndTime] = useState(24);
+  const [categoryOptions, setCategoryOptions] = useState([]);
+
+useEffect(() => {
+  axios.get("/api/categories").then((response) => {
+    console.log("locations TEST!!", response);
+    const categoryTitles = response.data.map ((data) => data.title)
+    setCategoryOptions(categoryTitles);
+  });
+ }, []);
+
 
   const handleSubmit = (event) => {
 
@@ -81,6 +91,14 @@ export default function NewServiceForm(props) {
         />
       </Form.Group>
 
+      <select value={category} onChange={(e)=>setCategory(e.target.value)}>
+        {categoryOptions.map((categoryOption) => ( 
+          <option value={categoryOption}>
+          {categoryOption}
+          </option>
+        ))}
+      </select>
+
       <Form.Row>
         <Form.Group as={Col} controlId="formGridTitle">
           <Form.Label>Availablility start time</Form.Label>
@@ -109,3 +127,4 @@ export default function NewServiceForm(props) {
     </Form>
   );
 }
+
