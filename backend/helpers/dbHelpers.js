@@ -20,7 +20,7 @@ module.exports = (db) => {
       .then((result) => result.rows)
       .catch((err) => err);
   };
-    const getCategories = () => {
+  const getCategories = () => {
     const query = {
       text: "SELECT * FROM categories",
     };
@@ -168,7 +168,6 @@ module.exports = (db) => {
   const getAppointmentsByUserId = (id) => {
     const query = {
       text: `SELECT * FROM appointments WHERE users_id = ${id}`,
-      
     };
     return db
       .query(query)
@@ -212,11 +211,45 @@ module.exports = (db) => {
   const getServicesByUserId = (id) => {
     const query = {
       text: `SELECT * FROM services WHERE user_id = $1`,
-      values: [id]
+      values: [id],
     };
     return db
       .query(query)
       .then((result) => result.rows)
+      .catch((err) => err);
+  };
+
+  const getAppForProvider = (id) => {
+    const query = {
+      text: `SELECT count(*) from appointments`,
+    };
+  };
+
+  const updateUserPhoto = (photo, id) => {
+    const query = {
+      text: `UPDATE users
+      SET photo = $1
+      WHERE users.id = $2`,
+      values: [photo, id],
+    };
+
+    return db
+      .query(query)
+      .then((result) => result.rows[0])
+      .catch((err) => err);
+  };
+
+  const updateUserProviderStatus = (status, id) => {
+    const query = {
+      text: `UPDATE users
+      SET isServiceProvider = $1
+      WHERE users.id = $2`,
+      values: [status, id],
+    };
+
+    return db
+      .query(query)
+      .then((result) => result.rows[0])
       .catch((err) => err);
   };
 
@@ -240,5 +273,8 @@ module.exports = (db) => {
     getUsersPosts,
     addAppointment,
     addLocation,
+    updateUserPhoto,
+    updateUserProviderStatus,
+    getAppForProvider,
   };
 };
