@@ -16,12 +16,12 @@ const Calendar = (props) => {
     console.log("Availability slot selected: ", a);
 
     const data = {
-      title: props.services[0].title,
+      title: props.services.title,
       rating: null,
       isconfirmed: false,
       st_date: a.startDate,
       end_date: a.endDate,
-      services_id: props.services[0].id,
+      services_id: props.services.id,
       availabilities_id: props.timeframe.id,
       users_id: props.user.id,
     };

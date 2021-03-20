@@ -3,8 +3,8 @@ import Calendar from "../Availability/calendar";
 export default function Service(props) {
   return (
     <div>
-      <h1>{props.services[0].title}</h1>
-      <h1>{props.services[0].id}</h1>
+      <h1>{props.services.title}</h1>
+      <h1>{props.services.id}</h1>
       <button>Next</button>
       <button>Back</button>
       <div>
