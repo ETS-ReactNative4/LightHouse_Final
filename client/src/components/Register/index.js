@@ -7,6 +7,7 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import Image from "react-bootstrap/Image";
 
 export default function Register(props) {
   console.log("this is props of register", props);
@@ -74,7 +75,9 @@ export default function Register(props) {
       {props.user && props.user.register ? (
         <Container className="register">
           <Row>
-            <Col md={3} className="register-left"></Col>
+            <Col md={3} className="register-left">
+              <Image src="/images/random.png" alt="" />
+            </Col>
             <Col md={9} className="register-right">
               <Form method="POST" action="/api/register">
                 <Form.Row>
