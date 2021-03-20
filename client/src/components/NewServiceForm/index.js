@@ -100,11 +100,11 @@ useEffect(() => {
           </option>
         ))}
       </select>
-      <DropdownButton id="dropdown-basic-button" title="Dropdown button">
-  <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-  <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-  <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-</DropdownButton>
+      <DropdownButton id="dropdown-basic-button" title="Category" value={category} onChange={(e)=>setCategory(e.target.value)}>
+        {categoryOptions.map((categoryOption) => ( 
+        <Dropdown.Item value={categoryOption}>{categoryOption}</Dropdown.Item>
+        ))}
+      </DropdownButton>
 
       <Form.Row>
         <Form.Group as={Col} controlId="formGridTitle">
