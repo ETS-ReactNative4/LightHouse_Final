@@ -82,14 +82,14 @@ useEffect(() => {
         />
       </Form.Group>
 
-      <Form.Group controlId="formGridCategory">
+      {/* <Form.Group controlId="formGridCategory">
         <Form.Label>Category</Form.Label>
         <Form.Control
           name="category"
           placeholder="Please enter the category name for your serice, i.e: plumbing"
           onChange={(event) => setCategory(event.target.value)}
         />
-      </Form.Group>
+      </Form.Group> */}
 
       <select value={category} onChange={(e)=>setCategory(e.target.value)}>
         {categoryOptions.map((categoryOption) => ( 
