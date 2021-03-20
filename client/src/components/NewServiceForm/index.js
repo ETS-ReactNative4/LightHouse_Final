@@ -93,18 +93,35 @@ useEffect(() => {
         />
       </Form.Group> */}
 
-      <select value={category} onChange={(e)=>setCategory(e.target.value)}>
+      {/* <select value={category} onChange={(e)=>setCategory(e.target.value)}>
         {categoryOptions.map((categoryOption) => ( 
           <option value={categoryOption}>
           {categoryOption}
           </option>
         ))}
-      </select>
-      <DropdownButton id="dropdown-basic-button" title="Category" value={category} onChange={(e)=>setCategory(e.target.value)}>
+      </select> */}
+
+    <Form.Group controlId="exampleForm.ControlSelect1">
+      <Form.Label>Category</Form.Label>
+      <Form.Control as="select" onChange={(e)=>setCategory(e.target.value)}>
+        {categoryOptions.map((categoryOption) => ( 
+          <option value={categoryOption}>
+            {categoryOption}
+          </option>
+        ))}
+      </Form.Control>
+    </Form.Group>
+
+      
+    {/* <Form.Group controlId="formGridFee">
+      <Form.Label>Category</Form.Label>
+      <DropdownButton id="dropdown-basic-button" title={category} id={category} onChange={(e)=>setCategory(e.target.value)}>
         {categoryOptions.map((categoryOption) => ( 
         <Dropdown.Item value={categoryOption}>{categoryOption}</Dropdown.Item>
+      
         ))}
       </DropdownButton>
+    </Form.Group> */}
 
       <Form.Row>
         <Form.Group as={Col} controlId="formGridTitle">
