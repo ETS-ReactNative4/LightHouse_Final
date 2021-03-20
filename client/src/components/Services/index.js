@@ -27,7 +27,7 @@ export default function Services(props) {
   };
 
   const getServices = () => {
-    if (services) {
+    if (Array.isArray(services)) {
       return services.map((s) => {
         return (
           <ListGroup horizontal>

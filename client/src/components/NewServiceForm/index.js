@@ -16,6 +16,10 @@ export default function NewServiceForm(props) {
 
   useEffect(() => {
     axios.get("/api/categories").then((response) => {
+      console.log(
+        "This is the response data from the GET api/categories",
+        response.data
+      );
       if (Array.isArray(response.data)) {
         const categoryTitles = response.data.map((data) => data.title);
         setCategoryOptions(categoryTitles);
