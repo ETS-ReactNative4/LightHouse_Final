@@ -22,8 +22,9 @@ export default function Confirm(props) {
     history.push("/calendar");
   };
 
-  console.log("this is the confim props", props.booking);
-  const date = JSON.stringify(props.booking.st_date);
+  console.log("THIS is the confim props 123241423", props.booking.st_date);
+  const dateString = props.booking.st_date.toString();
+  console.log("THIS is the confim once stinginfied", dateString);
   return (
     <>
       {props.booking ? (
@@ -32,7 +33,7 @@ export default function Confirm(props) {
             <InputGroup.Prepend>
               <InputGroup.Text id="inputGroup-sizing-sm">
                 Do you wish to confirm your appointment for{" "}
-                {props.booking.title} {date}
+                {props.booking.title} {dateString}
               </InputGroup.Text>
             </InputGroup.Prepend>
           </InputGroup>
