@@ -42,7 +42,7 @@ export default function NewServiceForm(props) {
     console.log("Final data is", data);
 
     axios.post("/api/services/new", { data }).then((response) => {
-      console.log("success!!");
+      console.log("POST /api/services/new is successfull!!");
     });
     axios
       .post(`/api/availabilities/${props.user.id}`, { availability })

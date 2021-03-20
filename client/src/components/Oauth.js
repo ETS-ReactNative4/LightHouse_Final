@@ -21,7 +21,10 @@ function Oauth(props) {
       };
       axios.post("/api/login", userObject).then(
         (response) => {
-          console.log("potatoes", response.data.msg);
+          console.log(
+            "This is the response data.msg from GET /api/login",
+            response.data.msg
+          );
           if (response.data.register) {
             let user = {
               ...userObject,
