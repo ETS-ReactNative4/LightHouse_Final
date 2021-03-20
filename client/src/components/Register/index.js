@@ -74,7 +74,7 @@ export default function Register(props) {
         <div className="container register">
           <Form method="POST" action="/api/register">
             <Form.Row>
-              <Form.Group as={Col} controlId="formGridEmail">
+              <Form.Group as={Col} controlId="formGridName">
                 <Form.Control
                   type="text"
                   name="name"
@@ -92,54 +92,62 @@ export default function Register(props) {
                 />
               </Form.Group>
             </Form.Row>
-            <div>
-              <input type="checkbox" id="service" name="service"></input>
-              <label for="service">Do you wish to provide services ?</label>
-            </div>
-            <div>
+
+            <Form.Group id="formGridCheckbox">
+              <Form.Check
+                type="checkbox"
+                id="service"
+                name="service"
+                label="Do you wish to provide services ?"
+              ></Form.Check>
+            </Form.Group>
+
+            <Form.Group controlId="location">
               <Button onClick={getLocation}>Get my current location</Button>
-            </div>
-            <div>
-              <label>
-                Address
-                <input
+            </Form.Group>
+
+            <Form.Row>
+              <Form.Group as={Col} controlId="formGridAddress">
+                <Form.Control
                   type="text"
                   name="full_address"
                   value={props.location && props.location.address}
+                  placeholder="Your address"
                 />
-              </label>
-              <label>
-                City
-                <input
+              </Form.Group>
+
+              <Form.Group as={Col} controlId="formGridCity">
+                <Form.Control
                   type="text"
                   name="city"
                   value={props.location && props.location.city}
+                  placeholder="Your city"
                 />
-              </label>
-            </div>
-            <div>
-              <label>
-                Postal code
-                <input
+              </Form.Group>
+            </Form.Row>
+            <Form.Row>
+              <Form.Group as={Col} controlId="formGridPostal">
+                <Form.Control
                   type="text"
                   name="postal_code"
                   value={props.location && props.location.postal}
+                  placeholder="Postal code"
                 />
-              </label>
-              <label>
-                Country
-                <input
+              </Form.Group>
+              <Form.Group as={Col} controlId="formGridCountry">
+                <Form.Control
                   type="text"
                   name="country"
                   value={props.location && props.location.country}
+                  placeholder="Country"
                 />
-              </label>
-            </div>
-            <div>
+              </Form.Group>
+            </Form.Row>
+            <Form.Group controlId="submit">
               <Button type="submit" onClick={registration}>
                 Register
               </Button>
-            </div>
+            </Form.Group>
           </Form>
         </div>
       ) : (
