@@ -29,8 +29,9 @@ router.get('/myservices/:id', (req, res) => {
       }));
 });
   router.post("/new", (req, res) => {
-    const { formTitle, formCategory, formDescription, formFee } = req.body.data;
-    addService(formTitle, formCategory, formDescription, formFee)
+    
+    const { formTitle, formCategory, formDescription, formFee, user_id} = req.body.data;
+    addService(formTitle, formCategory, formDescription, formFee, user_id)
       .then(() => res.status(201).json({
         msg : "created",
       }))

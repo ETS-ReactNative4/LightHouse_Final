@@ -14,12 +14,14 @@ export default function NewServiceForm(props) {
   const [endTime, setEndTime] = useState(24);
 
   const handleSubmit = (event) => {
+
     event.preventDefault();
     const data = {
       formTitle: title,
       formDescription: description,
       formFee: fee,
       formCategory: category,
+      user_id: props.user.id
     };
     const availability = {
       start_time: startTime,
