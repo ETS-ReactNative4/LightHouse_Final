@@ -99,10 +99,10 @@ module.exports = (db) => {
       .catch((err) => err);
   };
 
-  const addService = (title, category, description, fee) => {
+  const addService = (title, category, description, fee, user_id) => {
     const query = {
-      text: `INSERT INTO services (title, category, description, fee) VALUES ($1, $2, $3, $4) RETURNING *`,
-      values: [title, category, description, fee],
+      text: `INSERT INTO services (title, category, description, fee, user_id) VALUES ($1, $2, $3, $4, $5) RETURNING *`,
+      values: [title, category, description, fee, user_id],
     };
 
     return db
