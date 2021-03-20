@@ -56,7 +56,13 @@ const App = () => {
           </Route>
           <Route path="/calendar">
             {timeframe ? (
-              <Calendar timeframe={timeframe} services={services} user={user} />
+              <Calendar
+                timeframe={timeframe}
+                services={services}
+                user={user}
+                booking={booking}
+                setBooking={setBooking}
+              />
             ) : (
               <p>loading</p>
             )}
