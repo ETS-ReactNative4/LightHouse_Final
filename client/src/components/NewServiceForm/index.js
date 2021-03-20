@@ -3,8 +3,6 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Dropdown from 'react-bootstrap/Dropdown'
 import axios from "axios";
 
 export default function NewServiceForm(props) {
@@ -18,13 +16,10 @@ export default function NewServiceForm(props) {
 
 useEffect(() => {
   axios.get("/api/categories").then((response) => {
-    console.log("locations TEST!!", response);
-    const categoryTitles = response.data.map ((data) => data.title)
+    const categoryTitles = response.data.map((data) => data.title)
     setCategoryOptions(categoryTitles);
   });
  }, []);
-
-
   const handleSubmit = (event) => {
 
     event.preventDefault();
@@ -84,44 +79,16 @@ useEffect(() => {
         />
       </Form.Group>
 
-      {/* <Form.Group controlId="formGridCategory">
+      <Form.Group controlId="exampleForm.ControlSelect1">
         <Form.Label>Category</Form.Label>
-        <Form.Control
-          name="category"
-          placeholder="Please enter the category name for your serice, i.e: plumbing"
-          onChange={(event) => setCategory(event.target.value)}
-        />
-      </Form.Group> */}
-
-      {/* <select value={category} onChange={(e)=>setCategory(e.target.value)}>
-        {categoryOptions.map((categoryOption) => ( 
-          <option value={categoryOption}>
-          {categoryOption}
-          </option>
-        ))}
-      </select> */}
-
-    <Form.Group controlId="exampleForm.ControlSelect1">
-      <Form.Label>Category</Form.Label>
-      <Form.Control as="select" onChange={(e)=>setCategory(e.target.value)}>
-        {categoryOptions.map((categoryOption) => ( 
-          <option value={categoryOption}>
-            {categoryOption}
-          </option>
-        ))}
-      </Form.Control>
-    </Form.Group>
-
-      
-    {/* <Form.Group controlId="formGridFee">
-      <Form.Label>Category</Form.Label>
-      <DropdownButton id="dropdown-basic-button" title={category} id={category} onChange={(e)=>setCategory(e.target.value)}>
-        {categoryOptions.map((categoryOption) => ( 
-        <Dropdown.Item value={categoryOption}>{categoryOption}</Dropdown.Item>
-      
-        ))}
-      </DropdownButton>
-    </Form.Group> */}
+        <Form.Control as="select"  onChange={(e)=>setCategory(e.target.value)}>
+          {categoryOptions.map((categoryOption) => ( 
+            <option value={categoryOption}>
+              {categoryOption}
+            </option>
+          ))}
+        </Form.Control>
+      </Form.Group>
 
       <Form.Row>
         <Form.Group as={Col} controlId="formGridTitle">
@@ -151,4 +118,3 @@ useEffect(() => {
     </Form>
   );
 }
-
