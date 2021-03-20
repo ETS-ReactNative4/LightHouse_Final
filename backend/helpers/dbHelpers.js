@@ -20,6 +20,16 @@ module.exports = (db) => {
       .then((result) => result.rows)
       .catch((err) => err);
   };
+    const getCategories = () => {
+    const query = {
+      text: "SELECT * FROM categories",
+    };
+
+    return db
+      .query(query)
+      .then((result) => result.rows)
+      .catch((err) => err);
+  };
 
   const getServices = () => {
     const query = {
@@ -99,10 +109,10 @@ module.exports = (db) => {
       .catch((err) => err);
   };
 
-  const addService = (title, category, description, fee) => {
+  const addService = (title, category, description, fee, user_id) => {
     const query = {
-      text: `INSERT INTO services (title, category, description, fee) VALUES ($1, $2, $3, $4) RETURNING *`,
-      values: [title, category, description, fee],
+      text: `INSERT INTO services (title, category, description, fee, user_id) VALUES ($1, $2, $3, $4, $5) RETURNING *`,
+      values: [title, category, description, fee, user_id],
     };
 
     return db
@@ -110,50 +120,6 @@ module.exports = (db) => {
       .then((result) => result.rows[0])
       .catch((err) => err);
   };
-
-  // const addAppointment = (
-  //   title,
-  //   // rating,
-  //   // isConfirmed,
-  //   // users_id,
-  //   // start_date,
-  //   // end_date,
-  //   // services_id,
-  //   // availabilities_id
-  // ) => {
-  //   console.log("lets print title", title);
-  //   const query = {
-  //     text: `INSERT INTO appointments (
-  //     title)
-  //     // ,
-  //     // rating,
-  //     // isConfirmed,
-  //     // users_id,
-  //     // start_date,
-  //     // end_date,
-  //     // services_id,
-  //     // availabilities_id )
-  //     VALUES
-  //     ($1)
-  //     // , $2, $3, $4, $5, $6, $7 $8)
-  //     RETURNING *`,
-  //     values: [
-  //     title
-  //     // rating,
-  //     // isConfirmed,
-  //     // users_id,
-  //     // start_date,
-  //     // end_date,
-  //     // services_id,
-  //     // availabilities_id,
-  //     ]
-  //   };
-
-  //   return db
-  //     .query(query)
-  //     .then((result) => result.rows[0])
-  //     .catch((err) => err);
-  // };
 
   const addAppointment = (title, rating, isConfirmed, users_id) => {
     const query = {
@@ -257,6 +223,7 @@ module.exports = (db) => {
   return {
     getUsers,
     getLocations,
+    getCategories,
     getUserLocation,
     getServices,
     getServicesByValue,

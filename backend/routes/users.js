@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const {getPostsByUsers} = require("../helpers/dataHelpers");
+const { getPostsByUsers } = require("../helpers/dataHelpers");
 
 module.exports = ({
   getUsers,
@@ -33,7 +33,7 @@ module.exports = ({
   });
 
   router.post("/:id/photo", (req, res) => {
-    const {photo} = req.body;
+    const { photo } = req.body;
     console.log("THIS IS PHOTO:", photo);
 
     if (photo) {
@@ -52,12 +52,12 @@ module.exports = ({
   });
 
   router.post("/:id/provider", (req, res) => {
-    const {provider} = req.body;
+    const { provider } = req.body;
     console.log("THIS IS PROVIDER:", provider);
 
     updateUserProviderStatus(provider, req.params.id)
       .then(() => {
-        console.log("success!");
+        console.log("POST to :id/provider is succcessfull");
         getUserById(req.params.id)
           .then((users) => res.json(users))
           .catch((err) =>
@@ -87,7 +87,7 @@ module.exports = ({
   });
 
   router.post("/", (req, res) => {
-    const {first_name, last_name, email, password} = req.body;
+    const { first_name, last_name, email, password } = req.body;
 
     getUserByEmail(email)
       .then((user) => {

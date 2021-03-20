@@ -1,12 +1,11 @@
-import {useState, useEffect} from "react";
-import {useHistory} from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
 import Spinner from "react-bootstrap/Spinner";
 
 import axios from "axios";
@@ -19,7 +18,10 @@ export default function Profile(props) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    console.log("THIS IS users:", props.user);
+    console.log(
+      "this is the value of users.props in the Profile component:",
+      props.user
+    );
     if (props.user !== null) {
       setImage(props.user.photo);
       setProvider(props.user.isserviceprovider);
@@ -49,13 +51,19 @@ export default function Profile(props) {
       }
     );
     const file = await res.json();
-    console.log("THIS IS FILE:", file.secure_url);
-    console.log("THIS IS USER", props.user.id);
+    console.log(
+      "Value of file.secure.url in the profile component",
+      file.secure_url
+    );
+    console.log(
+      "Value of props.user.id in the profile component",
+      props.user.id
+    );
 
     axios
-      .post(`/api/users/${userID}/photo`, {photo: file.secure_url})
+      .post(`/api/users/${userID}/photo`, { photo: file.secure_url })
       .then((response) => {
-        console.log("success!!");
+        console.log("POST to /api/user/:id/photo is a success!!");
       });
 
     setImage(file.secure_url);
@@ -67,10 +75,13 @@ export default function Profile(props) {
     event.preventDefault();
 
     axios
-      .post(`/api/users/${userID}/provider`, {provider: !provider})
+      .post(`/api/users/${userID}/provider`, { provider: !provider })
       .then((response) => {
-        console.log("success!!");
-        console.log("THIS IS RESPONSE:", response.data.isserviceprovider);
+        console.log("POST to /api/users/:id/provider success!!");
+        console.log(
+          "Response from POST /api/users/:id/provider",
+          response.data.isserviceprovider
+        );
         setProvider(response.data.isserviceprovider);
       });
   };
@@ -80,7 +91,7 @@ export default function Profile(props) {
       <Container>
         {!image ? (
           <Row>
-            <Col className="profile-image" md={{span: 6, offset: 3}}>
+            <Col className="profile-image" md={{ span: 6, offset: 3 }}>
               <Col>
                 <Image
                   className="profile-image-img"
@@ -92,7 +103,7 @@ export default function Profile(props) {
           </Row>
         ) : (
           <Row>
-            <Col className="profile-image" md={{span: 6, offset: 3}}>
+            <Col className="profile-image" md={{ span: 6, offset: 3 }}>
               <Col>
                 <Image
                   className="profile-image-img"
