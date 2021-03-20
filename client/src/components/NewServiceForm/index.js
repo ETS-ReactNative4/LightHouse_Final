@@ -3,6 +3,8 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown'
 import axios from "axios";
 
 export default function NewServiceForm(props) {
@@ -98,6 +100,11 @@ useEffect(() => {
           </option>
         ))}
       </select>
+      <DropdownButton id="dropdown-basic-button" title="Dropdown button">
+  <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+  <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+  <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+</DropdownButton>
 
       <Form.Row>
         <Form.Group as={Col} controlId="formGridTitle">
