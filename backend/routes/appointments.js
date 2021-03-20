@@ -18,7 +18,6 @@ module.exports = ({
   });
 
   router.get("/:id", (req, res) => {
-    // console.log("appointments",req.params.id);
     getAppointmentsByUserId(req.params.id)
       .then((result) => res.json(result))
       .catch((err) =>
@@ -29,7 +28,6 @@ module.exports = ({
   });
 
   router.get("/provider/:id", (req, res) => {
-    // console.log("appointments",req.params.id);
     getAppForProvider(req.params.id)
       .then((result) => res.json(result))
       .catch((err) =>
