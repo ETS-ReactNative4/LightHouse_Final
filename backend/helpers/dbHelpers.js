@@ -20,6 +20,16 @@ module.exports = (db) => {
       .then((result) => result.rows)
       .catch((err) => err);
   };
+    const getCategories = () => {
+    const query = {
+      text: "SELECT * FROM categories",
+    };
+
+    return db
+      .query(query)
+      .then((result) => result.rows)
+      .catch((err) => err);
+  };
 
   const getServices = () => {
     const query = {
@@ -257,6 +267,7 @@ module.exports = (db) => {
   return {
     getUsers,
     getLocations,
+    getCategories,
     getUserLocation,
     getServices,
     getServicesByValue,
