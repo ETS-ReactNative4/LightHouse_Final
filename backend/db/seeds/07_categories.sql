@@ -6,8 +6,8 @@ VALUES
     ('House Repair'),
     ('Tutoring'),
     ('Free Help'),
-    ('Car Reapair'),
-    ('Programing'),
+    ('Car Repair'),
+    ('Programming'),
     ('Shopping');
 
 
