@@ -8,8 +8,11 @@ import Card from "react-bootstrap/Card";
 import queryString from "query-string";
 
 export default function Home(props) {
-  console.log("PROPS",props);
-  console.log("armin props", queryString.parse(props.location.search));
+  console.log("This is the value of props in the home component", props);
+  console.log(
+    "This is the value of location.search in home component",
+    queryString.parse(props.location.search)
+  );
   const params = queryString.parse(props.location.search);
   return (
     <>
@@ -26,7 +29,7 @@ export default function Home(props) {
       <Container fluid className="main-cards">
         <Row>
           <Col sm className="card-item">
-            <Card style={{width: "18rem"}}>
+            <Card style={{ width: "18rem" }}>
               <Card.Img variant="top" src="holder.js/100px180" />
               <Card.Body>
                 <Card.Title>Card Title</Card.Title>
@@ -39,7 +42,7 @@ export default function Home(props) {
             </Card>
           </Col>
           <Col sm className="card-item">
-            <Card style={{width: "18rem"}}>
+            <Card style={{ width: "18rem" }}>
               <Card.Img variant="top" src="holder.js/100px180" />
               <Card.Body>
                 <Card.Title>Card Title</Card.Title>
@@ -52,7 +55,7 @@ export default function Home(props) {
             </Card>
           </Col>
           <Col sm className="card-item">
-            <Card style={{width: "18rem"}}>
+            <Card style={{ width: "18rem" }}>
               <Card.Img variant="top" src="holder.js/100px180" />
               <Card.Body>
                 <Card.Title>Card Title</Card.Title>
