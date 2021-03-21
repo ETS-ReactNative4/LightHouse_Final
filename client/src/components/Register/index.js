@@ -75,12 +75,12 @@ export default function Register(props) {
       {props.user && props.user.register ? (
         <div className="register">
           <div className="main-register">
-            <div md={3} className="register-left">
+            <div className="col-md-3 register-left">
               <Image src="/images/random.png" alt="" />
               <h3>Welcome to AppName</h3>
               <p>You are almost there - please register to continue</p>
             </div>
-            <div md={9} className="register-right">
+            <div className="col-md-9 register-right">
               <div className="col">
                 <h3 className="heading">Signup</h3>
                 <Form
