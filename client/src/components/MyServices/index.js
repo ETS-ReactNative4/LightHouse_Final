@@ -11,34 +11,42 @@ export default function MyServices(props) {
   const [search, setSearch] = useState(" ");
   const { apiUrl } = props;
   let history = useHistory();
-  console.log("what is props ", props.user.id);
-  console.log("Double check", `${apiUrl}${search.val}`);
+  console.log("Value of props.user.id in MyService component ", props.user.id);
+  console.log("URL and search value in MyServices", `${apiUrl}${search.val}`);
   useEffect(() => {
     axios.get(`${apiUrl}${props.user.id}`).then((response) => {
-      console.log("This DATA",response.data);
+      console.log("Response from GET call in My Services", response.data);
       setServices(response.data);
     });
   }, [search]);
 
   const getServices = () => {
-    if ( !services || services.length === 0  || services.name === "error") return [];
-    return Array.isArray(services) && services.map((s) => {
-      return (
-        <ListGroup horizontal key={s.id}>
-          <ListGroup.Item>{s.id}</ListGroup.Item>
-          <ListGroup.Item>{s.title}</ListGroup.Item>
-          <ListGroup.Item>{s.category}</ListGroup.Item>
-          <ListGroup.Item>{s.fee}</ListGroup.Item>
-          <ListGroup.Item>{s.user_id}</ListGroup.Item>
-          <ListGroup.Item>{s.created_at}</ListGroup.Item>
-          <ListGroup.Item>
-          <Button onClick={() => { history.push(`/service/?id=${s.id}&title=${s.title}`)}}>
-            Select
-          </Button>
-          </ListGroup.Item>
-        </ListGroup>
-      );
-    });
+    if (!services || services.length === 0 || services.name === "error")
+      return [];
+    return (
+      Array.isArray(services) &&
+      services.map((s) => {
+        return (
+          <ListGroup horizontal key={s.id}>
+            <ListGroup.Item>{s.id}</ListGroup.Item>
+            <ListGroup.Item>{s.title}</ListGroup.Item>
+            <ListGroup.Item>{s.category}</ListGroup.Item>
+            <ListGroup.Item>{s.fee}</ListGroup.Item>
+            <ListGroup.Item>{s.user_id}</ListGroup.Item>
+            <ListGroup.Item>{s.created_at}</ListGroup.Item>
+            <ListGroup.Item>
+              <Button
+                onClick={() => {
+                  history.push(`/service/?id=${s.id}&title=${s.title}`);
+                }}
+              >
+                Select
+              </Button>
+            </ListGroup.Item>
+          </ListGroup>
+        );
+      })
+    );
   };
 
   const serviceElement = getServices();

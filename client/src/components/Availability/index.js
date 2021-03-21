@@ -13,18 +13,20 @@ export default function Availability(props) {
   }, []);
 
   const getAvail = () => {
-    return avail.map((s) => {
-      return (
-        <ListGroup horizontal>
-          <ListGroup.Item>{s.id}</ListGroup.Item>
-          <ListGroup.Item>{s.start_time}</ListGroup.Item>
-          <ListGroup.Item>{s.end_time}</ListGroup.Item>
-          <ListGroup.Item>{s.available_date}</ListGroup.Item>
-          <ListGroup.Item>{s.services_id}</ListGroup.Item>
-          <ListGroup.Item>{s.modified_at}</ListGroup.Item>
-        </ListGroup>
-      );
-    });
+    if (Array.isArray(avail)) {
+      return avail.map((s) => {
+        return (
+          <ListGroup horizontal>
+            <ListGroup.Item>{s.id}</ListGroup.Item>
+            <ListGroup.Item>{s.start_time}</ListGroup.Item>
+            <ListGroup.Item>{s.end_time}</ListGroup.Item>
+            <ListGroup.Item>{s.available_date}</ListGroup.Item>
+            <ListGroup.Item>{s.services_id}</ListGroup.Item>
+            <ListGroup.Item>{s.modified_at}</ListGroup.Item>
+          </ListGroup>
+        );
+      });
+    }
   };
 
   const availElement = getAvail();

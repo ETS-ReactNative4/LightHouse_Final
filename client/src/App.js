@@ -31,7 +31,10 @@ const App = () => {
     setUser(false);
     console.log("logout value", val);
   };
-  console.log("LOCATION", location);
+  console.log(
+    "This is the value of the location state in the app component",
+    location
+  );
   return (
     <Router>
       <div className="App">
@@ -56,7 +59,13 @@ const App = () => {
           </Route>
           <Route path="/calendar">
             {timeframe ? (
-              <Calendar timeframe={timeframe} services={services} user={user} />
+              <Calendar
+                timeframe={timeframe}
+                services={services}
+                user={user}
+                booking={booking}
+                setBooking={setBooking}
+              />
             ) : (
               <p>loading</p>
             )}

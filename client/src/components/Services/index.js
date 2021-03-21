@@ -12,7 +12,7 @@ export default function Services(props) {
   const { services, setServices } = props;
   useEffect(() => {
     axios.get(`/api/services/${search.val}`).then((response) => {
-      console.log("response from api services", response.data);
+      console.log("response from GET /api/services", response.data);
       setServices(response.data);
     });
   }, [search]);
@@ -20,14 +20,17 @@ export default function Services(props) {
   const getserviceInfo = (pid) => {
     axios.get(`/api/availabilities/${pid.user_id}`).then((response) => {
       props.setTimeFrame(response.data);
-      props.setServices([pid]);
-      console.log(response.data);
+      props.setServices(pid);
+      console.log(
+        "This is the response data from GET api/availabilities",
+        response.data
+      );
       history.push(`/service/?id=${pid.user_id}&title=${pid.title}`);
     });
   };
 
   const getServices = () => {
-    if (services) {
+    if (Array.isArray(services)) {
       return services.map((s) => {
         return (
           <ListGroup horizontal>

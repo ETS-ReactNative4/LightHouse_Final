@@ -1,8 +1,6 @@
-import queryString from "query-string";
 import Calendar from "../Availability/calendar";
 
 export default function Service(props) {
-  const params = queryString.parse(props.location.search);
   return (
     <div>
       <h1>{props.services.title}</h1>
