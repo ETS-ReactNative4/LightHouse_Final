@@ -120,11 +120,19 @@ module.exports = (db) => {
       .then((result) => result.rows[0])
       .catch((err) => err);
   };
+      // title,
+      // rating,
+      // isConfirmed,
+      // st_date,
+      // end_date,
+      // services_id,
+      // availabilities_id,
+      // users_id,
 
-  const addAppointment = (title, rating, isConfirmed, users_id) => {
+  const addAppointment = (title, rating, isconfirmed, st_date, end_date) => {
     const query = {
-      text: `INSERT INTO appointments (title, rating, isConfirmed, users_id) VALUES ($1, $2, $3, $4) RETURNING *`,
-      values: [title, rating, isConfirmed, users_id],
+      text: `INSERT INTO appointments (title, rating, isconfirmed, st_date, end_date) VALUES ($1, $2, $3, $4, $5) RETURNING *`,
+      values: [title, rating, isconfirmed, st_date, end_date],
     };
 
     return db

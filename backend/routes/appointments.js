@@ -43,23 +43,24 @@ module.exports = ({
     const {
       title,
       rating,
-      isConfirmed,
-      users_id,
-      start_date,
+      isconfirmed,
+      st_date,
       end_date,
       services_id,
       availabilities_id,
+      users_id,
     } = req.body.data;
     // console.log("WHY THIS IS NOT WORKI", isConfirmed);
+
     addAppointment(
       title,
       rating,
-      isConfirmed,
-      users_id,
-      start_date,
+      isconfirmed,
+      st_date,
       end_date,
       services_id,
-      availabilities_id
+      availabilities_id,
+      users_id,
     )
       .then(() =>
         res.status(201).json({
