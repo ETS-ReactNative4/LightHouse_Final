@@ -4,9 +4,10 @@ import {useState, useEffect} from "react";
 import axios from "axios";
 
 export default function Notification(props) {
-  // const [mode, setMode] = useState("empty");
+  const [mode, setMode] = useState("empty");
+  let notifyAppoints;
 
-  let mode = "empty";
+  //let mode = "empty";
   const userID = props.user.id;
 
   let appCount = 0;
@@ -22,9 +23,12 @@ export default function Notification(props) {
 
   const compareApps = () => {
     axios.get(`/api/appointments/provider/${userID}`).then((response) => {
-      console.log("CHECKING");
+      console.log(response);
+      console.log(appCount);
+
+      notifyAppoints = response.data;
       if (response.data.length !== appCount) {
-        mode = "alert";
+        setMode("alert");
         appCount = response.data.length;
       }
     });
@@ -35,7 +39,7 @@ export default function Notification(props) {
   };
 
   const removeAlert = () => {
-    mode = "empty";
+    setMode("empty");
   };
 
   return (

@@ -60,7 +60,7 @@ module.exports = ({
       end_date,
       services_id,
       availabilities_id,
-      users_id,
+      users_id
     )
       .then(() =>
         res.status(201).json({

@@ -120,19 +120,37 @@ module.exports = (db) => {
       .then((result) => result.rows[0])
       .catch((err) => err);
   };
-      // title,
-      // rating,
-      // isConfirmed,
-      // st_date,
-      // end_date,
-      // services_id,
-      // availabilities_id,
-      // users_id,
+  // title,
+  // rating,
+  // isConfirmed,
+  // st_date,
+  // end_date,
+  // services_id,
+  // availabilities_id,
+  // users_id,
 
-  const addAppointment = (title, rating, isconfirmed, st_date, end_date, services_id, availabilities_id, users_id) => {
+  const addAppointment = (
+    title,
+    rating,
+    isconfirmed,
+    st_date,
+    end_date,
+    services_id,
+    availabilities_id,
+    users_id
+  ) => {
     const query = {
       text: `INSERT INTO appointments (title, rating, isconfirmed, st_date, end_date, services_id, availabilities_id, users_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
-      values: [title, rating, isconfirmed, st_date, end_date, services_id, availabilities_id, users_id],
+      values: [
+        title,
+        rating,
+        isconfirmed,
+        st_date,
+        end_date,
+        services_id,
+        availabilities_id,
+        users_id,
+      ],
     };
 
     return db
@@ -229,17 +247,21 @@ module.exports = (db) => {
 
   const getAppForProvider = (id) => {
     const query = {
-      text: `SELECT appointments.title, appointments.services_id as service_id, services.user_id as user
-
+      text: `
+      SELECT appointments.title,
+      appointments.services_id as service_id,
+      appointments.created_at as create_time,
+      appointments.users_id as client_name
       FROM appointments
       JOIN services ON services.id = services_id
-      WHERE services.user_id = $1`,
+      WHERE services.user_id = $1
+      ORDER BY appointments.created_at DESC`,
       values: [id],
     };
     return db
       .query(query)
-      .then((result) => result.rows[0])
-      .catch((err) => err);
+      .then((result) => result.rows)
+      .catch((err) => console.log(err));
   };
 
   const updateUserPhoto = (photo, id) => {
