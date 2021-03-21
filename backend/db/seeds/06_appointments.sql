@@ -10,6 +10,6 @@ VALUES
       ('David Cross: Let America Laugh', 9, true,  4, 9, 6),
       ('Never Ever! (Nigdy w zyciu!)', 4, true, 10, 6, 2),
       ('The Vanishing American', 9, false, 8, 8, 7),
-      ('Calculator', 3, false, 4, 2, 8);
+      ('Calculator', 3, false, 9, 2, 8);
 
 

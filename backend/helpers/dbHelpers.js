@@ -129,10 +129,10 @@ module.exports = (db) => {
       // availabilities_id,
       // users_id,
 
-  const addAppointment = (title, rating, isconfirmed, st_date, end_date) => {
+  const addAppointment = (title, rating, isconfirmed, st_date, end_date, services_id, availabilities_id) => {
     const query = {
-      text: `INSERT INTO appointments (title, rating, isconfirmed, st_date, end_date) VALUES ($1, $2, $3, $4, $5) RETURNING *`,
-      values: [title, rating, isconfirmed, st_date, end_date],
+      text: `INSERT INTO appointments (title, rating, isconfirmed, st_date, end_date, services_id, availabilities_id) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`,
+      values: [title, rating, isconfirmed, st_date, end_date, services_id, availabilities_id],
     };
 
     return db
