@@ -3,15 +3,15 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import {useEffect, useState} from "react";
-import {useHistory} from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import Form from "react-bootstrap/Form";
-import {BsSearch} from "react-icons/bs";
+import { BsSearch } from "react-icons/bs";
 
 export default function Services(props) {
   const [search, setSearch] = useState(" ");
   const history = useHistory();
-  const {services, setServices} = props;
+  const { services, setServices } = props;
   useEffect(() => {
     axios.get(`/api/services/${search.val}`).then((response) => {
       console.log("response from GET /api/services", response.data);
@@ -23,6 +23,7 @@ export default function Services(props) {
     axios.get(`/api/availabilities/${pid.user_id}`).then((response) => {
       props.setTimeFrame(response.data);
       props.setServices(pid);
+      props.setMagicFix("SHOW_CALENDAR");
       console.log(
         "This is the response data from GET api/availabilities",
         response.data
@@ -71,7 +72,7 @@ export default function Services(props) {
             <FormControl
               aria-label="input"
               // value="{search.val}"
-              onChange={(e) => setSearch({val: e.target.value})}
+              onChange={(e) => setSearch({ val: e.target.value })}
               type="text"
               aria-describedby="inputGroup-sizing-sm"
             />

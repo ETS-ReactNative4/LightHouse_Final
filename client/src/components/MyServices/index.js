@@ -1,15 +1,15 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export default function MyServices(props) {
   const [services, setServices] = useState([]);
   const [search, setSearch] = useState(" ");
-  const {apiUrl} = props;
+  const { apiUrl } = props;
 
   console.log("THIS IS USER PROPS", props.user);
 
@@ -40,6 +40,7 @@ export default function MyServices(props) {
             <ListGroup.Item>
               <Button
                 onClick={() => {
+                  props.setMagicFix(false);
                   history.push(`/service/?id=${s.id}&title=${s.title}`);
                 }}
               >
@@ -66,7 +67,7 @@ export default function MyServices(props) {
           <FormControl
             aria-label="input"
             // value="{search.val}"
-            onChange={(e) => setSearch({val: e.target.value})}
+            onChange={(e) => setSearch({ val: e.target.value })}
             type="text"
             aria-describedby="inputGroup-sizing-sm"
           />
