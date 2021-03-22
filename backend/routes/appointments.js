@@ -6,7 +6,7 @@ module.exports = ({
   getAppointmentsByUserId,
   addAppointment,
   getAppForProvider,
-  setIsconfirm,
+  setIsConfirm,
 }) => {
   router.get("/", (req, res) => {
     getAppointments()
@@ -29,8 +29,8 @@ module.exports = ({
   });
 
   router.put("/:id", (req, res) => {
-    console.log("GOT put request".req.body);
-    //setIsconfirm(status, id)
+    console.log("GOT put request", req.body);
+    // setIsConfirm(status, id);
   });
 
   router.get("/provider/:id", (req, res) => {

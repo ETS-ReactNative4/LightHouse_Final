@@ -25,35 +25,6 @@ export default function Notification(props) {
   let appCount = 0;
   let countClient = 0;
 
-  // const myAppointments = () => {
-  //   if (Array.isArray(notifyAppoints)) {
-  //     return notifyAppoints.map((app) => {
-  //       return (
-  //         <ListGroup horizontal>
-  //           <ListGroup.Item>{app.title}</ListGroup.Item>
-  //           <ListGroup.Item>{app.client_id}</ListGroup.Item>
-  //           <ListGroup.Item>{app.start_time}</ListGroup.Item>
-  //           <ListGroup.Item>{app.end_time}</ListGroup.Item>
-  //           <Button
-  //             onClick={() => {
-  //               gotToLink(`/appointments/${userID}`);
-  //             }}
-  //           >
-  //             View appointments
-  //           </Button>
-  //         </ListGroup>
-  //       );
-  //     });
-  //   }
-  // };
-
-  // const popover = (
-  //   <Popover id="popover-basic">
-  //     <Popover.Title as="h3">My appointments</Popover.Title>
-  //     <Popover.Content>{myAppointments()}</Popover.Content>
-  //   </Popover>
-  // );
-
   useEffect(() => {
     axios.get(`/api/appointments/provider/${userID}`).then((response) => {
       console.log("success!!");

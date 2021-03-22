@@ -27,11 +27,11 @@ export default function Availability(props) {
       });
   }, []);
 
-  console.log("client appointment data", appointments);
-  console.log("Service provider appointment", serviceProviderApp);
+  // console.log("client appointment data", appointments);
+  // console.log("Service provider appointment", serviceProviderApp);
 
-  let clientAppointment = false;
-  let serviceProviderAppointment = false;
+  // let clientAppointment = false;
+  // let serviceProviderAppointment = false;
   //2 same axios call than in notification, if the call that check for appointment user id match curent user id render
   // the current table format.
   //If curent user === service.users_id, we gonna render a button and anther column to click on a confrim appointment button.
@@ -40,7 +40,7 @@ export default function Availability(props) {
   //On click make a axios PUT call to the backend to update the appointment row to isconfirm true
   const confirmButtoncheck = (id) => {
     axios.put(`/api/appointments/${id}`, {
-      isconfirm: true,
+      isconfirmed: true,
     });
   };
 

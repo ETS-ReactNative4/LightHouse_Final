@@ -249,7 +249,7 @@ module.exports = (db) => {
     const query = {
       text: `
       SELECT appointments.title,
-      appointments.isconfirm as isconfirm,
+      appointments.isconfirmed as isconfirmed,
       appointments.id as appointment_id,
       appointments.services_id as service_id,
       appointments.created_at as create_time,
@@ -281,10 +281,10 @@ module.exports = (db) => {
       .then((result) => result.rows[0])
       .catch((err) => err);
   };
-  const setIsconfirm = (status, id) => {
+  const setIsConfirm = (status, id) => {
     const query = {
       text: `UPDATE appointments
-      SET isServiceProvider = $1
+      SET isConfirmed = $1
       WHERE id = $2`,
       values: [status, id],
     };
@@ -331,6 +331,6 @@ module.exports = (db) => {
     updateUserPhoto,
     updateUserProviderStatus,
     getAppForProvider,
-    setIsconfirm,
+    setIsConfirm,
   };
 };
