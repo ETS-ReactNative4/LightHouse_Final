@@ -1,5 +1,5 @@
-import {useState} from "react";
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import { useState } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
@@ -23,7 +23,7 @@ require("dotenv").config();
 const App = () => {
   const [services, setServices] = useState([]);
   const [user, setUser] = useState(null);
-
+  const [magicFix, setMagicFix] = useState(false);
   const [timeframe, setTimeFrame] = useState([]);
   const [location, setLocation] = useState(null);
   const [booking, setBooking] = useState([]);
@@ -78,6 +78,7 @@ const App = () => {
           <Route path="/myservices">
             {user ? (
               <MyServices
+                setMagicFix={setMagicFix}
                 apiUrl={`api/services/myservices/`}
                 user={user}
                 location={location}
@@ -90,6 +91,7 @@ const App = () => {
           </Route>
           <Route path="/services">
             <Services
+              setMagicFix={setMagicFix}
               apiUrl={`api/services/`}
               user={user}
               location={location}
@@ -103,6 +105,7 @@ const App = () => {
           </Route>
           <Route path="/service" component={Service} exact>
             <Service
+              magicFix={magicFix}
               user={user}
               location={location}
               timeframe={timeframe}
