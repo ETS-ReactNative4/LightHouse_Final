@@ -249,6 +249,8 @@ module.exports = (db) => {
     const query = {
       text: `
       SELECT appointments.title,
+      appointments.isconfirm as isconfirm,
+      appointments.id as appointment_id,
       appointments.services_id as service_id,
       appointments.created_at as create_time,
       appointments.users_id as client_id,
@@ -279,7 +281,19 @@ module.exports = (db) => {
       .then((result) => result.rows[0])
       .catch((err) => err);
   };
+  const setIsconfirm = (status, id) => {
+    const query = {
+      text: `UPDATE appointments
+      SET isServiceProvider = $1
+      WHERE id = $2`,
+      values: [status, id],
+    };
 
+    return db
+      .query(query)
+      .then((result) => result.rows[0])
+      .catch((err) => err);
+  };
   const updateUserProviderStatus = (status, id) => {
     const query = {
       text: `UPDATE users
@@ -317,5 +331,6 @@ module.exports = (db) => {
     updateUserPhoto,
     updateUserProviderStatus,
     getAppForProvider,
+    setIsconfirm,
   };
 };
