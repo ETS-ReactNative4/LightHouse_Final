@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = ({ getLocations, getUserLocation }) => {
-  /* GET users listing. */
+
   router.get("/:id", (req, res) => {
     console.log(req.params.id);
     getUserLocation(req.params.id)

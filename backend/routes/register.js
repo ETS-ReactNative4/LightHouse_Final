@@ -22,7 +22,6 @@ module.exports = ({ getUsers, getUserByEmail, addUser, addLocation }) => {
             register: true,
             msg: r,
           });
-          //DOTO armin implement and add location using the user id from the response of add user
         });
       }
     });
