@@ -8,5 +8,9 @@ $theme-colors: (
   background: linear-gradient(to right, #25274d 30%, #464866 100%);
   color: aliceblue;
 }
+.service-button {
+  margin: 1.2rem;
+  min-width: 800px;
+}
 
 @import "~bootstrap/scss/bootstrap";

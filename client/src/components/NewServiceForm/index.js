@@ -64,37 +64,37 @@ export default function NewServiceForm(props) {
           <Form onSubmit={handleSubmit} >
       <Form.Row>
         <Form.Group as={Col} controlId="formGridTitle">
-          <Form.Label>Title of service</Form.Label>
+          <Form.Label>What do you call you service?</Form.Label>
           <Form.Control
             type="text"
             name="title"
-            placeholder="Enter title of the service you would like to provide"
+            placeholder="Title"
             onChange={(event) => setTitle(event.target.value)}
           />
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridDescription">
-          <Form.Label>Description</Form.Label>
+          <Form.Label>Give a little bit of description</Form.Label>
           <Form.Control
             type="text"
             name="description"
-            placeholder="Enter the description of your service"
+            placeholder="Description"
             onChange={(event) => setDescription(event.target.value)}
           />
         </Form.Group>
       </Form.Row>
 
       <Form.Group controlId="formGridFee">
-        <Form.Label>Fee</Form.Label>
+        <Form.Label>How much do you charge for an hour?</Form.Label>
         <Form.Control
           name="fee"
-          placeholder="Please enter the amount in $"
+          placeholder="$ Amount for one hour"
           onChange={(event) => setFee(event.target.value)}
         />
       </Form.Group>
 
       <Form.Group controlId="exampleForm.ControlSelect1">
-        <Form.Label>Category</Form.Label>
+        <Form.Label>Which category does it belong to?</Form.Label>
         <Form.Control as="select" onChange={(e) => setCategory(e.target.value)}>
           {categoryOptions.map((categoryOption) => (
             <option value={categoryOption}>{categoryOption}</option>
@@ -104,12 +104,11 @@ export default function NewServiceForm(props) {
 
       <Form.Row>
         <Form.Group as={Col} controlId="formGridTitle">
-          <Form.Label>Availablility start time</Form.Label>
+          <Form.Label>When is your start time?</Form.Label>
           <Form.Control
             as="select"
             type="text"
             name="start_time"
-            placeholder="Enter the stating hour at with you wish to be available each day"
             onChange={(event) => setStartTime(event.target.value)}>
               {timeInput.map((tI) => (
                 <option value={tI}>{tI}</option>
@@ -119,12 +118,11 @@ export default function NewServiceForm(props) {
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridDescription">
-          <Form.Label>Availablility end time</Form.Label>
+          <Form.Label>When is your end time? </Form.Label>
           <Form.Control
             as="select"
             type="text"
             name="end_time"
-            placeholder="Enter the ending hour at with you wish to stop being available"
             onChange={(event) => setEndTime(event.target.value)}>
               {timeInput.map((tI) => (
                 <option value={tI}>{tI}</option>
@@ -133,7 +131,7 @@ export default function NewServiceForm(props) {
         </Form.Group>
       </Form.Row>
 
-      <Button variant="primary" type="submit">
+      <Button className="service-button" variant="primary" type="submit">
         Submit
       </Button>
     </Form>
