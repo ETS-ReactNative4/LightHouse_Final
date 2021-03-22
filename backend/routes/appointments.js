@@ -29,8 +29,17 @@ module.exports = ({
   });
 
   router.put("/:id", (req, res) => {
-    console.log("GOT put request", req.body);
-    // setIsConfirm(status, id);
+    setIsConfirm(req.body.isconfirmed, req.params.id)
+      .then(() =>
+        res.status(201).json({
+          msg: "updated!",
+        })
+      )
+      .catch((err) =>
+        res.json({
+          error: err.message,
+        })
+      );
   });
 
   router.get("/provider/:id", (req, res) => {
