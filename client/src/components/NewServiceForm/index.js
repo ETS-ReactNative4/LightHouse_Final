@@ -18,7 +18,7 @@ export default function NewServiceForm(props) {
   const [startTime, setStartTime] = useState(0);
   const [endTime, setEndTime] = useState(24);
   const [categoryOptions, setCategoryOptions] = useState([]);
-
+  let timeInput = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
   useEffect(() => {
     axios.get("/api/categories").then((response) => {
       console.log(
@@ -106,21 +106,30 @@ export default function NewServiceForm(props) {
         <Form.Group as={Col} controlId="formGridTitle">
           <Form.Label>Availablility start time</Form.Label>
           <Form.Control
+            as="select"
             type="text"
             name="start_time"
             placeholder="Enter the stating hour at with you wish to be available each day"
-            onChange={(event) => setStartTime(event.target.value)}
-          />
+            onChange={(event) => setStartTime(event.target.value)}>
+              {timeInput.map((tI) => (
+                <option value={tI}>{tI}</option>
+               ))}
+          </Form.Control>
+
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridDescription">
           <Form.Label>Availablility end time</Form.Label>
           <Form.Control
+            as="select"
             type="text"
             name="end_time"
             placeholder="Enter the ending hour at with you wish to stop being available"
-            onChange={(event) => setEndTime(event.target.value)}
-          />
+            onChange={(event) => setEndTime(event.target.value)}>
+              {timeInput.map((tI) => (
+                <option value={tI}>{tI}</option>
+              ))}
+          </Form.Control>
         </Form.Group>
       </Form.Row>
 
