@@ -15,9 +15,9 @@ import Profile from "./components/Profile";
 import Confirm from "./components/Availability/confirm";
 import "./App.css";
 import PageNotFound from "./components/PageNotFound";
-
 //bootstrap stylesheet
 import "bootstrap/dist/css/bootstrap.min.css";
+require("dotenv").config();
 
 const App = () => {
   const [services, setServices] = useState([]);

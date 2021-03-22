@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 
 function Oauth(props) {
   const history = useHistory();
+  const API_KEY = process.env.REACT_APP_G_API_KEY;
 
   // console.log(history);
   const responseGoogle = (response) => {
@@ -57,7 +58,7 @@ function Oauth(props) {
     return (
       <div className="App">
         <GoogleLogin
-          clientId="678724353481-e9tdq2si3r8rfabm0bbn768enjt6qrt4.apps.googleusercontent.com"
+          clientId={API_KEY}
           buttonText="Login"
           onSuccess={responseGoogle}
           onFailure={responseGoogle}
@@ -71,7 +72,7 @@ function Oauth(props) {
       <div className="App">
         {props.user.full_name}
         <GoogleLogout
-          clientId="658977310896-knrl3gka66fldh83dao2rhgbblmd4un9.apps.googleusercontent.com"
+          clientId={API_KEY}
           buttonText="Logout"
           onLogoutSuccess={props.logout}
         ></GoogleLogout>
