@@ -1,7 +1,43 @@
+.searchpagecont {
+  display: flex;
+  background: linear-gradient(to right, #25274d 30%, #464866 100%);
+  height: 100vh;
+  flex-direction: column;
+  overflow: auto;
+}
+
 .main-container {
   display: flex;
-  flex-direction: column;
-  background-color: #25274d;
+  flex-direction: row;
+  margin-top: 13vh;
+}
+
+.btn-services {
+  border-radius: 1.5rem;
+  font-weight: 600;
+  color: #29648a;
+  cursor: pointer;
+}
+
+.findresult {
+  margin-left: 20vh;
+  margin-right: 20vh;
+  margin-top: 10vh;
+}
+
+.hiddenSearchResult {
+  visibility: hidden;
+}
+.searchResult {
+  visibility: visible;
+}
+
+#searchFillLeft {
+  visibility: hidden;
+}
+
+#searchFillRight {
+  visibility: hidden;
 }
 
 @import "~bootstrap/scss/bootstrap";

@@ -7,9 +7,10 @@ import {useEffect, useState} from "react";
 import {useHistory} from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import {BsSearch} from "react-icons/bs";
+import Table from "react-bootstrap/Table";
 
 export default function Services(props) {
-  const [search, setSearch] = useState(" ");
+  const [search, setSearch] = useState("empty");
   const history = useHistory();
   const {services, setServices} = props;
   useEffect(() => {
@@ -35,21 +36,24 @@ export default function Services(props) {
     if (Array.isArray(services)) {
       return services.map((s) => {
         return (
-          <ListGroup horizontal>
-            <ListGroup.Item>{s.id}</ListGroup.Item>
-            <ListGroup.Item>{s.title}</ListGroup.Item>
-            <ListGroup.Item>{s.category}</ListGroup.Item>
-            <ListGroup.Item>{s.fee}</ListGroup.Item>
-            <ListGroup.Item>{s.user_id}</ListGroup.Item>
-            <ListGroup.Item>{s.created_at}</ListGroup.Item>
-            <Button
-              onClick={() => {
-                getserviceInfo(s);
-              }}
-            >
-              Select
-            </Button>
-          </ListGroup>
+          <tr>
+            <td>{s.id}</td>
+            <td>{s.title}</td>
+            <td>{s.category}</td>
+            <td>{s.fee}</td>
+            <td>{s.user_id}</td>
+            <td>{s.created_at}</td>
+            <td>
+              <Button
+                className="button-services"
+                onClick={() => {
+                  getserviceInfo(s);
+                }}
+              >
+                Select
+              </Button>
+            </td>
+          </tr>
         );
       });
     }
@@ -59,29 +63,53 @@ export default function Services(props) {
 
   return (
     <>
-      <div className="main-container">
-        <div className="col-md-3 filler-left"></div>
-        <div className="col-md-6 main-search">
-          <InputGroup size="sm" className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text id="inputGroup-sizing-sm">
-                Look For Services
-              </InputGroup.Text>
-            </InputGroup.Prepend>
-            <FormControl
-              aria-label="input"
-              // value="{search.val}"
-              onChange={(e) => setSearch({val: e.target.value})}
-              type="text"
-              aria-describedby="inputGroup-sizing-sm"
-            />
-            <InputGroup.Append>
-              <Button variant="outline-secondary">Search</Button>
-            </InputGroup.Append>
-          </InputGroup>
+      <div className="searchpagecont">
+        <div className="main-container">
+          <div id="searchFillLeft" className="col-md-3 filler-left">
+            <p>IM HERE</p>
+          </div>
+          <div className="col-md-6 main-search">
+            <InputGroup size="sm" className="mb-3">
+              <FormControl
+                id="servicesearch"
+                aria-label="input"
+                // value="{search.val}"
+                onChange={(e) => setSearch({val: e.target.value})}
+                type="text"
+                aria-describedby="inputGroup-sizing-sm"
+              />
+              <InputGroup.Append>
+                <Button variant="outline-secondary">Search</Button>
+              </InputGroup.Append>
+            </InputGroup>
+          </div>
+          <div id="searchFillRight" className="col-md-3 filler-right">
+            <p>IM HERE</p>
+          </div>
         </div>
-        <div className="col-md-3 filler-right"></div>
-        <div>{serviceElement}</div>
+        <div className="findresult">
+          <Table
+            className={
+              search === "empty" ? "hiddenSearchResult" : "searchResult"
+            }
+            striped
+            bordered
+            hover
+            variant="dark"
+          >
+            <thead>
+              <tr>
+                <th>Service ID</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Fee</th>
+                <th>User ID</th>
+                <th>Service Create Date</th>
+              </tr>
+            </thead>
+            <tbody>{serviceElement}</tbody>
+          </Table>
+        </div>
       </div>
     </>
   );
