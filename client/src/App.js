@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {useState} from "react";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
@@ -15,7 +15,7 @@ import Profile from "./components/Profile";
 import Confirm from "./components/Availability/confirm";
 import "./App.css";
 import PageNotFound from "./components/PageNotFound";
-
+import Appointment from "./components/Appointment";
 //bootstrap stylesheet
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -115,6 +115,13 @@ const App = () => {
           </Route>
           <Route path="/availability">
             <Availability />
+          </Route>
+          <Route path="/appointments">
+            {user ? (
+              <Appointment user={user} services={services} />
+            ) : (
+              <p>Loading</p>
+            )}
           </Route>
           <Route path="/users/:id">
             <Profile user={user} location={location} />

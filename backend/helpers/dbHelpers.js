@@ -197,7 +197,7 @@ module.exports = (db) => {
     };
     return db
       .query(query)
-      .then((result) => result.rows[0])
+      .then((result) => result.rows)
       .catch((err) => err);
   };
 
@@ -251,7 +251,9 @@ module.exports = (db) => {
       SELECT appointments.title,
       appointments.services_id as service_id,
       appointments.created_at as create_time,
-      appointments.users_id as client_name
+      appointments.users_id as client_id,
+      appointments.st_date as start_time,
+      appointments.end_date as end_time
       FROM appointments
       JOIN services ON services.id = services_id
       WHERE services.user_id = $1
