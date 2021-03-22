@@ -1,8 +1,13 @@
 import { useState, useEffect } from "react";
+import "./index.scss";
+
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+
 import axios from "axios";
 
 export default function NewServiceForm(props) {
@@ -52,7 +57,11 @@ export default function NewServiceForm(props) {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+
+   <Container className="provide-service-form" fluid>
+     <Row className="justify-content-md-center">
+       <Col xs={7}>
+          <Form onSubmit={handleSubmit} >
       <Form.Row>
         <Form.Group as={Col} controlId="formGridTitle">
           <Form.Label>Title of service</Form.Label>
@@ -119,5 +128,8 @@ export default function NewServiceForm(props) {
         Submit
       </Button>
     </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 }
