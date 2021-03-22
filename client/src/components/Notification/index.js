@@ -21,6 +21,7 @@ export default function Notification(props) {
 
   //let mode = "empty";
   const userID = props.user.id;
+  console.log("THIS IS USER ID:", userID);
 
   let appCount = 0;
   let countClient = 0;
@@ -41,6 +42,13 @@ export default function Notification(props) {
       });
     });
   }, []);
+  // NOTIFICATIONS
+  // CLIENT_ID_ID APPOINTMENT_ID NOTIFIED
+  // 9 12 1
+
+  // SELECT FROM APPOINTMENTS WHERE NOTIFIED = 0
+
+  // UPDATE NOTIFIED = 1FROM APPOINTMENTS WHERE APPOINTMENT_ID IN (1,3,4,5,9)
 
   const compareApps = () => {
     axios.get(`/api/appointments/provider/${userID}`).then((response) => {
@@ -65,7 +73,7 @@ export default function Notification(props) {
   };
 
   const checkNewApp = () => {
-    setInterval(compareApps, 15000);
+    setInterval(compareApps, 5000);
   };
 
   const removeAlert = () => {

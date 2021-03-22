@@ -193,7 +193,7 @@ module.exports = (db) => {
 
   const getAppointmentsByUserId = (id) => {
     const query = {
-      text: `SELECT * FROM appointments WHERE users_id = ${id}`,
+      text: `SELECT * FROM appointments WHERE users_id = ${id} and isconfirmed = true`,
     };
     return db
       .query(query)
