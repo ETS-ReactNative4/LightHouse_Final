@@ -18,6 +18,7 @@ import PageNotFound from "./components/PageNotFound";
 import Appointment from "./components/Appointment";
 //bootstrap stylesheet
 import "bootstrap/dist/css/bootstrap.min.css";
+require("dotenv").config();
 
 const App = () => {
   const [services, setServices] = useState([]);
