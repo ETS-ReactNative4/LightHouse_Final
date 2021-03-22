@@ -3,13 +3,15 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import {useEffect, useState} from "react";
+import {useHistory} from "react-router-dom";
+import Form from "react-bootstrap/Form";
+import {BsSearch} from "react-icons/bs";
 
 export default function Services(props) {
   const [search, setSearch] = useState(" ");
   const history = useHistory();
-  const { services, setServices } = props;
+  const {services, setServices} = props;
   useEffect(() => {
     axios.get(`/api/services/${search.val}`).then((response) => {
       console.log("response from GET /api/services", response.data);
@@ -57,27 +59,30 @@ export default function Services(props) {
 
   return (
     <>
-      <div>
-        <InputGroup size="sm" className="mb-3">
-          <InputGroup.Prepend>
-            <InputGroup.Text id="inputGroup-sizing-sm">
-              Look For Services
-            </InputGroup.Text>
-          </InputGroup.Prepend>
-          <FormControl
-            aria-label="input"
-            // value="{search.val}"
-            onChange={(e) => setSearch({ val: e.target.value })}
-            type="text"
-            aria-describedby="inputGroup-sizing-sm"
-          />
-          <InputGroup.Append>
-            <Button variant="outline-secondary">Search</Button>
-          </InputGroup.Append>
-          <h1>My Services</h1>
-        </InputGroup>
+      <div className="main-container">
+        <div className="col-md-3 filler-left"></div>
+        <div className="col-md-6 main-search">
+          <InputGroup size="sm" className="mb-3">
+            <InputGroup.Prepend>
+              <InputGroup.Text id="inputGroup-sizing-sm">
+                Look For Services
+              </InputGroup.Text>
+            </InputGroup.Prepend>
+            <FormControl
+              aria-label="input"
+              // value="{search.val}"
+              onChange={(e) => setSearch({val: e.target.value})}
+              type="text"
+              aria-describedby="inputGroup-sizing-sm"
+            />
+            <InputGroup.Append>
+              <Button variant="outline-secondary">Search</Button>
+            </InputGroup.Append>
+          </InputGroup>
+        </div>
+        <div className="col-md-3 filler-right"></div>
+        <div>{serviceElement}</div>
       </div>
-      <div>{serviceElement}</div>
     </>
   );
 }

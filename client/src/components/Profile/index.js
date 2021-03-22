@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import {useState, useEffect} from "react";
+import {useHistory} from "react-router-dom";
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
+import "./Profile.scss";
 
 import axios from "axios";
 
@@ -61,7 +62,7 @@ export default function Profile(props) {
     );
 
     axios
-      .post(`/api/users/${userID}/photo`, { photo: file.secure_url })
+      .post(`/api/users/${userID}/photo`, {photo: file.secure_url})
       .then((response) => {
         console.log("POST to /api/user/:id/photo is a success!!");
       });
@@ -75,7 +76,7 @@ export default function Profile(props) {
     event.preventDefault();
 
     axios
-      .post(`/api/users/${userID}/provider`, { provider: !provider })
+      .post(`/api/users/${userID}/provider`, {provider: !provider})
       .then((response) => {
         console.log("POST to /api/users/:id/provider success!!");
         console.log(
@@ -91,7 +92,7 @@ export default function Profile(props) {
       <Container>
         {!image ? (
           <Row>
-            <Col className="profile-image" md={{ span: 6, offset: 3 }}>
+            <Col className="profile-image" md={{span: 6, offset: 3}}>
               <Col>
                 <Image
                   className="profile-image-img"
@@ -103,7 +104,7 @@ export default function Profile(props) {
           </Row>
         ) : (
           <Row>
-            <Col className="profile-image" md={{ span: 6, offset: 3 }}>
+            <Col className="profile-image" md={{span: 6, offset: 3}}>
               <Col>
                 <Image
                   className="profile-image-img"

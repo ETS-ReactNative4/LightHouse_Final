@@ -3,7 +3,7 @@ CREATE TABLE appointments(
     id SERIAL PRIMARY KEY NOT NULL,
     title VARCHAR(255),
     rating INT,
-    isConfirmed BOOLEAN,
+    isConfirmed BOOLEAN DEFAULT false,
     created_at TIMESTAMPTZ DEFAULT Now() ,
     modified_at TIMESTAMPTZ DEFAULT Now() ,
     st_date timestamptz,

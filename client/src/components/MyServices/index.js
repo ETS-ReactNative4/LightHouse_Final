@@ -1,18 +1,21 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import ListGroup from "react-bootstrap/ListGroup";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 export default function MyServices(props) {
   const [services, setServices] = useState([]);
   const [search, setSearch] = useState(" ");
-  const { apiUrl } = props;
+  const {apiUrl} = props;
+
+  console.log("THIS IS USER PROPS", props.user);
+
   let history = useHistory();
   console.log("Value of props.user.id in MyService component ", props.user.id);
-  console.log("URL and search value in MyServices", `${apiUrl}${search.val}`);
+  // console.log("URL and search value in MyServices", `${apiUrl}${search.val}`);
   useEffect(() => {
     axios.get(`${apiUrl}${props.user.id}`).then((response) => {
       console.log("Response from GET call in My Services", response.data);
@@ -63,7 +66,7 @@ export default function MyServices(props) {
           <FormControl
             aria-label="input"
             // value="{search.val}"
-            onChange={(e) => setSearch({ val: e.target.value })}
+            onChange={(e) => setSearch({val: e.target.value})}
             type="text"
             aria-describedby="inputGroup-sizing-sm"
           />

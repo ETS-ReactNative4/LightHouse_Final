@@ -6,6 +6,7 @@ module.exports = ({
   getAppointmentsByUserId,
   addAppointment,
   getAppForProvider,
+  setIsConfirm,
 }) => {
   router.get("/", (req, res) => {
     getAppointments()
@@ -20,6 +21,20 @@ module.exports = ({
   router.get("/:id", (req, res) => {
     getAppointmentsByUserId(req.params.id)
       .then((result) => res.json(result))
+      .catch((err) =>
+        res.json({
+          error: err.message,
+        })
+      );
+  });
+
+  router.put("/:id", (req, res) => {
+    setIsConfirm(req.body.isconfirmed, req.params.id)
+      .then(() =>
+        res.status(201).json({
+          msg: "updated!",
+        })
+      )
       .catch((err) =>
         res.json({
           error: err.message,
@@ -56,7 +71,7 @@ module.exports = ({
       end_date,
       services_id,
       availabilities_id,
-      users_id,
+      users_id
     )
       .then(() =>
         res.status(201).json({

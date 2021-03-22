@@ -1,8 +1,8 @@
 import React from "react";
 import GoogleLogin from "react-google-login";
-import { GoogleLogout } from "react-google-login";
+import {GoogleLogout} from "react-google-login";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
 function Oauth(props) {
   const history = useHistory();

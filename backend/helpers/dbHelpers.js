@@ -120,19 +120,37 @@ module.exports = (db) => {
       .then((result) => result.rows[0])
       .catch((err) => err);
   };
-      // title,
-      // rating,
-      // isConfirmed,
-      // st_date,
-      // end_date,
-      // services_id,
-      // availabilities_id,
-      // users_id,
+  // title,
+  // rating,
+  // isConfirmed,
+  // st_date,
+  // end_date,
+  // services_id,
+  // availabilities_id,
+  // users_id,
 
-  const addAppointment = (title, rating, isconfirmed, st_date, end_date, services_id, availabilities_id, users_id) => {
+  const addAppointment = (
+    title,
+    rating,
+    isconfirmed,
+    st_date,
+    end_date,
+    services_id,
+    availabilities_id,
+    users_id
+  ) => {
     const query = {
       text: `INSERT INTO appointments (title, rating, isconfirmed, st_date, end_date, services_id, availabilities_id, users_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *`,
-      values: [title, rating, isconfirmed, st_date, end_date, services_id, availabilities_id, users_id],
+      values: [
+        title,
+        rating,
+        isconfirmed,
+        st_date,
+        end_date,
+        services_id,
+        availabilities_id,
+        users_id,
+      ],
     };
 
     return db
@@ -175,11 +193,11 @@ module.exports = (db) => {
 
   const getAppointmentsByUserId = (id) => {
     const query = {
-      text: `SELECT * FROM appointments WHERE users_id = ${id}`,
+      text: `SELECT * FROM appointments WHERE users_id = ${id} and isconfirmed = true`,
     };
     return db
       .query(query)
-      .then((result) => result.rows[0])
+      .then((result) => result.rows)
       .catch((err) => err);
   };
 
@@ -229,17 +247,25 @@ module.exports = (db) => {
 
   const getAppForProvider = (id) => {
     const query = {
-      text: `SELECT appointments.title, appointments.services_id as service_id, services.user_id as user
-
+      text: `
+      SELECT appointments.title,
+      appointments.isconfirmed as isconfirmed,
+      appointments.id as appointment_id,
+      appointments.services_id as service_id,
+      appointments.created_at as create_time,
+      appointments.users_id as client_id,
+      appointments.st_date as start_time,
+      appointments.end_date as end_time
       FROM appointments
       JOIN services ON services.id = services_id
-      WHERE services.user_id = $1`,
+      WHERE services.user_id = $1
+      ORDER BY appointments.created_at DESC`,
       values: [id],
     };
     return db
       .query(query)
-      .then((result) => result.rows[0])
-      .catch((err) => err);
+      .then((result) => result.rows)
+      .catch((err) => console.log(err));
   };
 
   const updateUserPhoto = (photo, id) => {
@@ -255,7 +281,19 @@ module.exports = (db) => {
       .then((result) => result.rows[0])
       .catch((err) => err);
   };
+  const setIsConfirm = (status, id) => {
+    const query = {
+      text: `UPDATE appointments
+      SET isConfirmed = $1
+      WHERE id = $2`,
+      values: [status, id],
+    };
 
+    return db
+      .query(query)
+      .then((result) => result.rows[0])
+      .catch((err) => err);
+  };
   const updateUserProviderStatus = (status, id) => {
     const query = {
       text: `UPDATE users
@@ -293,5 +331,6 @@ module.exports = (db) => {
     updateUserPhoto,
     updateUserProviderStatus,
     getAppForProvider,
+    setIsConfirm,
   };
 };
