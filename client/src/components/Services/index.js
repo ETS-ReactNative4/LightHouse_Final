@@ -44,14 +44,16 @@ export default function Services(props) {
             <td>{s.user_id}</td>
             <td>{s.created_at}</td>
             <td>
-              <Button
-                className="button-services"
-                onClick={() => {
-                  getserviceInfo(s);
-                }}
-              >
-                Select
-              </Button>
+              <div className="searchTableButton">
+                <Button
+                  className="button-services"
+                  onClick={() => {
+                    getserviceInfo(s);
+                  }}
+                >
+                  Select
+                </Button>
+              </div>
             </td>
           </tr>
         );
@@ -79,7 +81,7 @@ export default function Services(props) {
                 aria-describedby="inputGroup-sizing-sm"
               />
               <InputGroup.Append>
-                <Button variant="outline-secondary">Search</Button>
+                <BsSearch variant="outline-secondary">Search</BsSearch>
               </InputGroup.Append>
             </InputGroup>
           </div>
@@ -97,7 +99,7 @@ export default function Services(props) {
             hover
             variant="dark"
           >
-            <thead>
+            <thead className="table">
               <tr>
                 <th>Service ID</th>
                 <th>Title</th>
@@ -105,9 +107,10 @@ export default function Services(props) {
                 <th>Fee</th>
                 <th>User ID</th>
                 <th>Service Create Date</th>
+                <th></th>
               </tr>
             </thead>
-            <tbody>{serviceElement}</tbody>
+            <tbody className="body">{serviceElement}</tbody>
           </Table>
         </div>
       </div>
