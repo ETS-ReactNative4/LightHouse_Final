@@ -8,7 +8,7 @@ import {useHistory} from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import {BsSearch} from "react-icons/bs";
 import Table from "react-bootstrap/Table";
-
+import "./Services.scss";
 export default function Services(props) {
   const [search, setSearch] = useState("empty");
   const history = useHistory();

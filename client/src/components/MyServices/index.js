@@ -1,10 +1,10 @@
 import {useEffect, useState} from "react";
-import ListGroup from "react-bootstrap/ListGroup";
-import InputGroup from "react-bootstrap/InputGroup";
-import FormControl from "react-bootstrap/FormControl";
+
+import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import {useHistory} from "react-router-dom";
+import "./MyServices.scss";
 
 export default function MyServices(props) {
   const [services, setServices] = useState([]);
@@ -95,7 +95,9 @@ export default function MyServices(props) {
             <p>IM HERE</p>
           </div>
           <div className="col-md-6">
-            <h1>{props.user.name}, here are the services you own</h1>
+            <h1 className="namePropMyService">
+              {props.user.full_name}, here are the services you own
+            </h1>
           </div>
           <div id="myServiceFillRight" className="col-md-3 filler-right">
             <p>IM HERE</p>
@@ -122,9 +124,7 @@ export default function MyServices(props) {
                 <th></th>
               </tr>
             </thead>
-            <tbody>
-              <div>{serviceElement}</div>
-            </tbody>
+            <tbody className="body">{serviceElement}</tbody>
           </Table>
         </div>
       </div>

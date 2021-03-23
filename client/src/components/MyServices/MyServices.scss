@@ -12,4 +12,17 @@
   margin-top: 13vh;
 }
 
+#myServiceFillLeft {
+  visibility: hidden;
+}
+
+#myServiceFillRight {
+  visibility: hidden;
+}
+
+.namePropMyService {
+  color: whitesmoke;
+  text-shadow: 5px 5px 5px #1b1c37;
+}
+
 @import "~bootstrap/scss/bootstrap";
