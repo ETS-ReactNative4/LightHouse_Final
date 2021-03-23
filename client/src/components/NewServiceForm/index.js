@@ -92,6 +92,7 @@ export default function NewServiceForm(props) {
             <Form.Group controlId="exampleForm.ControlSelect1">
               <Form.Label>Which category does it belong to?</Form.Label>
               <Form.Control
+                required
                 as="select"
                 onChange={(e) => setCategory(e.target.value)}
               >
