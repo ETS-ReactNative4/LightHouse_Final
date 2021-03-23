@@ -1,0 +1,32 @@
+.appointment_page {
+  height: 900px;
+  margin: 0;
+
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  background: linear-gradient(to right, #25274d 30%, #464866 100%);
+}
+
+.appointment_page h1 {
+  color: whitesmoke;
+  text-shadow: 5px 5px 5px #1b1c37;
+  margin-top: 9vh;
+}
+
+.appointment_page td {
+  background-color: rgb(211, 233, 247);
+  color: rgb(79, 95, 111);
+}
+
+.appointment_page tr {
+  background-color: #4279a0;
+  color: rgb(241, 245, 248);
+}
+
+.appointment_table {
+  margin: 2.4rem;
+  width: 95% !important;
+}
+@import "~bootstrap/scss/bootstrap";

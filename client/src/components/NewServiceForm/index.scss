@@ -3,8 +3,9 @@ $theme-colors: (
   "danger": teal,
 );
 .provide-service-form {
-  margin-top: 4rem;
-  padding: 1.5rem;
+  height: 900px;
+
+  padding: 2rem;
   background: linear-gradient(to right, #25274d 30%, #464866 100%);
   color: aliceblue;
 }
