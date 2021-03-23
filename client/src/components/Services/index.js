@@ -70,8 +70,8 @@ export default function Services(props) {
           <div id="searchFillLeft" className="col-md-3 filler-left">
             <p>IM HERE</p>
           </div>
-          <div className="col-md-6 main-search">
-            <InputGroup size="sm" className="mb-3">
+          <div className="col-md-6">
+            <InputGroup size="sm" className="mb-3 main-search">
               <FormControl
                 id="servicesearch"
                 aria-label="input"
@@ -80,9 +80,14 @@ export default function Services(props) {
                 type="text"
                 aria-describedby="inputGroup-sizing-sm"
               />
-              <InputGroup.Append>
-                <BsSearch variant="outline-secondary">Search</BsSearch>
-              </InputGroup.Append>
+              <div className="search-icon">
+                <BsSearch
+                  className="searchIconActual"
+                  variant="outline-secondary"
+                >
+                  Search
+                </BsSearch>
+              </div>
             </InputGroup>
           </div>
           <div id="searchFillRight" className="col-md-3 filler-right">
