@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
 import Table from "react-bootstrap/Table";
-
+import "./Services.scss";
 export default function Services(props) {
   const [search, setSearch] = useState("empty");
   const history = useHistory();
@@ -60,6 +60,9 @@ export default function Services(props) {
   return (
     <>
       <div className="searchpagecont">
+        <div className="searchIntroText">
+          <h1>Look up a service</h1>
+        </div>
         <div className="main-container">
           <div id="searchFillLeft" className="col-md-3 filler-left">
             <p>IM HERE</p>
@@ -73,6 +76,7 @@ export default function Services(props) {
                 onChange={(e) => setSearch({ val: e.target.value })}
                 type="text"
                 aria-describedby="inputGroup-sizing-sm"
+                placeholder="i.e: Accounting.."
               />
               <div className="search-icon">
                 <BsSearch
