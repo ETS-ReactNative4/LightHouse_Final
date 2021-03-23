@@ -3,12 +3,12 @@ import Calendar from "../Availability/calendar";
 export default function Service(props) {
   return (
     <div>
-      {/* <h1>{props.services.title}</h1>
-      <h1>{props.services.id}</h1> */}
+      <h1>{props.services.title}</h1>
+      <h1>{props.services.id}</h1>
       <button>Next</button>
       <button>Back</button>
       <div>
-        {props.services ? (
+        {props.magicFix ? (
           <Calendar
             user={props.user}
             location={props.location}
@@ -18,7 +18,7 @@ export default function Service(props) {
             setBooking={props.setBooking}
           />
         ) : (
-          <p>Loadin...</p>
+          <p></p>
         )}
       </div>
     </div>

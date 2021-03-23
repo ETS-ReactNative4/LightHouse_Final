@@ -1,0 +1,16 @@
+$theme-colors: (
+  "info": tomato,
+  "danger": teal,
+);
+.provide-service-form {
+  margin-top: 4rem;
+  padding: 1.5rem;
+  background: linear-gradient(to right, #25274d 30%, #464866 100%);
+  color: aliceblue;
+}
+.service-button {
+  margin: 1.2rem;
+  min-width: 800px;
+}
+
+@import "~bootstrap/scss/bootstrap";

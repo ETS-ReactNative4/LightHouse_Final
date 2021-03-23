@@ -24,6 +24,7 @@ export default function Services(props) {
     axios.get(`/api/availabilities/${pid.user_id}`).then((response) => {
       props.setTimeFrame(response.data);
       props.setServices(pid);
+      props.setMagicFix("SHOW_CALENDAR");
       console.log(
         "This is the response data from GET api/availabilities",
         response.data

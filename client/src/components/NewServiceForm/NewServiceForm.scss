@@ -1,0 +1,56 @@
+.sform {
+  height: 700px;
+  margin: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  background: linear-gradient(to right, #25274d 30%, #464866 100%);
+}
+
+.sform-left {
+  color: whitesmoke;
+}
+
+.sform-form {
+  align-items: center;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+}
+
+.sform Button {
+  border-radius: 1.5rem;
+  font-weight: 600;
+  background: #29648a;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  align-self: start;
+}
+
+.sform-register {
+  display: inline-flex;
+  padding-top: 70px;
+  text-align-last: center;
+  margin-left: 5rem;
+}
+
+.sform-left {
+  color: whitesmoke;
+}
+.sform-img {
+  width: 100px;
+  margin-top: 14%;
+  margin-bottom: 4%;
+  background-image: white;
+}
+
+.sform-right {
+  min-width: -webkit-fill-available;
+  background: #f8f9fa;
+  border-top-left-radius: 10% 50%;
+  border-bottom-left-radius: 10% 50%;
+  height: auto;
+}
