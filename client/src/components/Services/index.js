@@ -1,11 +1,9 @@
-import ListGroup from "react-bootstrap/ListGroup";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import Form from "react-bootstrap/Form";
 import { BsSearch } from "react-icons/bs";
 import Table from "react-bootstrap/Table";
 
@@ -32,7 +30,7 @@ export default function Services(props) {
     if (Array.isArray(services)) {
       return services.map((s) => {
         return (
-          <tr>
+          <tr key={s.id}>
             <td>{s.id}</td>
             <td>{s.title}</td>
             <td>{s.category}</td>

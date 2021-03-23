@@ -4,11 +4,6 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import axios from "axios";
-import Popover from "react-bootstrap/Popover";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Overlay from "react-bootstrap/Overlay";
-import ListGroup from "react-bootstrap/ListGroup";
-import Button from "react-bootstrap/Button";
 
 export default function Notification(props) {
   const [mode, setMode] = useState("empty");
