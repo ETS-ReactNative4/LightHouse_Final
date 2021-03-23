@@ -1,4 +1,4 @@
-!["Logo"]()
+!["Logo"](https://github.com/parniaa/LightHouse_Final/blob/main/resources/img/cover.png)
 
 # Yalper!
 
