@@ -10,7 +10,7 @@ import queryString from "query-string";
 export default function Home(props) {
   const params = queryString.parse(props.location.search);
   return (
-    <>
+    <div className="home_page">
       <Jumbotron>
         <h1>{params.title}</h1>
         <h1>This why you should use us!</h1>
@@ -64,6 +64,6 @@ export default function Home(props) {
           </Col>
         </Row>
       </Container>
-    </>
+    </div>
   );
 }
