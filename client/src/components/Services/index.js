@@ -1,21 +1,18 @@
-import ListGroup from "react-bootstrap/ListGroup";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import {useEffect, useState} from "react";
-import {useHistory} from "react-router-dom";
-import Form from "react-bootstrap/Form";
-import {BsSearch} from "react-icons/bs";
+import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { BsSearch } from "react-icons/bs";
 import Table from "react-bootstrap/Table";
 
 export default function Services(props) {
   const [search, setSearch] = useState("empty");
   const history = useHistory();
-  const {services, setServices} = props;
+  const { services, setServices } = props;
   useEffect(() => {
     axios.get(`/api/services/${search.val}`).then((response) => {
-      console.log("response from GET /api/services", response.data);
       setServices(response.data);
     });
   }, [search]);
@@ -25,10 +22,6 @@ export default function Services(props) {
       props.setTimeFrame(response.data);
       props.setServices(pid);
       props.setMagicFix("SHOW_CALENDAR");
-      console.log(
-        "This is the response data from GET api/availabilities",
-        response.data
-      );
       history.push(`/service/?id=${pid.user_id}&title=${pid.title}`);
     });
   };
@@ -37,7 +30,7 @@ export default function Services(props) {
     if (Array.isArray(services)) {
       return services.map((s) => {
         return (
-          <tr>
+          <tr key={s.id}>
             <td>{s.id}</td>
             <td>{s.title}</td>
             <td>{s.category}</td>
@@ -77,7 +70,7 @@ export default function Services(props) {
                 id="servicesearch"
                 aria-label="input"
                 // value="{search.val}"
-                onChange={(e) => setSearch({val: e.target.value})}
+                onChange={(e) => setSearch({ val: e.target.value })}
                 type="text"
                 aria-describedby="inputGroup-sizing-sm"
               />

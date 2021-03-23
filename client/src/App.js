@@ -30,12 +30,8 @@ const App = () => {
   const logout = (val) => {
     // localStorage.removeItem("user");
     setUser(false);
-    console.log("logout value", val);
   };
-  console.log(
-    "This is the value of the location state in the app component",
-    location
-  );
+
   return (
     <Router>
       <div className="App">
@@ -83,7 +79,7 @@ const App = () => {
                 user={user}
                 location={location}
                 timeframe={timeframe}
-                // services={services}
+                setServices={setServices}
               />
             ) : (
               <p>loading</p>

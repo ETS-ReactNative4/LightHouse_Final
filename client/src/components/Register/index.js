@@ -1,25 +1,20 @@
 import axios from "axios";
 import "./Register.scss";
-import {useHistory} from "react-router-dom";
-import {useState} from "react";
+import { useHistory } from "react-router-dom";
+import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
 
 export default function Register(props) {
-  console.log("this is props of register", props);
   const history = useHistory();
   const [geoLocation, setGeoLocation] = useState({});
 
   const getLocation = (e) => {
-    console.log("getting location:");
     e.preventDefault();
     navigator.geolocation.getCurrentPosition(
       function (position) {
-        console.log("got position", position);
         const geo = {
           lat: position.coords.latitude,
           long: position.coords.longitude,
@@ -31,9 +26,7 @@ export default function Register(props) {
             `https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&featureTypes=&location=${position.coords.longitude}%2C${position.coords.latitude}`
           )
           .then((response) => {
-            console.log("GOT RESPONSE AXIOS:", response);
             const location = {};
-            console.log(response.data.address);
             location.lat = geoLocation.lat;
             location.long = geoLocation.long;
             location.address = response.data.address.ShortLabel;
@@ -49,7 +42,7 @@ export default function Register(props) {
           });
       },
       console.error,
-      {maximumAge: 0, enableHighAccuracy: false, timeout: 5000}
+      { maximumAge: 0, enableHighAccuracy: false, timeout: 5000 }
     );
   };
   const registration = (event) => {
@@ -57,7 +50,7 @@ export default function Register(props) {
 
     axios
       .post(`/api/register/?${props.user.email}`, {
-        location: {...props.location, ...geoLocation},
+        location: { ...props.location, ...geoLocation },
         user: props.user,
       })
       .then(

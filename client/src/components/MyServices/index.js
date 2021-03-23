@@ -10,15 +10,10 @@ export default function MyServices(props) {
   const [services, setServices] = useState([]);
   const [search, setSearch] = useState(" ");
   const { apiUrl } = props;
-
-  console.log("THIS IS USER PROPS", props.user);
-
   let history = useHistory();
-  console.log("Value of props.user.id in MyService component ", props.user.id);
-  // console.log("URL and search value in MyServices", `${apiUrl}${search.val}`);
+
   useEffect(() => {
     axios.get(`${apiUrl}${props.user.id}`).then((response) => {
-      console.log("Response from GET call in My Services", response.data);
       setServices(response.data);
     });
   }, [search]);
@@ -41,6 +36,7 @@ export default function MyServices(props) {
               <Button
                 onClick={() => {
                   props.setMagicFix(false);
+                  props.setServices(s);
                   history.push(`/service/?id=${s.id}&title=${s.title}`);
                 }}
               >

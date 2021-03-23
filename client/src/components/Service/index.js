@@ -3,10 +3,10 @@ import Calendar from "../Availability/calendar";
 export default function Service(props) {
   return (
     <div>
-      <h1>{props.services.title}</h1>
-      <h1>{props.services.id}</h1>
-      <button>Next</button>
-      <button>Back</button>
+      <h1>Service : {props.services.title}</h1>
+      <h1>Description : {props.services.description}</h1>
+      <h1>Fee : {props.services.fee} $/H</h1>
+
       <div>
         {props.magicFix ? (
           <Calendar

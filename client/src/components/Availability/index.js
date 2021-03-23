@@ -1,13 +1,12 @@
 import ListGroup from "react-bootstrap/ListGroup";
 import InputGroup from "react-bootstrap/InputGroup";
 import axios from "axios";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 export default function Availability(props) {
   const [avail, setAvail] = useState([]);
   useEffect(() => {
     axios.get(`/api/availabilities/`).then((response) => {
-      console.log(response.data);
       setAvail(response.data);
     });
   }, []);
