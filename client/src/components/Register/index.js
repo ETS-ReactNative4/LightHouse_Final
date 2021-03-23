@@ -123,6 +123,7 @@ export default function Register(props) {
                         name="full_address"
                         value={props.location && props.location.address}
                         placeholder="Your address"
+                        required
                       />
                     </Form.Group>
 
@@ -132,6 +133,7 @@ export default function Register(props) {
                         name="city"
                         value={props.location && props.location.city}
                         placeholder="Your city"
+                        required
                       />
                     </Form.Group>
                   </Form.Row>
@@ -142,6 +144,7 @@ export default function Register(props) {
                         name="postal_code"
                         value={props.location && props.location.postal}
                         placeholder="Postal code"
+                        required
                       />
                     </Form.Group>
                     <Form.Group as={Col} controlId="formGridCountry">
@@ -150,6 +153,7 @@ export default function Register(props) {
                         name="country"
                         value={props.location && props.location.country}
                         placeholder="Country"
+                        required
                       />
                     </Form.Group>
                   </Form.Row>

@@ -51,17 +51,19 @@ const Calendar = (props) => {
   const providerTimeZone = "America/New_York";
 
   return (
-    <div style={{ width: 350 }}>
-      <AvailabilityCalendar
-        bookings={bookings}
-        providerTimeZone={providerTimeZone}
-        moment={moment}
-        initialDate={now}
-        onAvailabilitySelected={onAvailabilitySelected}
-        onCalRangeChange={onChangedCalRange}
-        blockOutPeriods={blockOutPeriods}
-      />
-    </div>
+    <>
+      <div style={{ width: 350 }}>
+        <AvailabilityCalendar
+          bookings={bookings}
+          providerTimeZone={providerTimeZone}
+          moment={moment}
+          initialDate={now}
+          onAvailabilitySelected={onAvailabilitySelected}
+          onCalRangeChange={onChangedCalRange}
+          blockOutPeriods={blockOutPeriods}
+        />
+      </div>
+    </>
   );
 };
 
