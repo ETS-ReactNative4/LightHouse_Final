@@ -9,7 +9,7 @@
 .main-container {
   display: flex;
   flex-direction: row;
-  margin-top: 13vh;
+  margin-top: 8vh;
 }
 
 .main-search {
@@ -104,6 +104,12 @@
 .body {
   background-color: rgb(211, 233, 247);
   color: rgb(79, 95, 111);
+}
+
+.searchIntroText {
+  color: whitesmoke;
+  text-shadow: 5px 5px 5px #1b1c37;
+  margin-top: 9vh;
 }
 
 @import "~bootstrap/scss/bootstrap";
