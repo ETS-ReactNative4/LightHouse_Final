@@ -3,15 +3,11 @@ $theme-colors: (
   "danger": teal,
 );
 .provide-service-form {
-  height: 900px;
-
-  padding: 2rem;
+  margin-top: 0;
+  padding: 1.5rem;
   background: linear-gradient(to right, #25274d 30%, #464866 100%);
   color: aliceblue;
-}
-.service-button {
-  margin: 1.2rem;
-  min-width: 800px;
+  height: 100vh;
 }
 
 @import "~bootstrap/scss/bootstrap";

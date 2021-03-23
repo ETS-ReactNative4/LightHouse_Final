@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
 import "./index.scss";
-import { useHistory } from "react-router-dom";
+import "./NewServiceForm.scss";
+import {useHistory} from "react-router-dom";
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -42,9 +43,9 @@ export default function NewServiceForm(props) {
       end_time: endTime,
     };
 
-    axios.post("/api/services/new", { data });
+    axios.post("/api/services/new", {data});
     axios
-      .post(`/api/availabilities/${props.user.id}`, { availability })
+      .post(`/api/availabilities/${props.user.id}`, {availability})
       .then(() => {
         history.push("/myservices");
       });
@@ -52,12 +53,13 @@ export default function NewServiceForm(props) {
 
   return (
     <Container className="provide-service-form" fluid>
+      <h1 class="newServiceHeader">Create a service</h1>
       <Row className="justify-content-md-center">
         <Col xs={7}>
           <Form onSubmit={handleSubmit}>
             <Form.Row>
               <Form.Group as={Col} controlId="formGridTitle">
-                <Form.Label>What do you call you service?</Form.Label>
+                <Form.Label>What is the name of your service?</Form.Label>
                 <Form.Control
                   type="text"
                   name="title"
@@ -68,7 +70,7 @@ export default function NewServiceForm(props) {
               </Form.Group>
 
               <Form.Group as={Col} controlId="formGridDescription">
-                <Form.Label>Give a little bit of description</Form.Label>
+                <Form.Label>Provide a description</Form.Label>
                 <Form.Control
                   type="text"
                   name="description"
@@ -80,7 +82,7 @@ export default function NewServiceForm(props) {
             </Form.Row>
 
             <Form.Group controlId="formGridFee">
-              <Form.Label>How much do you charge for an hour?</Form.Label>
+              <Form.Label>How much do you charge per hour</Form.Label>
               <Form.Control
                 name="fee"
                 placeholder="$ Amount for one hour"
@@ -104,7 +106,7 @@ export default function NewServiceForm(props) {
 
             <Form.Row>
               <Form.Group as={Col} controlId="formGridTitle">
-                <Form.Label>When is your start time?</Form.Label>
+                <Form.Label>What is your start time?</Form.Label>
                 <Form.Control
                   as="select"
                   type="text"
@@ -118,7 +120,7 @@ export default function NewServiceForm(props) {
               </Form.Group>
 
               <Form.Group as={Col} controlId="formGridDescription">
-                <Form.Label>When is your end time? </Form.Label>
+                <Form.Label>What is your end time? </Form.Label>
                 <Form.Control
                   as="select"
                   type="text"
@@ -131,10 +133,11 @@ export default function NewServiceForm(props) {
                 </Form.Control>
               </Form.Group>
             </Form.Row>
-
-            <Button className="service-button" variant="primary" type="submit">
-              Submit
-            </Button>
+            <div className="searchTableButton">
+              <Button id="newServButton" type="submit">
+                Create
+              </Button>
+            </div>
           </Form>
         </Col>
       </Row>

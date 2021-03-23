@@ -2,6 +2,7 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import { useHistory } from "react-router-dom";
+import "./confirm.scss";
 
 export default function Confirm(props) {
   const history = useHistory();
@@ -26,26 +27,27 @@ export default function Confirm(props) {
   return (
     <>
       {props.booking ? (
-        <div className="card">
-          <InputGroup size="sm" className="mb-3">
-            <InputGroup.Prepend>
-              <InputGroup.Text id="inputGroup-sizing-sm">
-                Do you wish to confirm your appointment for{" "}
-                {props.booking.title} {dateString}
-              </InputGroup.Text>
-            </InputGroup.Prepend>
-          </InputGroup>
-          <div>
-            <Button variant="success" onClick={() => yes()}>
-              Yes
-            </Button>{" "}
-            <Button variant="danger" onClick={() => clickNo()}>
-              No
-            </Button>
+        <div className="mainConfirmContainer">
+          <div className="cardContainer">
+            <div className="confirmText">
+                <h3 id="confirmationQ">
+                  Do you wish to confirm your appointment for the service: <b>
+                  {props.booking.title}</b> 
+                  <h4 id="confirmationDate">{dateString}</h4>
+                </h3>
+            </div>
+            <div className="confirmButtons">
+              <Button className="confirmBtn" variant="success" onClick={() => yes()}>
+                Yes
+              </Button>{" "}
+              <Button variant="danger" onClick={() => clickNo()}>
+                No
+              </Button>
+            </div>
           </div>
         </div>
       ) : (
-        <p>Loading</p>
+        <p>Please log in</p>
       )}
     </>
   );

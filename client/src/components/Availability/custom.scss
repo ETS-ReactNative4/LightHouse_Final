@@ -8,5 +8,33 @@ $theme-colors: (
   "danger": #ff4136,
 );
 
+.actualCalendar {
+  color: whitesmoke;
+  margin-top: 70px;
+}
+
+.calendarComp {
+  color: whitesmoke;
+}
+.calendarBox {
+  background: #3a427a;
+  height: 60vh;
+  width: 60vh;
+  overflow: hidden;
+  box-shadow: 1px 3px 9px 3px rgb(2, 35, 59);
+  margin-top: 50px;
+  border: solid;
+  border-color: #464866;
+  border-radius: 15%;
+  border-collapse: separate;
+  perspective: 1px;
+  background: linear-gradient(to bottom right, #3a427a 40%, #5d628c 100%);
+}
+
+#innerCalDiv {
+  width: 100%;
+  overflow: auto;
+  height: 100%;
+}
 // Bootstrap and its default variables
 @import "node_modules/bootstrap/scss/bootstrap";

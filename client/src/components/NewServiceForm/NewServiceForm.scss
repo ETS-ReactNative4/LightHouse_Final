@@ -54,3 +54,26 @@
   border-bottom-left-radius: 10% 50%;
   height: auto;
 }
+
+.newServiceHeader {
+  margin-bottom: 45px;
+  font-weight: 600;
+  color: whitesmoke;
+}
+
+.wrapServButton Button {
+  border-radius: 1.5rem;
+  border: none;
+  font-weight: 600;
+  background-color: #29648a;
+
+  cursor: pointer;
+}
+
+.service-button {
+  position: relative;
+}
+
+#newServButton {
+  width: 200px;
+}
