@@ -1,5 +1,5 @@
 import Calendar from "../Availability/calendar";
-
+import "./index.scss";
 export default function Service(props) {
   return (
     <div>
@@ -7,7 +7,7 @@ export default function Service(props) {
       <h1>Description : {props.services.description}</h1>
       <h1>Fee : {props.services.fee} $/H</h1>
 
-      <div>
+      <div className="the_calendar">
         {props.magicFix ? (
           <Calendar
             user={props.user}
