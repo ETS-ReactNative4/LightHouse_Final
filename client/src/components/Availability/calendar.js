@@ -1,6 +1,6 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
-import { AvailabilityCalendar } from "react-availability-calendar";
+import {useHistory} from "react-router-dom";
+import {AvailabilityCalendar} from "react-availability-calendar";
 import moment from "moment";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./custom.scss";
@@ -52,16 +52,20 @@ const Calendar = (props) => {
 
   return (
     <>
-      <div style={{ width: 350 }}>
-        <AvailabilityCalendar
-          bookings={bookings}
-          providerTimeZone={providerTimeZone}
-          moment={moment}
-          initialDate={now}
-          onAvailabilitySelected={onAvailabilitySelected}
-          onCalRangeChange={onChangedCalRange}
-          blockOutPeriods={blockOutPeriods}
-        />
+      <div className="calendarBox">
+        <div id="innerCalDiv">
+          <div className="actualCalendar" style={{width: 350}}>
+            <AvailabilityCalendar
+              bookings={bookings}
+              providerTimeZone={providerTimeZone}
+              moment={moment}
+              initialDate={now}
+              onAvailabilitySelected={onAvailabilitySelected}
+              onCalRangeChange={onChangedCalRange}
+              blockOutPeriods={blockOutPeriods}
+            />
+          </div>
+        </div>
       </div>
     </>
   );

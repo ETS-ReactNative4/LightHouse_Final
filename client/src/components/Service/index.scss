@@ -1,5 +1,28 @@
+.calendarMain {
+  height: 100vh;
+  margin: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+
+  background: linear-gradient(to right, #25274d 30%, #464866 100%);
+}
+
 .the_calendar {
   text-align: -webkit-center;
+}
+
+.singleServiceTag {
+  margin-top: 30px;
+  color: whitesmoke;
+  font-weight: 700;
+}
+
+.singleServiceTag2 {
+  color: whitesmoke;
+  font-weight: 250;
 }
 
 @import "~bootstrap/scss/bootstrap";
