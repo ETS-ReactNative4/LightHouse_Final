@@ -79,17 +79,17 @@ postgreSQL
 
 - You need to have a google account and use the console.cloud.google.com and create new credentials
 
-!["Logo"](https://github.com/parniaa/LightHouse_Final/blob/main/resources/img/cover.png)
+!["Logo"](<https://github.com/parniaa/LightHouse_Final/blob/main/resources/img/image%20(0).png>)
 
-!["Logo"](https://github.com/parniaa/LightHouse_Final/blob/main/resources/img/cover.png)
+!["Logo"](<https://github.com/parniaa/LightHouse_Final/blob/main/resources/img/image%20(1).png>)
 
 - Name your app. Add both URI to point to your front end server location
 
-!["Logo"](https://github.com/parniaa/LightHouse_Final/blob/main/resources/img/cover.png)
+!["Logo"](<https://github.com/parniaa/LightHouse_Final/blob/main/resources/img/image%20(2).png>)
 
 - copy your client id in an .env file in the root folder of the frond end server
 
-!["Logo"](https://github.com/parniaa/LightHouse_Final/blob/main/resources/img/cover.png)
+!["Logo"](<https://github.com/parniaa/LightHouse_Final/blob/main/resources/img/image%20(3).png>)
 
 ## Screenshots
 
