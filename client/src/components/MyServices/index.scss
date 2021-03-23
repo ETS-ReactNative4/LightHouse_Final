@@ -1,1 +1,15 @@
+.myService-pageCont {
+  display: flex;
+  background: linear-gradient(to right, #25274d 30%, #464866 100%);
+  height: 100vh;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.myService-main-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 13vh;
+}
+
 @import "~bootstrap/scss/bootstrap";
