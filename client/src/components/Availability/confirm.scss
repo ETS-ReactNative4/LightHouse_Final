@@ -1,1 +1,49 @@
+.mainConfirmContainer {
+  height: 100vh;
+  margin: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow: auto;
+  background: linear-gradient(to right, #25274d 30%, #464866 100%);
+}
+
+.cardContainer {
+  background: #3a427a;
+  margin: auto;
+  height: 40vh;
+  width: 90vh;
+  overflow: hidden;
+  box-shadow: 20px 20px 50px 10px #3a427a inset;
+  margin-top: 50px;
+  border: solid;
+  border-color: #464866;
+  border-radius: 8%;
+  border-collapse: separate;
+  perspective: 1px;
+  background: linear-gradient(to bottom right, #3a427a 40%, #5d628c 100%);
+}
+
+#confirmationQ {
+  color: whitesmoke;
+  font-weight: 500;
+  padding-top: 30px;
+}
+
+#confirmationDate {
+  margin-top: 30px;
+  color: whitesmoke;
+  font-weight: 50;
+}
+
+.confirmButtons {
+  margin-top: 40px;
+}
+
+.confirmBtn {
+  width: 80px;
+  font-weight: 400;
+}
+
 @import "~bootstrap/scss/bootstrap";
