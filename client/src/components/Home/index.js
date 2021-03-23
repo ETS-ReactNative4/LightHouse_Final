@@ -8,11 +8,6 @@ import Card from "react-bootstrap/Card";
 import queryString from "query-string";
 
 export default function Home(props) {
-  console.log("This is the value of props in the home component", props);
-  console.log(
-    "This is the value of location.search in home component",
-    queryString.parse(props.location.search)
-  );
   const params = queryString.parse(props.location.search);
   return (
     <>

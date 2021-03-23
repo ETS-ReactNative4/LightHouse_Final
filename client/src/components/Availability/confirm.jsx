@@ -8,8 +8,7 @@ export default function Confirm(props) {
   const data = props.booking;
   const yes = () => {
     axios.post("/api/appointments", { data }).then(
-      (response) => {
-        console.log(response);
+      () => {
         history.push("/");
       },
       (error) => {
@@ -22,9 +21,8 @@ export default function Confirm(props) {
     history.push("/calendar");
   };
 
-  console.log("THIS is the confim props 123241423", props.booking.st_date);
   const dateString = props.booking.st_date.toString();
-  console.log("THIS is the confim once stinginfied", dateString);
+
   return (
     <>
       {props.booking ? (
