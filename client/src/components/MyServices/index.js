@@ -36,6 +36,7 @@ export default function MyServices(props) {
                 <Button
                   onClick={() => {
                     props.setMagicFix(false);
+                    props.setServices(s);
                     history.push(`/service/?id=${s.id}&title=${s.title}`);
                   }}
                 >

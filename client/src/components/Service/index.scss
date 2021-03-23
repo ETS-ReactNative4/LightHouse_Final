@@ -1,5 +1,12 @@
 .the_calendar {
   text-align: -webkit-center;
 }
+.service_page {
+  display: flex;
+  background: linear-gradient(to right, #25274d 30%, #464866 100%);
+  height: 100vh;
+  flex-direction: column;
+  overflow: auto;
+}
 
 @import "~bootstrap/scss/bootstrap";
