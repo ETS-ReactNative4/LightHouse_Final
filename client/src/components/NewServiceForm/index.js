@@ -22,10 +22,6 @@ export default function NewServiceForm(props) {
   let timeInput = [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
   useEffect(() => {
     axios.get("/api/categories").then((response) => {
-      console.log(
-        "This is the response data from the GET api/categories",
-        response.data
-      );
       if (Array.isArray(response.data)) {
         const categoryTitles = response.data.map((data) => data.title);
         setCategoryOptions(categoryTitles);
@@ -45,15 +41,11 @@ export default function NewServiceForm(props) {
       start_time: startTime,
       end_time: endTime,
     };
-    console.log("Final data is", data);
 
-    axios.post("/api/services/new", { data }).then((response) => {
-      console.log("POST /api/services/new is successfull!!");
-    });
+    axios.post("/api/services/new", { data });
     axios
       .post(`/api/availabilities/${props.user.id}`, { availability })
-      .then((response) => {
-        console.log("response from saving a new service", response);
+      .then(() => {
         history.push("/myservices");
       });
   };

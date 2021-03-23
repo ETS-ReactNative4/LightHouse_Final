@@ -9,12 +9,9 @@ const msInHour = 60 * 60 * 1000;
 
 const Calendar = (props) => {
   const now = new Date();
-  console.log("calendar props", props);
 
   const history = useHistory();
   const onAvailabilitySelected = (a) => {
-    console.log("Availability slot selected: ", a);
-
     const data = {
       title: props.services.title,
       rating: 3,
@@ -32,10 +29,6 @@ const Calendar = (props) => {
 
   const onChangedCalRange = (r) =>
     console.log("Calendar range selected (fetch bookings here): ", r);
-
-  // TODO find a way to take avail block and make it blockout period when a block is not true
-  // receiving avalaible 9 to 14 everyday
-  // [9,14]
 
   const avail = [props.timeframe.start_time, props.timeframe.end_time]; //this is the receiving input
 

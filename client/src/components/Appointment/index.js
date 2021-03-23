@@ -1,7 +1,7 @@
 import ListGroup from "react-bootstrap/ListGroup";
 import InputGroup from "react-bootstrap/InputGroup";
 import axios from "axios";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 
@@ -11,7 +11,6 @@ export default function Availability(props) {
   const [status, setStatus] = useState("");
   useEffect(() => {
     axios.get(`/api/appointments/${props.user.id}`).then((response) => {
-      console.log(response.data);
       if (response.data.length > 0) {
         setStatus("client");
         setAppointments(response.data);
@@ -27,17 +26,6 @@ export default function Availability(props) {
       });
   }, []);
 
-  // console.log("client appointment data", appointments);
-  // console.log("Service provider appointment", serviceProviderApp);
-
-  // let clientAppointment = false;
-  // let serviceProviderAppointment = false;
-  //2 same axios call than in notification, if the call that check for appointment user id match curent user id render
-  // the current table format.
-  //If curent user === service.users_id, we gonna render a button and anther column to click on a confrim appointment button.
-  //for each row we must check if client id match appointment.users_id, it yes render confirm status row that chekc for is confirm
-  //next check for each row if user_id match services_users_id && is confirm is false, render a confirm button (create a local state tu update live the button)
-  //On click make a axios PUT call to the backend to update the appointment row to isconfirm true
   const confirmButtoncheck = (id) => {
     axios.put(`/api/appointments/${id}`, {
       isconfirmed: true,
@@ -84,7 +72,6 @@ export default function Availability(props) {
   };
 
   const appointElement = getAppointment();
-  console.log("outside of use effect", appointElement);
   return (
     <>
       <Table striped bordered hover>
