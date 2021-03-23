@@ -31,12 +31,11 @@ export default function Services(props) {
       return services.map((s) => {
         return (
           <tr key={s.id}>
-            <td>{s.id}</td>
             <td>{s.title}</td>
             <td>{s.category}</td>
             <td>{s.fee}</td>
-            <td>{s.user_id}</td>
-            <td>{s.created_at}</td>
+
+            <td>{Date(s.created_at)}</td>
             <td>
               <div className="searchTableButton">
                 <Button
@@ -104,12 +103,11 @@ export default function Services(props) {
           >
             <thead className="table">
               <tr>
-                <th>Service ID</th>
-                <th>Title</th>
+                <th>Service Name</th>
                 <th>Category</th>
-                <th>Fee</th>
-                <th>User ID</th>
-                <th>Service Create Date</th>
+                <th>Fee $</th>
+
+                <th>Created since</th>
                 <th></th>
               </tr>
             </thead>
