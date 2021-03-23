@@ -79,7 +79,7 @@ const App = () => {
                 user={user}
                 location={location}
                 timeframe={timeframe}
-                // services={services}
+                setServices={setServices}
               />
             ) : (
               <p>loading</p>
