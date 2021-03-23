@@ -1,7 +1,7 @@
 import React from "react";
-import { BsFillBellFill } from "react-icons/bs";
-import { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import {BsFillBellFill} from "react-icons/bs";
+import {useState, useEffect} from "react";
+import {useHistory} from "react-router-dom";
 
 import axios from "axios";
 
