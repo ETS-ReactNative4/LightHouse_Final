@@ -63,6 +63,7 @@ export default function NewServiceForm(props) {
                   name="title"
                   placeholder="Title"
                   onChange={(event) => setTitle(event.target.value)}
+                  required
                 />
               </Form.Group>
 
@@ -73,6 +74,7 @@ export default function NewServiceForm(props) {
                   name="description"
                   placeholder="Description"
                   onChange={(event) => setDescription(event.target.value)}
+                  required
                 />
               </Form.Group>
             </Form.Row>
@@ -83,6 +85,7 @@ export default function NewServiceForm(props) {
                 name="fee"
                 placeholder="$ Amount for one hour"
                 onChange={(event) => setFee(event.target.value)}
+                required
               />
             </Form.Group>
 

@@ -1,15 +1,15 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import "./MyServices.scss";
 
 export default function MyServices(props) {
   const [services, setServices] = useState([]);
   const [search, setSearch] = useState(" ");
-  const {apiUrl} = props;
+  const { apiUrl } = props;
   let history = useHistory();
 
   useEffect(() => {
@@ -26,12 +26,11 @@ export default function MyServices(props) {
       services.map((s) => {
         return (
           <tr>
-            <td>{s.id}</td>
             <td>{s.title}</td>
             <td>{s.category}</td>
             <td>{s.fee}</td>
-            <td>{s.user_id}</td>
-            <td>{s.created_at}</td>
+
+            <td>{Date(s.created_at)}</td>
             <td>
               <div className="searchTableButton">
                 <Button
@@ -49,36 +48,6 @@ export default function MyServices(props) {
       })
     );
   };
-
-  // const getServices = () => {
-  //   if (!services || services.length === 0 || services.name === "error")
-  //     return [];
-  //   return (
-  //     Array.isArray(services) &&
-  //     services.map((s) => {
-  //       return (
-  //         <ListGroup horizontal key={s.id}>
-  //           <ListGroup.Item>{s.id}</ListGroup.Item>
-  //           <ListGroup.Item>{s.title}</ListGroup.Item>
-  //           <ListGroup.Item>{s.category}</ListGroup.Item>
-  //           <ListGroup.Item>{s.fee}</ListGroup.Item>
-  //           <ListGroup.Item>{s.user_id}</ListGroup.Item>
-  //           <ListGroup.Item>{s.created_at}</ListGroup.Item>
-  //           <ListGroup.Item>
-  //             <Button
-  //               onClick={() => {
-  //                 props.setMagicFix(false);
-  //                 history.push(`/service/?id=${s.id}&title=${s.title}`);
-  //               }}
-  //             >
-  //               Select
-  //             </Button>
-  //           </ListGroup.Item>
-  //         </ListGroup>
-  //       );
-  //     })
-  //   );
-  // };
 
   const serviceElement = getServices();
 
@@ -110,11 +79,10 @@ export default function MyServices(props) {
           >
             <thead className="table">
               <tr>
-                <th>Service ID</th>
                 <th>Title</th>
                 <th>Category</th>
                 <th>Fee</th>
-                <th>User ID</th>
+
                 <th>Service Create Date</th>
                 <th></th>
               </tr>
