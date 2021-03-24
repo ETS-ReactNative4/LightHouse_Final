@@ -13,11 +13,14 @@ export default function Header(props) {
   };
   return (
     <>
-      <Navbar className="navComp" bg="light" expand="lg" sticky="top">
-        <Navbar.Brand onClick={() => gotToLink("/")}>AppName</Navbar.Brand>
+      <Navbar bg="dark" id="navComp" expand="lg" sticky="top">
+        <img className="navLogo" src="images/cover_copy.png"></img>
+        <Navbar.Brand className="navAppName" onClick={() => gotToLink("/")}>
+          Yalper
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="mr-auto">
+          <Nav id="myNav" className="mr-auto">
             <Nav.Link onClick={() => gotToLink("/")}>Home</Nav.Link>
 
             <Nav.Link onClick={() => gotToLink("/services")}>
@@ -42,13 +45,13 @@ export default function Header(props) {
           </Nav>
 
           {props.user ? (
-            <Nav>
+            <Nav className="bellIcon">
               <Notification user={props.user} />
             </Nav>
           ) : (
             <p></p>
           )}
-          <Nav>
+          <Nav className="oauthFeature">
             <Oauth
               user={props.user}
               setUser={props.setUser}
