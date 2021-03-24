@@ -13,6 +13,7 @@ export default function Header(props) {
   return (
     <>
       <Navbar bg="light" expand="lg" sticky="top">
+        {/* <img className="navLogo" src="images/cover_copy.png"></img> */}
         <Navbar.Brand onClick={() => gotToLink("/")}>AppName</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
