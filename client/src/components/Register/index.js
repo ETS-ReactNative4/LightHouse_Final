@@ -1,7 +1,7 @@
 import axios from "axios";
 import "./Register.scss";
-import { useHistory } from "react-router-dom";
-import { useState } from "react";
+import {useHistory} from "react-router-dom";
+import {useState} from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
@@ -42,7 +42,7 @@ export default function Register(props) {
           });
       },
       console.error,
-      { maximumAge: 0, enableHighAccuracy: false, timeout: 5000 }
+      {maximumAge: 0, enableHighAccuracy: false, timeout: 5000}
     );
   };
   const registration = (event) => {
@@ -50,7 +50,7 @@ export default function Register(props) {
 
     axios
       .post(`/api/register/?${props.user.email}`, {
-        location: { ...props.location, ...geoLocation },
+        location: {...props.location, ...geoLocation},
         user: props.user,
       })
       .then(
@@ -69,7 +69,11 @@ export default function Register(props) {
         <div className="register">
           <div className="main-register">
             <div className="col-md-3 register-left">
-              <Image src="/images/random.png" alt="" />
+              <Image
+                className="registerLogo"
+                src="/images/cover_copy.png"
+                alt=""
+              />
               <h3>Welcome to AppName</h3>
               <p>You are almost there - please register to continue</p>
             </div>

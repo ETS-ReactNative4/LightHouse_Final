@@ -1,5 +1,46 @@
 .home_page {
   height: 900px;
-  background: linear-gradient(to right, #25274d 30%, #464866 100%);
 }
+
+.jumbBig {
+  background: linear-gradient(to right, #25274d 30%, #464866 100%);
+  height: 50vh;
+  color: whitesmoke;
+}
+
+.heroImage {
+  position: relative;
+}
+
+// .main-cards {
+//   display: flex;
+//   justify-content: space-evenly;
+// }
+
+.mainPageRow {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 65px;
+  width: 100vw;
+}
+
+#heroHeader {
+  margin-top: 30px;
+}
+
+.buttonForHome {
+  border: none !important;
+  background: linear-gradient(to bottom, #29648a 30%, #537488 100%) !important;
+  box-shadow: 0.1px 3px 5px 2px #1c1e3b;
+}
+
+.eachHomeCard {
+  box-shadow: 0.1px 3px 5px 2px #9b9b9c;
+  border-radius: 3% !important;
+}
+
+.eachHomeCard:hover {
+  transform: scale(1.06);
+}
+
 @import "~bootstrap/scss/bootstrap";

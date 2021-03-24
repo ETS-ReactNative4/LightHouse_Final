@@ -1,8 +1,9 @@
 import React from "react";
 import GoogleLogin from "react-google-login";
-import { GoogleLogout } from "react-google-login";
+import {GoogleLogout} from "react-google-login";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import {useHistory} from "react-router-dom";
+import "./Oauth.scss";
 
 function Oauth(props) {
   const history = useHistory();
@@ -43,21 +44,23 @@ function Oauth(props) {
   };
   if (!props.user) {
     return (
-      <div className="App">
+      <div className="authApp">
         <GoogleLogin
           clientId={API_KEY}
           buttonText="Login"
           onSuccess={responseGoogle}
           onFailure={responseGoogle}
           cookiePolicy={"single_host_origin"}
+          className="loginButton"
         />
       </div>
     );
   } else {
     return (
-      <div className="App">
+      <div className="authApp">
         {props.user.full_name}
         <GoogleLogout
+          className="logoutButton"
           clientId={API_KEY}
           buttonText="Logout"
           onLogoutSuccess={props.logout}

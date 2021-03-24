@@ -1,0 +1,46 @@
+$navbar-bg: #000;
+
+// .oauthFeature {
+//   margin-right: 40px;
+// }
+
+// #myNav {
+//   background-color: red;
+// }
+// .navComp {
+//   background-color: transparent;
+// }
+
+.navbar {
+  background: linear-gradient(to top, #25274d 30%, #202677 100%);
+  height: 10vh;
+  box-shadow: 0.1px 3px 5px 2px #1c1e3b;
+}
+
+.navLogo {
+  height: 45px;
+  width: 60px;
+  margin-right: 25px;
+  margin-left: 15px;
+}
+
+.navAppName {
+  font-weight: 600;
+  color: white !important;
+}
+
+.bellIcon {
+  margin-right: 10px;
+  color: white !important;
+}
+
+#myNav {
+  color: white;
+}
+
+.nav-link {
+  color: whitesmoke !important;
+  text-shadow: 0.1px 3px 5px 2px #1c1e3b !important;
+}
+
+@import "~bootstrap/scss/bootstrap";

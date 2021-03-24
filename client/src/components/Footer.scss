@@ -4,10 +4,21 @@ $theme-colors: (
 );
 
 .footer {
-  height: 10%;
-  position: fixed;
+  height: 100px;
+  // position: fixed;
   bottom: 0;
-  background-color: lightgrey;
+  background-color: rgb(247, 245, 245);
+}
+
+.footerLogos {
+  margin-top: 30px;
+  font-weight: 200;
+  text-align: center;
+}
+.footerTextAbout {
+  margin-top: 30px;
+  font-weight: 300;
+  text-align: center;
 }
 
 @import "~bootstrap/scss/bootstrap";

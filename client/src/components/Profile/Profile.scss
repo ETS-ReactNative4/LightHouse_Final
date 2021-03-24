@@ -1,20 +1,131 @@
-.profile {
-  background-color: lightblue;
+.profileMainContainer {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  padding-left: 0;
+  padding-right: 0;
 }
 
-.profile-image {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+#profile {
+  height: 60vh;
+  width: 100vw;
+  margin: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(to bottom right, #25274d 30%, #5963ed 100%);
+  position: absolute;
 }
+
+.profileImageContainer {
+  padding-left: 0;
+}
+
+#profileContents {
+  background-color: #fff;
+  border-radius: 5%;
+  box-shadow: 5px 8px 13px 4px lightgrey;
+  height: 500px;
+  margin-top: 60px;
+  display: flex;
+  overflow: auto;
+}
+
+// .profileInfoContainer {
+
+// }
+
+.profile-image-img {
+  border: solid;
+  border-color: lightgray;
+  background-size: contain;
+  width: 400px;
+  height: 400px;
+  margin-top: 9%;
+  margin-right: 10%;
+  box-shadow: 5px 4px 13px 4px lightgrey;
+}
+
+// Image {
+//   background-size: contain;
+// }
 
 .profile-btn {
   width: 80px;
   height: 30px;
+  border: none;
+  border-radius: 1.5rem;
+  font-weight: 600;
+  background: #29648a;
 }
 
-.profile-image-img {
-  width: 200px;
+.contImgUpload {
+  text-align: center;
+}
+
+input[type="file"] {
+  border-radius: 1.5rem;
+  background: rgb(233, 236, 255);
+}
+
+input[type="file"]::-webkit-file-upload-button {
+  // background: #3279a8;
+  background: linear-gradient(to bottom right, #3279a8 30%, #a5abf6 100%);
+  border: none;
+  border-radius: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  padding: 0px 20px;
+  line-height: 38px;
+}
+
+#headerProfile {
+  text-align: left;
+}
+
+#columnLocation {
+  text-align: left;
+  padding-left: 0;
+}
+
+#columnEmail {
+  text-align: left;
+  margin-top: 60px;
+  padding-left: 0;
+  font-weight: 230;
+}
+
+#columnAddress {
+  text-align: left;
+  padding-left: 0;
+  font-weight: 230;
+  margin-top: 10px;
+}
+
+#profilePageButton {
+  text-align: left;
+  padding-left: 0;
+  font-weight: 230;
+  margin-top: 30px;
+  padding-left: 11px;
+}
+
+.imgUploadRow {
+  padding-left: 10px;
+}
+
+#profileFullName {
+  margin-top: 60px;
+}
+
+#profilePageButtonView {
+  text-align: left;
+  padding-left: 0;
+  font-weight: 230;
+  margin-top: 30px;
+  padding-left: 11px;
 }
 
 @import "~bootstrap/scss/bootstrap";

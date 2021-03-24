@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import {useState, useEffect} from "react";
+import {useHistory} from "react-router-dom";
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -49,7 +49,7 @@ export default function Profile(props) {
     );
     const file = await res.json();
 
-    axios.post(`/api/users/${userID}/photo`, { photo: file.secure_url });
+    axios.post(`/api/users/${userID}/photo`, {photo: file.secure_url});
 
     setImage(file.secure_url);
     setLoading(false);
@@ -57,107 +57,93 @@ export default function Profile(props) {
 
   const handleSubmit = (event, provider, userID) => {
     event.preventDefault();
+    console.log("SUBMITTED");
+    console.log(provider);
 
     axios
-      .post(`/api/users/${userID}/provider`, { provider: !provider })
+      .post(`/api/users/${userID}/provider`, {provider: !provider})
       .then((response) => {
         setProvider(response.data.isserviceprovider);
       });
   };
 
   return (
-    <Container fluid className="profile">
-      <Container>
-        {!image ? (
-          <Row>
-            <Col className="profile-image" md={{ span: 6, offset: 3 }}>
+    <div className="profileMainContainer">
+      <Container fluid id="profile">
+        <Container id="profileContents">
+          {!image ? (
+            <div className="col-md-7 profileImageContainer">
+              <Image
+                className="profile-image-img"
+                src="/images/default_profile.png"
+                fluid
+              />
+            </div>
+          ) : (
+            <div className="col-md-7 profileImageContainer">
+              <Image className="profile-image-img" src={image} />
+            </div>
+          )}
+          <div className="col-md-5profileInfoContainer">
+            <Row id="profileFullName">
               <Col>
-                <Image
-                  className="profile-image-img"
-                  src="/images/default_profile.png"
-                  roundedCircle
-                />
+                <h1 id="headerProfile">
+                  <b>{props.user && props.user.full_name}</b>
+                </h1>
               </Col>
+            </Row>
+            <Col id="columnLocation">
+              <b>{props.location && props.location.city}</b>
             </Col>
-          </Row>
-        ) : (
-          <Row>
-            <Col className="profile-image" md={{ span: 6, offset: 3 }}>
-              <Col>
-                <Image
-                  className="profile-image-img"
-                  src={image}
-                  roundedCircle
-                />
-              </Col>
+
+            <Col id="columnEmail">{props.user && props.user.email}</Col>
+
+            <Col id="columnAddress">
+              {props.location && props.location.full_address}
             </Col>
-          </Row>
-        )}
-        <Col>{props.location && props.location.city}</Col>
-        {loading ? <Spinner animation="border" variant="info" /> : <p></p>}
-        <Row>
-          <Col>
-            <input
-              type="file"
-              name="file"
-              placeholder="Upload an image"
-              onChange={uploadImage}
-            />
-          </Col>
-        </Row>
 
-        <Row>
-          <Col>
-            <b>Name</b>
-          </Col>
-        </Row>
-        <Row>
-          <Col>{props.user && props.user.full_name}</Col>
-        </Row>
-        <Row>
-          <Col>
-            <b>Email</b>
-          </Col>
-        </Row>
-        <Row>
-          <Col>{props.user && props.user.email}</Col>
-        </Row>
-
-        <Row>
-          <Col>
-            <b>Address</b>
-          </Col>
-        </Row>
-        <Col>{props.location && props.location.full_address}</Col>
-
-        {props.user && (
-          <Row>
-            {props.user.isserviceprovider === true ? (
-              <Col>
-                <Button
-                  onClick={() => gotToLink("/myservices")}
-                  className="profile-services-btn"
-                  variant="primary"
-                  size="sm"
-                >
-                  View my services
-                </Button>
-              </Col>
-            ) : (
-              <Col>
-                <Button
-                  onClick={(e) => handleSubmit(e, provider, props.user.id)}
-                  className="profile-services-btn"
-                  variant="primary"
-                  size="sm"
-                >
-                  Become a provider
-                </Button>
-              </Col>
+            {props.user && (
+              <Row>
+                {props.user.isserviceprovider === true ? (
+                  <Col className="btn-form" id="profilePageButtonView">
+                    <Button
+                      onClick={() => gotToLink("/myservices")}
+                      className="profile-services-btn"
+                      variant="primary"
+                      size="sm"
+                    >
+                      View my services
+                    </Button>
+                  </Col>
+                ) : (
+                  <Col className="btn-form" id="profilePageButton">
+                    <Button
+                      onClick={(e) => handleSubmit(e, provider, props.user.id)}
+                      className="profile-services-btn"
+                      variant="primary"
+                      size="sm"
+                    >
+                      Become a provider
+                    </Button>
+                  </Col>
+                )}
+              </Row>
             )}
-          </Row>
-        )}
+            {loading ? <Spinner animation="border" variant="info" /> : <p></p>}
+            <Row>
+              <div className="imgUploadRow">
+                <input
+                  className="contImgUpload"
+                  type="file"
+                  name="file"
+                  placeholder="Upload an image"
+                  onChange={uploadImage}
+                />
+              </div>
+            </Row>
+          </div>
+        </Container>
       </Container>
-    </Container>
+    </div>
   );
 }
