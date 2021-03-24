@@ -1,5 +1,26 @@
 .home_page {
   height: 900px;
+}
+
+.jumbBig {
   background: linear-gradient(to right, #25274d 30%, #464866 100%);
+  height: 50vh;
+  color: whitesmoke;
+}
+
+.heroImage {
+  position: relative;
+}
+
+// .main-cards {
+//   display: flex;
+//   justify-content: space-evenly;
+// }
+
+.mainPageRow {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 65px;
+  width: 100vw;
 }
 @import "~bootstrap/scss/bootstrap";
