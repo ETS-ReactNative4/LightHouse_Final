@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {useState} from "react";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
@@ -129,8 +129,8 @@ const App = () => {
 
           <Route component={PageNotFound} />
         </Switch>
-        <Footer class="footer" />
       </div>
+      <Footer class="footer" />
     </Router>
   );
 };

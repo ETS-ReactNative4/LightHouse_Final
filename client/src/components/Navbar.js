@@ -4,6 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Oauth from "./Oauth";
 import Notification from "../components/Notification/";
 import {useHistory} from "react-router-dom";
+import "./Navbar.scss";
 
 export default function Header(props) {
   const history = useHistory();
@@ -12,7 +13,7 @@ export default function Header(props) {
   };
   return (
     <>
-      <Navbar bg="light" expand="lg" sticky="top">
+      <Navbar className="navComp" bg="light" expand="lg" sticky="top">
         <Navbar.Brand onClick={() => gotToLink("/")}>AppName</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
