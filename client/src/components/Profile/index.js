@@ -57,6 +57,8 @@ export default function Profile(props) {
 
   const handleSubmit = (event, provider, userID) => {
     event.preventDefault();
+    console.log("SUBMITTED");
+    console.log(provider);
 
     axios
       .post(`/api/users/${userID}/provider`, {provider: !provider})
@@ -83,7 +85,7 @@ export default function Profile(props) {
             </div>
           )}
           <div className="col-md-5profileInfoContainer">
-            <Row>
+            <Row id="profileFullName">
               <Col>
                 <h1 id="headerProfile">
                   <b>{props.user && props.user.full_name}</b>
@@ -103,7 +105,7 @@ export default function Profile(props) {
             {props.user && (
               <Row>
                 {props.user.isserviceprovider === true ? (
-                  <Col>
+                  <Col className="btn-form" id="profilePageButtonView">
                     <Button
                       onClick={() => gotToLink("/myservices")}
                       className="profile-services-btn"
@@ -114,7 +116,7 @@ export default function Profile(props) {
                     </Button>
                   </Col>
                 ) : (
-                  <Col className="btn-form">
+                  <Col className="btn-form" id="profilePageButton">
                     <Button
                       onClick={(e) => handleSubmit(e, provider, props.user.id)}
                       className="profile-services-btn"
@@ -129,7 +131,7 @@ export default function Profile(props) {
             )}
             {loading ? <Spinner animation="border" variant="info" /> : <p></p>}
             <Row>
-              <Col>
+              <div className="imgUploadRow">
                 <input
                   className="contImgUpload"
                   type="file"
@@ -137,7 +139,7 @@ export default function Profile(props) {
                   placeholder="Upload an image"
                   onChange={uploadImage}
                 />
-              </Col>
+              </div>
             </Row>
           </div>
         </Container>
