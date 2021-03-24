@@ -93,4 +93,26 @@ postgreSQL
 
 ## Screenshots
 
-### About Page
+### Home Page
+
+!["Logo"](https://github.com/parniaa/LightHouse_Final/blob/main/resources/img/Yalper%20Home.png)
+
+### Register Page
+
+!["Logo"](https://github.com/parniaa/LightHouse_Final/blob/main/resources/img/Yalper%20Register.png)
+
+### Profile Page
+
+!["Logo"](https://github.com/parniaa/LightHouse_Final/blob/main/resources/img/Profile%20.png)
+
+### Form Page
+
+!["Logo"](https://github.com/parniaa/LightHouse_Final/blob/main/resources/img/Form.png)
+
+### Appointment Page
+
+!["Logo"](https://github.com/parniaa/LightHouse_Final/blob/main/resources/img/Appointment.png)
+
+### Helper list Page
+
+!["Logo"](https://github.com/parniaa/LightHouse_Final/blob/main/resources/img/Yalper%20list.png)
