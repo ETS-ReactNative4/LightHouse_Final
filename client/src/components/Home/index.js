@@ -1,5 +1,7 @@
 import "./Home.scss";
 import {useHistory} from "react-router-dom";
+import React from "react";
+import {useState, useEffect} from "react";
 
 import Jumbotron from "react-bootstrap/Jumbotron";
 import Button from "react-bootstrap/Button";
@@ -15,9 +17,33 @@ export default function Home(props) {
   const gotToLink = (link) => {
     history.push(link);
   };
+
+  const [offSetY, setOffsetY] = useState(0);
+
+  const handleScroll = () => setOffsetY(window.pageYOffset);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const params = queryString.parse(props.location.search);
   return (
     <div className="home_page">
+      <div
+        className="totalImage"
+        style={{transform: `translateY(${offSetY * 0.5}px)`}}
+      >
+        <img src="images/background.png" className="hero-img"></img>
+        <img src="images/foreground.png" className="parallax-img"></img>
+        <img src="/images/yalper.png" className="textHomeImg"></img>
+        <img src="images/foreground_cloud3.png" className="clouds1"></img>
+        <img src="images/foreground_cloud1.png" className="clouds2"></img>
+        <img src="images/foreground_cloud2.png" className="clouds3"></img>
+        <img src="images/foreground_cloud4.png" className="clouds4"></img>
+      </div>
+
       <Jumbotron className="jumbBig">
         <h1>{params.title}</h1>
         <h1 id="heroHeader">Yalper will relieve you of your worries</h1>
