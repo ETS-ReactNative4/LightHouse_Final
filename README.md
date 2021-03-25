@@ -95,7 +95,7 @@ postgreSQL
 
 ### Home Page
 
-!["Logo"](https://github.com/parniaa/LightHouse_Final/blob/main/resources/img/Yalper%20Home.png)
+!["Logo"](https://github.com/parniaa/LightHouse_Final/blob/main/resources/img/new%20home%20page.png)
 
 ### Register Page
 
