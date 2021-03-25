@@ -115,4 +115,4 @@ postgreSQL
 
 ### Helper list Page
 
-!["Logo"](https://github.com/parniaa/LightHouse_Final/blob/main/resources/img/Yalper%20list.png)
+!["Log"](https://github.com/parniaa/LightHouse_Final/blob/main/resources/img/Yalper%20list.png)
