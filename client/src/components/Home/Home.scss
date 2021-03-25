@@ -2,9 +2,15 @@
   height: 900px;
 }
 
+.containerForHomeMain {
+  background: white;
+  position: relative;
+  z-index: 100;
+}
+
 .jumbBig {
   background: linear-gradient(to right, #25274d 30%, #464866 100%);
-  height: 50vh;
+  height: 60vh;
   color: whitesmoke;
   z-index: 100;
   position: relative;
@@ -60,7 +66,7 @@
   left: 0px;
   top: 427px;
   width: 1077px;
-  height: 383px;
+  height: 344.7px;
   z-index: 6;
 }
 .clouds2 {
@@ -68,7 +74,7 @@
   left: 0px;
   top: 354px;
   width: 1440px;
-  height: 456px;
+  height: 410.4px;
   z-index: 5;
 }
 
@@ -78,7 +84,7 @@
   left: 0px;
   top: 0px;
   width: 1440px;
-  height: 810px;
+  height: 729px;
   z-index: 4;
 }
 
@@ -101,7 +107,7 @@
   left: 159px;
   top: 294px;
   width: 1060px;
-  height: 436px;
+  height: 392.4px;
   z-index: 3;
 }
 
@@ -110,16 +116,30 @@
   left: 0px;
   top: 182px;
   width: 1252px;
-  height: 628px;
+  height: 565.2px;
+  z-index: 7;
+}
+
+.clouds5 {
+  position: absolute;
+  left: 945px;
+  top: 620px;
+  width: 463px;
+  height: 146px;
   z-index: 7;
 }
 
 .totalImage {
   width: 100vw;
-  height: 802px;
+  height: 800px;
   position: relative;
   z-index: 90;
 }
+
+// .cloudDiv {
+//   position: absolute;
+//   z-index: 91;
+// }
 
 .hero-img {
   width: 1440px;
