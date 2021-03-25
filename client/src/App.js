@@ -130,7 +130,7 @@ const App = () => {
           <Route component={PageNotFound} />
         </Switch>
       </div>
-      <Footer class="footer" />
+      {/* <Footer class="footer" /> */}
     </Router>
   );
 };
