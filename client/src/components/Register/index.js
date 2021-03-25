@@ -74,7 +74,7 @@ export default function Register(props) {
                 src="/images/cover_copy.png"
                 alt=""
               />
-              <h3>Welcome to AppName</h3>
+              <h3>Welcome to Yalper</h3>
               <p>You are almost there - please register to continue</p>
             </div>
             <div className="col-md-9 register-right">
