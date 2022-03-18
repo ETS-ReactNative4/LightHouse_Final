@@ -38,7 +38,7 @@ postgreSQL
 
 - You will need **two** terminal windows/tabs for running this application
 - In the first terminal `cd` into `client` and run `npm install` to install all of the dependencies. Then run `npm start ` and go to <localhost:3003 in your browser.
-- In the second terminal `cd` into `backend` and run `npm install` to install all of the dependencies. Then run `npm start ` to start the server.
+- In the second terminal `cd` into `backend` and run `npm install` to install all of the dependencies. Next, seed database `npm db:reset`, Then run `npm start ` to start the server.
 
 ## Dependencies
 
